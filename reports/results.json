@@ -1,0 +1,234 @@
+{
+    "instituto_igualdad": {
+        "host": "institutoigualdad.cl",
+        "ip": "162.241.2.176",
+        "open_ports": [
+            {
+                "port": 21,
+                "service": "FTP",
+                "risk": "HIGH"
+            },
+            {
+                "port": 22,
+                "service": "SSH",
+                "risk": "LOW"
+            },
+            {
+                "port": 25,
+                "service": "SMTP",
+                "risk": "LOW"
+            },
+            {
+                "port": 53,
+                "service": "DNS",
+                "risk": "LOW"
+            },
+            {
+                "port": 80,
+                "service": "HTTP",
+                "risk": "LOW"
+            },
+            {
+                "port": 110,
+                "service": "POP3",
+                "risk": "LOW"
+            },
+            {
+                "port": 143,
+                "service": "IMAP",
+                "risk": "LOW"
+            },
+            {
+                "port": 443,
+                "service": "HTTPS",
+                "risk": "LOW"
+            },
+            {
+                "port": 465,
+                "service": "Unknown",
+                "risk": "LOW"
+            },
+            {
+                "port": 587,
+                "service": "Unknown",
+                "risk": "LOW"
+            },
+            {
+                "port": 993,
+                "service": "Unknown",
+                "risk": "LOW"
+            },
+            {
+                "port": 995,
+                "service": "Unknown",
+                "risk": "LOW"
+            },
+            {
+                "port": 2083,
+                "service": "Unknown",
+                "risk": "LOW"
+            },
+            {
+                "port": 2096,
+                "service": "Unknown",
+                "risk": "LOW"
+            },
+            {
+                "port": 3306,
+                "service": "MySQL",
+                "risk": "HIGH"
+            }
+        ],
+        "scanned_at": "2026-03-01T15:53:07.010615Z"
+    },
+    "pschile": {
+        "host": "pschile.cl",
+        "ip": "162.241.218.115",
+        "open_ports": [
+            {
+                "port": 21,
+                "service": "FTP",
+                "risk": "HIGH"
+            },
+            {
+                "port": 22,
+                "service": "SSH",
+                "risk": "LOW"
+            },
+            {
+                "port": 25,
+                "service": "SMTP",
+                "risk": "LOW"
+            },
+            {
+                "port": 53,
+                "service": "DNS",
+                "risk": "LOW"
+            },
+            {
+                "port": 80,
+                "service": "HTTP",
+                "risk": "LOW"
+            },
+            {
+                "port": 110,
+                "service": "POP3",
+                "risk": "LOW"
+            },
+            {
+                "port": 143,
+                "service": "IMAP",
+                "risk": "LOW"
+            },
+            {
+                "port": 443,
+                "service": "HTTPS",
+                "risk": "LOW"
+            },
+            {
+                "port": 465,
+                "service": "Unknown",
+                "risk": "LOW"
+            },
+            {
+                "port": 587,
+                "service": "Unknown",
+                "risk": "LOW"
+            },
+            {
+                "port": 993,
+                "service": "Unknown",
+                "risk": "LOW"
+            },
+            {
+                "port": 995,
+                "service": "Unknown",
+                "risk": "LOW"
+            }
+        ],
+        "scanned_at": "2026-03-01T15:53:09.857950Z"
+    },
+    "pdc": {
+        "host": "pdc.cl",
+        "ip": "201.148.107.66",
+        "open_ports": [],
+        "scanned_at": "2026-03-01T15:53:12.790975Z"
+    },
+    "socialcristiano": {
+        "host": "socialcristiano.cl",
+        "ip": "190.3.170.38",
+        "open_ports": [
+            {
+                "port": 21,
+                "service": "FTP",
+                "risk": "HIGH"
+            },
+            {
+                "port": 22,
+                "service": "SSH",
+                "risk": "LOW"
+            },
+            {
+                "port": 25,
+                "service": "SMTP",
+                "risk": "LOW"
+            },
+            {
+                "port": 80,
+                "service": "HTTP",
+                "risk": "LOW"
+            },
+            {
+                "port": 110,
+                "service": "POP3",
+                "risk": "LOW"
+            },
+            {
+                "port": 143,
+                "service": "IMAP",
+                "risk": "LOW"
+            },
+            {
+                "port": 443,
+                "service": "HTTPS",
+                "risk": "LOW"
+            },
+            {
+                "port": 465,
+                "service": "Unknown",
+                "risk": "LOW"
+            },
+            {
+                "port": 587,
+                "service": "Unknown",
+                "risk": "LOW"
+            },
+            {
+                "port": 993,
+                "service": "Unknown",
+                "risk": "LOW"
+            },
+            {
+                "port": 995,
+                "service": "Unknown",
+                "risk": "LOW"
+            },
+            {
+                "port": 2083,
+                "service": "Unknown",
+                "risk": "LOW"
+            },
+            {
+                "port": 2096,
+                "service": "Unknown",
+                "risk": "LOW"
+            },
+            {
+                "port": 3306,
+                "service": "MySQL",
+                "risk": "HIGH"
+            }
+        ],
+        "scanned_at": "2026-03-01T15:53:15.458115Z"
+    }
+}
