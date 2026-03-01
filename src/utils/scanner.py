@@ -5,14 +5,15 @@ import json
 import os
 import socket
 import threading
-from datetime import datetime, time
+import time
+from datetime import datetime
 
 from src.utils.extractors.router import ExtractorRouter
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 TOP_100_PORTS = [
-    21, 22, 23, 25, 53, 80, 110, 111, 119, 135, 139, 143, 161, 194, 443, 445,
+    21, 22, 2222, 23, 25, 53, 80, 110, 111, 119, 135, 139, 143, 161, 194, 443, 445,
     465, 587, 993, 995, 1080, 1194, 1433, 1521, 1723, 2049, 2083, 2096, 3306,
     3389, 4333, 4444, 5000, 5432, 5900, 5985, 6379, 6667, 7070, 7443, 8000,
     8008, 8080, 8081, 8443, 8888, 9000, 9090, 9200, 9300, 9418, 10000, 11211,
@@ -43,7 +44,7 @@ PORT_LABELS = {
     9200: 'Elasticsearch',
     27017: 'MongoDB',
     2222: 'SSH',
-    2222: 'HIGH',
+    2083: 'cPanel',
 }
 
 RISK_LABELS = {
@@ -59,6 +60,8 @@ RISK_LABELS = {
     6379: 'CRITICAL',
     9200: 'HIGH',
     27017: 'HIGH',
+    2083: 'HIGH',
+    2222: 'HIGH',
 }
 
 
@@ -133,45 +136,39 @@ class PortScanner:
             pass
 
     def _scan_target(self, domain_id, host, ip):
-        """Scan all selected ports on a resolved IP using a thread pool.
+            """Scan all selected ports on a resolved IP using a thread pool.
+            Args:
+                domain_id (str): Identifier from config.
+                host (str): Original domain name.
+                ip (str): Resolved IP address.
+            """
+            ports = TOP_100_PORTS if self.port_mode == 'top100' else list(range(1, 65536))
+            mode_label = 'TOP 100' if self.port_mode == 'top100' else 'FULL (1-65535)'
+            print(f"\n[SCAN] {host} ({ip}) — {mode_label}")
+            open_ports = []
+            threads = []
+            semaphore = threading.Semaphore(self.max_threads)
 
-        Args:
-            domain_id (str): Identifier from config.
-            host (str): Original domain name.
-            ip (str): Resolved IP address.
-        """
-        import time
-        time.sleep(self.scan_delay)
-        
-        ports = TOP_100_PORTS if self.port_mode == 'top100' else list(range(1, 65536))
-        mode_label = 'TOP 100' if self.port_mode == 'top100' else 'FULL (1-65535)'
-        print(f"\n[SCAN] {host} ({ip}) — {mode_label}")
+            def worker(port):
+                with semaphore:
+                    self._scan_port(ip, port, open_ports)
 
-        open_ports = []
-        threads = []
-        semaphore = threading.Semaphore(self.max_threads)
+            for port in ports:
+                t = threading.Thread(target=worker, args=(port,))
+                threads.append(t)
+                t.start()
 
-        def worker(port):
-            with semaphore:
-                self._scan_port(ip, port, open_ports)
+            print(f"[DEBUG] Waiting for {len(threads)} threads...")
+            for t in threads:
+                t.join()
+            print(f"[DEBUG] Done. Open ports: {len(open_ports)}")
 
-        for port in ports:
-            t = threading.Thread(target=worker, args=(port,))
-            threads.append(t)
-            t.start()
-            if len(threads) % 500 == 0:  # yield every 500 threads
-                for bt in threads[-500:]:
-                    bt.join()
-
-        for t in threads:
-            t.join()
-
-        self.results[domain_id] = {
-            'host': host,
-            'ip': ip,
-            'open_ports': sorted(open_ports, key=lambda x: x['port']),
-            'scanned_at': datetime.utcnow().isoformat() + 'Z',
-        }
+            self.results[domain_id] = {
+                'host': host,
+                'ip': ip,
+                'open_ports': sorted(open_ports, key=lambda x: x['port']),
+                'scanned_at': datetime.utcnow().isoformat() + 'Z',
+            }
 
     def _export_json(self):
         """Write scan results to reports/results.json."""
@@ -227,8 +224,10 @@ class PortScanner:
             if ip:
                 resolved.append((domain_id, host, ip))
 
-        for domain_id, host, ip in resolved:
+        for i, (domain_id, host, ip) in enumerate(resolved):
             self._scan_target(domain_id, host, ip)
+            if i < len(resolved) - 1:  # don't delay after last target
+                time.sleep(self.scan_delay)
 
         self._print_summary()
         self._export_json()

@@ -1,7 +1,7 @@
 {
     "domains": [
         {
-            "id": "pschile",
+            "id": "pschile-qa",
             "host": "pschile.cl"
         }
     ]
