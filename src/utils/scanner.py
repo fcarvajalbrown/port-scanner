@@ -136,39 +136,34 @@ class PortScanner:
             pass
 
     def _scan_target(self, domain_id, host, ip):
-            """Scan all selected ports on a resolved IP using a thread pool.
-            Args:
-                domain_id (str): Identifier from config.
-                host (str): Original domain name.
-                ip (str): Resolved IP address.
-            """
-            ports = TOP_100_PORTS if self.port_mode == 'top100' else list(range(1, 65536))
-            mode_label = 'TOP 100' if self.port_mode == 'top100' else 'FULL (1-65535)'
-            print(f"\n[SCAN] {host} ({ip}) — {mode_label}")
-            open_ports = []
-            threads = []
-            semaphore = threading.Semaphore(self.max_threads)
+        """Scan all selected ports on a resolved IP using a thread pool.
 
-            def worker(port):
-                with semaphore:
-                    self._scan_port(ip, port, open_ports)
+        Args:
+            domain_id (str): Identifier from config.
+            host (str): Original domain name.
+            ip (str): Resolved IP address.
+        """
+        from concurrent.futures import ThreadPoolExecutor, as_completed
 
-            for port in ports:
-                t = threading.Thread(target=worker, args=(port,))
-                threads.append(t)
-                t.start()
+        ports = TOP_100_PORTS if self.port_mode == 'top100' else list(range(1, 65536))
+        mode_label = 'TOP 100' if self.port_mode == 'top100' else 'FULL (1-65535)'
+        print(f"\n[SCAN] {host} ({ip}) — {mode_label}")
 
-            print(f"[DEBUG] Waiting for {len(threads)} threads...")
-            for t in threads:
-                t.join()
-            print(f"[DEBUG] Done. Open ports: {len(open_ports)}")
+        open_ports = []
 
-            self.results[domain_id] = {
-                'host': host,
-                'ip': ip,
-                'open_ports': sorted(open_ports, key=lambda x: x['port']),
-                'scanned_at': datetime.utcnow().isoformat() + 'Z',
-            }
+        print(f"[DEBUG] Scanning {len(ports)} ports with {self.max_threads} workers...")
+        with ThreadPoolExecutor(max_workers=self.max_threads) as executor:
+            futures = {executor.submit(self._scan_port, ip, port, open_ports): port for port in ports}
+            for future in as_completed(futures):
+                future.result()
+
+        print(f"[DEBUG] Done. Open ports: {len(open_ports)}")
+        self.results[domain_id] = {
+            'host': host,
+            'ip': ip,
+            'open_ports': sorted(open_ports, key=lambda x: x['port']),
+            'scanned_at': datetime.utcnow().isoformat() + 'Z',
+        }
 
     def _export_json(self):
         """Write scan results to reports/results.json."""
