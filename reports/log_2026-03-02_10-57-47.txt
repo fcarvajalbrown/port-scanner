@@ -1,0 +1,44 @@
+===== DNS RESOLUTION =====
+[DNS] frenteampliochile.cl → 77.37.42.110
+
+[SCAN] frenteampliochile.cl (77.37.42.110) — TOP 100
+  [LOW] Port 25 (SMTP) — OPEN
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 1723 (Unknown) — OPEN
+[DEBUG] Waiting for 61 threads...
+  [LOW] Port 80 (HTTP) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+[DEBUG] Done. Open ports: 5
+
+===== SCAN SUMMARY =====
+
+[frenteamplio] frenteampliochile.cl (77.37.42.110)
+  Port    21 (FTP            ) — HIGH
+  Port    25 (SMTP           ) — LOW
+  Port    80 (HTTP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port  1723 (Unknown        ) — LOW
+
+[EXPORT] Results saved to reports/results.json
+[EXPORT] Results appended to reports/results.csv
+
+[ROUTER] Checking extractors for frenteampliochile.cl (77.37.42.110)
+  [CDN] frenteampliochile.cl is not behind Cloudflare — skipping bypass
+
+  [WPScan] Targeting https://www.frenteampliochile.cl
+  [WPScan] Running: wpscan --url https://www.frenteampliochile.cl --format json --no-update --disable-tls-checks --ignore-main-redirect --enumerate u,p,t --api-token nL5IQBV8aZTVXP4hXdEZWAUrhkSG0axd2foMGUc4SNs
+  [WPScan] Scan aborted: The target is responding with a 403, this might be due to a WAF. Please re-try with --random-user-agent
+
+  [Nikto] Targeting www.frenteampliochile.cl:443
+  [Nikto] Running: nikto -host www.frenteampliochile.cl -port 443 -Format csv -nointeractive -Tuning x9 -timeout 10 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+
+  [CONFIG] Scraping config files on frenteampliochile.cl
+  [CONFIG] *** FOUND: /wp-config.php (5 bytes) ***
+  [MATCH] Port 21 (FTP) — launching extractor
+  [FTP] Connecting to 77.37.42.110:21
+  [FTP] Failed: timed out
+  [SKIP] Port 25 (SMTP) — no extractor available
+  [SKIP] Port 80 (HTTP) — no extractor available
+  [SKIP] Port 443 (HTTPS) — no extractor available
+  [SKIP] Port 1723 (Unknown) — no extractor available

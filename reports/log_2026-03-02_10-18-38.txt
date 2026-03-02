@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/mnt/c/Users/Beetlejuice/Desktop/port-scanner/src/main.py", line 38, in <module>
+    main()
+    ~~~~^^
+  File "/mnt/c/Users/Beetlejuice/Desktop/port-scanner/src/main.py", line 33, in main
+    scanner = PortScanner(port_mode=port_mode)
+  File "/mnt/c/Users/Beetlejuice/Desktop/port-scanner/src/utils/scanner.py", line 78, in __init__
+    self.domains = self._load_domains()
+                   ~~~~~~~~~~~~~~~~~~^^
+  File "/mnt/c/Users/Beetlejuice/Desktop/port-scanner/src/utils/scanner.py", line 97, in _load_domains
+    return json.load(f)['domains']
+           ~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Expecting ',' delimiter: line 7 column 9 (char 110)

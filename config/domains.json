@@ -1,8 +1,12 @@
 {
     "domains": [
         {
-            "id": "pschile-qa",
+            "id": "pschile",
             "host": "pschile.cl"
+        },
+        {
+            "id": "pschile2",
+            "host": "portal.pschile.cl"
         }
     ]
 }

