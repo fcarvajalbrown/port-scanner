@@ -99,7 +99,6 @@ class NiktoExtractor:
             '-port', str(self.port),
             '-Format', 'csv',
             '-nointeractive',
-            '-Tuning', 'x9',   # exclude DoS (9) and uninteresting info (x)
             '-timeout', '10',
         ]
 

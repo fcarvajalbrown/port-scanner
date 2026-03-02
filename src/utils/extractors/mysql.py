@@ -5,6 +5,7 @@ import itertools
 import os
 import socket
 import struct
+from unittest import result
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -45,6 +46,9 @@ class MySQLExtractor:
             version, salt = self._parse_banner(banner)
             result['version'] = version
             print(f"  [MySQL] Version: {version}")
+            if not salt:
+                print(f"  [MySQL] No salt from handshake — skipping brute force")
+                return result
 
         except Exception as e:
             print(f"  [MySQL] Banner failed: {e}")
@@ -145,7 +149,7 @@ class MySQLExtractor:
         Args:
             username (str): MySQL username to test.
             password (str): Password to test.
-            salt (bytes): Auth salt from server handshake.
+            salt (bytes): Auth salt from initial server handshake.
 
         Returns:
             str: 'success', 'wrong_password', or error message string.
@@ -154,18 +158,10 @@ class MySQLExtractor:
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             sock.settimeout(3)
             sock.connect((self.ip, self.port))
-            raw_banner = sock.recv(1024)
-
-            _, live_salt = self._parse_banner(raw_banner)
-            if not live_salt:
-                sock.close()
-                return 'no_salt'
-
-            auth_response = self._mysql_native_password(password, live_salt) if password else b''
-
+            sock.recv(1024)  # consume handshake — use passed-in salt instead
+            auth_response = self._mysql_native_password(password, salt) if password else b''
             username_bytes = username.encode() + b'\x00'
             auth_data = bytes([len(auth_response)]) + auth_response if password else b'\x00'
-
             capabilities = 0x0200 | 0x8000 | 0x0004
             payload = (
                 struct.pack('<I', capabilities)[:3] +
@@ -176,15 +172,12 @@ class MySQLExtractor:
                 username_bytes +
                 auth_data
             )
-
             packet = struct.pack('<I', len(payload))[:3] + b'\x01' + payload
             sock.send(packet)
             response = sock.recv(1024)
             sock.close()
-
             if not response or len(response) < 5:
                 return 'empty_response'
-
             marker = response[4]
             if marker == 0x00:
                 return 'success'
@@ -194,7 +187,6 @@ class MySQLExtractor:
                 return 'auth_switch_required'
             else:
                 return f'unknown_marker:{hex(marker)}'
-
         except Exception as e:
             return str(e)
 

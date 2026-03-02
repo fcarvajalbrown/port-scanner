@@ -104,7 +104,7 @@ class CPanelExtractor:
                 params['security_token'] = token
 
             body = urllib.parse.urlencode(params)
-            response = self._https_request('POST', '/login/?login_only=1', body=body)
+            response = self._https_request('POST', '/login/', body=body)
 
             if not response:
                 return 'no_response'
