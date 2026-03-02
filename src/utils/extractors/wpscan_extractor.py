@@ -173,10 +173,13 @@ class WPScanExtractor:
 
         # Plugins
         plugins_raw = raw.get('plugins', {})
+
         for name, data in plugins_raw.items():
+            if not data:
+                continue
             vulns = self._extract_vulns(data.get('vulnerabilities', []))
             result['plugins'][name] = {
-                'version': data.get('version', {}).get('number'),
+                'version': (data.get('version') or {}).get('number'),
                 'vulnerabilities': vulns,
             }
             if vulns:
@@ -184,10 +187,13 @@ class WPScanExtractor:
 
         # Themes
         themes_raw = raw.get('themes', {})
+
         for name, data in themes_raw.items():
+            if not data:
+                continue
             vulns = self._extract_vulns(data.get('vulnerabilities', []))
             result['themes'][name] = {
-                'version': data.get('version', {}).get('number'),
+                'version': (data.get('version') or {}).get('number'),
                 'vulnerabilities': vulns,
             }
             if vulns:
