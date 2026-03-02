@@ -95,7 +95,7 @@ class NiktoExtractor:
         """
         cmd = [
             'nikto',
-            '-host', self.host,
+            '-host', f"www.{self.host}" if not self.host.startswith('www.') else self.host,
             '-port', str(self.port),
             '-Format', 'csv',
             '-nointeractive',

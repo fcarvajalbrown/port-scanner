@@ -38,8 +38,9 @@ class ExtractorRouter:
             # 2. Web recon (WPScan + Nikto) — runs before any brute force
             if self._has_port(data, 80) or self._has_port(data, 443):
                 port = 443 if self._has_port(data, 443) else 80
-                self._run_wpscan(domain_id, ip, host, port)
-                self._run_nikto(domain_id, ip, host, port)
+                www_host = f"www.{host}" if not host.startswith('www.') else host
+                self._run_wpscan(domain_id, ip, www_host, port)
+                self._run_nikto(domain_id, ip, www_host, port)
 
             # 3. cPanel brute force
             if self._has_port(data, 2083):

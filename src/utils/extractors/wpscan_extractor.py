@@ -102,7 +102,8 @@ class WPScanExtractor:
             '--format', 'json',
             '--no-update',
             '--disable-tls-checks',
-            '--enumerate', 'u,p,t',  # users, plugins, themes
+            '--ignore-main-redirect',
+            '--enumerate', 'u,p,t',
         ]
 
         if self.api_token:
