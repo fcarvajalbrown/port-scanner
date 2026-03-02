@@ -9,6 +9,7 @@ Called by router.py when port 80 or 443 is open and WordPress is detected or ass
 """
 
 import json
+import os
 import shutil
 import subprocess
 
@@ -36,7 +37,7 @@ class WPScanExtractor:
         self.host = host
         self.ip = ip
         self.port = port
-        self.api_token = api_token
+        self.api_token = api_token or os.environ.get("WPSCAN_API_TOKEN")
         self.url = f"{'https' if port == 443 else 'http'}://{host}"
 
     def run(self) -> dict:

