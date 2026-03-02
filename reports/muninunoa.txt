@@ -1,0 +1,44 @@
+===== DNS RESOLUTION =====
+[DNS] nunoa.cl → 131.108.210.239
+
+[SCAN] nunoa.cl (131.108.210.239) — TOP 100
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+[DEBUG] Waiting for 61 threads...
+  [LOW] Port 80 (HTTP) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 1723 (Unknown) — OPEN
+[DEBUG] Done. Open ports: 5
+
+===== SCAN SUMMARY =====
+
+[nunoa] nunoa.cl (131.108.210.239)
+  Port    21 (FTP            ) — HIGH
+  Port    25 (SMTP           ) — LOW
+  Port    80 (HTTP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port  1723 (Unknown        ) — LOW
+
+[EXPORT] Results saved to reports/results.json
+[EXPORT] Results appended to reports/results.csv
+
+[ROUTER] Checking extractors for nunoa.cl (131.108.210.239)
+  [CDN] nunoa.cl is not behind Cloudflare — skipping bypass
+
+  [WPScan] Targeting https://www.nunoa.cl
+  [WPScan] Running: wpscan --url https://www.nunoa.cl --format json --no-update --disable-tls-checks --ignore-main-redirect --enumerate u,p,t --api-token nL5IQBV8aZTVXP4hXdEZWAUrhkSG0axd2foMGUc4SNs
+  [WPScan] Timed out after 120s
+
+  [Nikto] Targeting www.nunoa.cl:443
+  [Nikto] Running: nikto -host www.nunoa.cl -port 443 -Format csv -nointeractive -Tuning x9 -timeout 10 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+
+  [CONFIG] Scraping config files on nunoa.cl
+  [CONFIG] *** FOUND: /wp-config.php (5 bytes) ***
+  [MATCH] Port 21 (FTP) — launching extractor
+  [FTP] Connecting to 131.108.210.239:21
+  [FTP] Failed: [Errno 104] Connection reset by peer
+  [SKIP] Port 25 (SMTP) — no extractor available
+  [SKIP] Port 80 (HTTP) — no extractor available
+  [SKIP] Port 443 (HTTPS) — no extractor available
+  [SKIP] Port 1723 (Unknown) — no extractor available

@@ -1,7 +1,7 @@
 {
-    "pschile": {
-        "host": "pschile.cl",
-        "ip": "162.241.218.115",
+    "nunoa": {
+        "host": "nunoa.cl",
+        "ip": "131.108.210.239",
         "open_ports": [
             {
                 "port": 21,
@@ -9,18 +9,8 @@
                 "risk": "HIGH"
             },
             {
-                "port": 22,
-                "service": "SSH",
-                "risk": "LOW"
-            },
-            {
                 "port": 25,
                 "service": "SMTP",
-                "risk": "LOW"
-            },
-            {
-                "port": 53,
-                "service": "DNS",
                 "risk": "LOW"
             },
             {
@@ -29,168 +19,16 @@
                 "risk": "LOW"
             },
             {
-                "port": 110,
-                "service": "POP3",
-                "risk": "LOW"
-            },
-            {
-                "port": 143,
-                "service": "IMAP",
-                "risk": "LOW"
-            },
-            {
                 "port": 443,
                 "service": "HTTPS",
-                "risk": "LOW"
-            },
-            {
-                "port": 465,
-                "service": "Unknown",
-                "risk": "LOW"
-            },
-            {
-                "port": 587,
-                "service": "Unknown",
-                "risk": "LOW"
-            },
-            {
-                "port": 993,
-                "service": "Unknown",
-                "risk": "LOW"
-            },
-            {
-                "port": 995,
-                "service": "Unknown",
                 "risk": "LOW"
             },
             {
                 "port": 1723,
                 "service": "Unknown",
                 "risk": "LOW"
-            },
-            {
-                "port": 2083,
-                "service": "cPanel",
-                "risk": "HIGH"
-            },
-            {
-                "port": 2096,
-                "service": "Unknown",
-                "risk": "LOW"
-            },
-            {
-                "port": 2222,
-                "service": "SSH",
-                "risk": "HIGH"
-            },
-            {
-                "port": 3306,
-                "service": "MySQL",
-                "risk": "HIGH"
-            },
-            {
-                "port": 5432,
-                "service": "PostgreSQL",
-                "risk": "HIGH"
             }
         ],
-        "scanned_at": "2026-03-02T14:04:04.461536Z"
-    },
-    "pschile2": {
-        "host": "portal.pschile.cl",
-        "ip": "162.241.218.115",
-        "open_ports": [
-            {
-                "port": 21,
-                "service": "FTP",
-                "risk": "HIGH"
-            },
-            {
-                "port": 22,
-                "service": "SSH",
-                "risk": "LOW"
-            },
-            {
-                "port": 25,
-                "service": "SMTP",
-                "risk": "LOW"
-            },
-            {
-                "port": 53,
-                "service": "DNS",
-                "risk": "LOW"
-            },
-            {
-                "port": 80,
-                "service": "HTTP",
-                "risk": "LOW"
-            },
-            {
-                "port": 110,
-                "service": "POP3",
-                "risk": "LOW"
-            },
-            {
-                "port": 143,
-                "service": "IMAP",
-                "risk": "LOW"
-            },
-            {
-                "port": 443,
-                "service": "HTTPS",
-                "risk": "LOW"
-            },
-            {
-                "port": 465,
-                "service": "Unknown",
-                "risk": "LOW"
-            },
-            {
-                "port": 587,
-                "service": "Unknown",
-                "risk": "LOW"
-            },
-            {
-                "port": 993,
-                "service": "Unknown",
-                "risk": "LOW"
-            },
-            {
-                "port": 995,
-                "service": "Unknown",
-                "risk": "LOW"
-            },
-            {
-                "port": 1723,
-                "service": "Unknown",
-                "risk": "LOW"
-            },
-            {
-                "port": 2083,
-                "service": "cPanel",
-                "risk": "HIGH"
-            },
-            {
-                "port": 2096,
-                "service": "Unknown",
-                "risk": "LOW"
-            },
-            {
-                "port": 2222,
-                "service": "SSH",
-                "risk": "HIGH"
-            },
-            {
-                "port": 3306,
-                "service": "MySQL",
-                "risk": "HIGH"
-            },
-            {
-                "port": 5432,
-                "service": "PostgreSQL",
-                "risk": "HIGH"
-            }
-        ],
-        "scanned_at": "2026-03-02T14:04:06.887401Z"
+        "scanned_at": "2026-03-02T14:36:03.328762Z"
     }
 }
