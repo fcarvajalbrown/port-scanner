@@ -2,13 +2,12 @@
 
 import socket
 import ftplib
-import socket
 from concurrent.futures import ThreadPoolExecutor
 
 class FTPExtractor:
     """Attempts to fingerprint an open FTP port and test for anonymous access."""
 
-    def __init__(self, ip: str, port: int = 21, credentials: list = None, wordlist_path: str = None):
+    def __init__(self, ip: str, port: int = 21, credentials: list | None = None, wordlist_path: str | None = None):
         """Initialize with target IP, port, optional credential list and wordlist.
 
         Args:
@@ -155,8 +154,11 @@ class FTPExtractor:
         """
         usernames = ['root', 'admin', 'ftp', 'user', 'ftpuser', 'anonymous']
 
+        if not self.wordlist_path:
+            return None
+
         try:
-            with open(self.wordlist_path, 'r', errors='ignore') as f:
+            with open(self.wordlist_path, 'r', encoding='utf-8', errors='ignore') as f:
                 passwords = [line.strip() for line in f if line.strip()]
         except Exception as e:
             print(f"  [FTP] Could not read wordlist: {e}")
@@ -181,26 +183,3 @@ class FTPExtractor:
                     return result
 
         return None
-
-    def _try_anonymous(self, sock: socket.socket) -> bool:
-        """Attempt anonymous FTP login using 'anonymous' / 'anonymous@'.
-
-        Args:
-            sock (socket.socket): Already-connected socket.
-
-        Returns:
-            bool: True if anonymous login succeeded, False otherwise.
-        """
-        try:
-            sock.send(b'USER anonymous\r\n')
-            resp = sock.recv(1024).decode('utf-8', errors='ignore')
-            if '331' in resp:  # 331 = password required, anonymous user accepted
-                sock.send(b'PASS anonymous@\r\n')
-                resp = sock.recv(1024).decode('utf-8', errors='ignore')
-                if '230' in resp:  # 230 = login successful
-                    print(f"  [FTP] CRITICAL — anonymous login succeeded")
-                    return True
-            print(f"  [FTP] Anonymous login denied")
-            return False
-        except Exception:
-            return False

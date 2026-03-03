@@ -57,6 +57,32 @@ CONFIG_PATHS = [
     '/local_settings.py',
     '/database.yml',
     '/db/schema.rb',
+    # cPanel specific
+    '/public_html/wp-config.php',
+    '/public_html/.env',
+    '/public_html/config.php',
+    # Backup plugins (common on WordPress)
+    '/wp-content/uploads/wp-config.php',
+    '/wp-content/backup-db/wp-config.php',
+    '/wp-content/backups/wp-config.php',
+    '/wp-content/plugins/backup/wp-config.php',
+    # Common backup extensions
+    '/wp-config.php~',
+    '/wp-config.bak',
+    '/wp-config.old',
+    '/wp-config.save',
+    '/wp-config.orig',
+    # Exposed git
+    '/.git/config',
+    '/.git/HEAD',
+    # PHP info
+    '/phpinfo.php',
+    '/info.php',
+    '/test.php',
+    # Exposed logs
+    '/error_log',
+    '/logs/error_log',
+    '/php_errorlog',
 ]
 
 # Regex patterns to extract credentials from file contents

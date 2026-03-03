@@ -20,7 +20,7 @@
             },
             {
                 "port": 26,
-                "service": "Unknown",
+                "service": "SMTP-Alt",
                 "risk": "LOW"
             },
             {
@@ -39,22 +39,12 @@
                 "risk": "LOW"
             },
             {
-                "port": 143,
-                "service": "IMAP",
-                "risk": "LOW"
-            },
-            {
                 "port": 443,
                 "service": "HTTPS",
                 "risk": "LOW"
             },
             {
                 "port": 465,
-                "service": "Unknown",
-                "risk": "LOW"
-            },
-            {
-                "port": 554,
                 "service": "Unknown",
                 "risk": "LOW"
             },
@@ -74,23 +64,18 @@
                 "risk": "LOW"
             },
             {
-                "port": 1723,
-                "service": "Unknown",
-                "risk": "LOW"
-            },
-            {
                 "port": 2077,
-                "service": "Unknown",
+                "service": "WebDAV",
                 "risk": "LOW"
             },
             {
                 "port": 2078,
-                "service": "Unknown",
+                "service": "WebDAV-SSL",
                 "risk": "LOW"
             },
             {
                 "port": 2082,
-                "service": "Unknown",
+                "service": "cPanel-HTTP",
                 "risk": "LOW"
             },
             {
@@ -99,23 +84,18 @@
                 "risk": "HIGH"
             },
             {
-                "port": 2086,
-                "service": "Unknown",
-                "risk": "LOW"
-            },
-            {
                 "port": 2087,
-                "service": "Unknown",
+                "service": "WHM-HTTPS",
                 "risk": "LOW"
             },
             {
                 "port": 2095,
-                "service": "Unknown",
+                "service": "Webmail-HTTP",
                 "risk": "LOW"
             },
             {
                 "port": 2096,
-                "service": "Unknown",
+                "service": "Webmail-HTTPS",
                 "risk": "LOW"
             },
             {
@@ -134,6 +114,6 @@
                 "risk": "HIGH"
             }
         ],
-        "scanned_at": "2026-03-02T18:51:44.984027Z"
+        "scanned_at": "2026-03-03T13:59:24.191197Z"
     }
 }

