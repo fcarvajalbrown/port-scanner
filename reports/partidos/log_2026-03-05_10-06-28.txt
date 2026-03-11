@@ -1,0 +1,21 @@
+DEBUG: main() started
+===== DNS RESOLUTION =====
+[DNS] pcchile.cl → 23.111.166.253
+
+[SCAN] pcchile.cl (23.111.166.253) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 1723 (Unknown) — OPEN
+  [LOW] Port 22 (SSH) — OPEN
+  [LOW] Port 80 (HTTP) — OPEN
+  [LOW] Port 110 (POP3) — OPEN
+  [LOW] Port 143 (IMAP) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 465 (Unknown) — OPEN
+  [LOW] Port 993 (Unknown) — OPEN
+  [LOW] Port 587 (Unknown) — OPEN
+  [LOW] Port 995 (Unknown) — OPEN
+  [HIGH] Port 2083 (cPanel) — OPEN
+  [LOW] Port 2096 (Webmail-HTTPS) — OPEN
+[SCAN] Progress: 61/61 ports scanned...

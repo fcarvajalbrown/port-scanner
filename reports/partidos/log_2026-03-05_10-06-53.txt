@@ -1,0 +1,70 @@
+DEBUG: main() started
+===== DNS RESOLUTION =====
+[DNS] institutoigualdad.cl → 162.241.2.176
+
+[SCAN] institutoigualdad.cl (162.241.2.176) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 1723 (Unknown) — OPEN
+  [LOW] Port 22 (SSH) — OPEN
+  [HIGH] Port 2222 (SSH) — OPEN
+  [LOW] Port 80 (HTTP) — OPEN
+  [LOW] Port 53 (DNS) — OPEN
+  [LOW] Port 110 (POP3) — OPEN
+  [LOW] Port 143 (IMAP) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 465 (Unknown) — OPEN
+  [LOW] Port 587 (Unknown) — OPEN
+  [LOW] Port 995 (Unknown) — OPEN
+  [LOW] Port 993 (Unknown) — OPEN
+  [HIGH] Port 2083 (cPanel) — OPEN
+  [LOW] Port 2096 (Webmail-HTTPS) — OPEN
+  [HIGH] Port 3306 (MySQL) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 17
+
+===== SCAN SUMMARY =====
+
+[igualdad] institutoigualdad.cl (162.241.2.176)
+  Port    21 (FTP            ) — HIGH
+  Port    22 (SSH            ) — LOW
+  Port    25 (SMTP           ) — LOW
+  Port    53 (DNS            ) — LOW
+  Port    80 (HTTP           ) — LOW
+  Port   110 (POP3           ) — LOW
+  Port   143 (IMAP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port   465 (Unknown        ) — LOW
+  Port   587 (Unknown        ) — LOW
+  Port   993 (Unknown        ) — LOW
+  Port   995 (Unknown        ) — LOW
+  Port  1723 (Unknown        ) — LOW
+  Port  2083 (cPanel         ) — HIGH
+  Port  2096 (Webmail-HTTPS  ) — LOW
+  Port  2222 (SSH            ) — HIGH
+  Port  3306 (MySQL          ) — HIGH
+
+[EXPORT] Results saved to reports/results.json
+[EXPORT] Results appended to reports/results.csv
+
+[ROUTER] Checking extractors for institutoigualdad.cl (162.241.2.176)
+  [CDN] institutoigualdad.cl is not behind Cloudflare — skipping bypass
+
+  [WPScan] Targeting https://www.institutoigualdad.cl
+  [WPScan] Running: wpscan --url https://www.institutoigualdad.cl --format json --no-update --disable-tls-checks --ignore-main-redirect --enumerate u,p,t --api-token nL5IQBV8aZTVXP4hXdEZWAUrhkSG0axd2foMGUc4SNs
+  [WPScan] WordPress version: 6.9.1
+  [WPScan] Users found: ['tomas', 'Administrador Igualdad', 'admin_igualdad', 'admin', 'instituto-igualdad', 'prensa', 'programa-economico-de-igualdad']
+  [WPScan] Interesting: [headers] https://www.institutoigualdad.cl/
+  [WPScan] Interesting: [mu_plugins] https://www.institutoigualdad.cl/wp-content/mu-plugins/
+  [WPScan] Interesting: [wp_cron] https://www.institutoigualdad.cl/wp-cron.php
+  [WPScan] Scan complete — 0 total vulnerabilities found
+  [ROUTER] Injected 7 WPScan user(s) into credential pool
+
+  [Nikto] Targeting www.institutoigualdad.cl:443
+  [Nikto] Running: nikto -host www.institutoigualdad.cl -port 443 -Format csv -nointeractive -timeout 10 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+
+  [cPanel] Targeting institutoigualdad.cl:2083
+  [cPanel] Could not reach login page
+  [CONFIG] Starting...

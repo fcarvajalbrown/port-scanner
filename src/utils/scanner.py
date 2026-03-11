@@ -153,18 +153,20 @@ class PortScanner:
             ip (str): Resolved IP address.
         """
         from concurrent.futures import ThreadPoolExecutor, as_completed
-
         ports = TOP_100_PORTS if self.port_mode == 'top100' else list(range(1, 65536))
         mode_label = 'TOP 100' if self.port_mode == 'top100' else 'FULL (1-65535)'
         print(f"\n[SCAN] {host} ({ip}) — {mode_label}")
-
         open_ports = []
-
-        print(f"[DEBUG] Scanning {len(ports)} ports with {self.max_threads} workers...")
+        total = len(ports)
+        completed = 0
+        print(f"[DEBUG] Scanning {total} ports with {self.max_threads} workers...")
         with ThreadPoolExecutor(max_workers=self.max_threads) as executor:
             futures = {executor.submit(self._scan_port, ip, port, open_ports): port for port in ports}
             for future in as_completed(futures):
                 future.result()
+                completed += 1
+                if completed % 500 == 0 or completed == total:
+                    print(f"[SCAN] Progress: {completed}/{total} ports scanned...", flush=True)
 
         print(f"[DEBUG] Done. Open ports: {len(open_ports)}")
         self.results[domain_id] = {

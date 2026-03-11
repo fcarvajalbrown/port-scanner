@@ -1,0 +1,250 @@
+DEBUG: main() started
+===== DNS RESOLUTION =====
+[DNS] defensa.cl → 163.247.42.131
+[DNS] minsegpublica.cl → 85.239.243.141
+[DNS] defensacivil.cl → 186.64.114.165
+[DNS] ejercito.cl → 104.20.43.189
+[DNS] fach.mil.cl → 104.26.3.56
+
+[SCAN] defensa.cl (163.247.42.131) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 1723 (Unknown) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 4
+
+[SCAN] minsegpublica.cl (85.239.243.141) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 1723 (Unknown) — OPEN
+  [LOW] Port 53 (DNS) — OPEN
+  [LOW] Port 80 (HTTP) — OPEN
+  [LOW] Port 587 (Unknown) — OPEN
+  [HIGH] Port 2083 (cPanel) — OPEN
+  [LOW] Port 465 (Unknown) — OPEN
+  [LOW] Port 993 (Unknown) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 995 (Unknown) — OPEN
+  [LOW] Port 2096 (Webmail-HTTPS) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 12
+
+[SCAN] defensacivil.cl (186.64.114.165) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 80 (HTTP) — OPEN
+  [LOW] Port 110 (POP3) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 143 (IMAP) — OPEN
+  [LOW] Port 1723 (Unknown) — OPEN
+  [LOW] Port 465 (Unknown) — OPEN
+  [LOW] Port 995 (Unknown) — OPEN
+  [LOW] Port 587 (Unknown) — OPEN
+  [LOW] Port 993 (Unknown) — OPEN
+  [LOW] Port 2096 (Webmail-HTTPS) — OPEN
+  [HIGH] Port 2083 (cPanel) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 13
+
+[SCAN] ejercito.cl (104.20.43.189) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 1723 (Unknown) — OPEN
+  [LOW] Port 80 (HTTP) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [HIGH] Port 2083 (cPanel) — OPEN
+  [LOW] Port 2096 (Webmail-HTTPS) — OPEN
+  [LOW] Port 8080 (HTTP-Alt) — OPEN
+  [LOW] Port 8443 (HTTPS-Alt) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 9
+
+[SCAN] fach.mil.cl (104.26.3.56) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 1723 (Unknown) — OPEN
+  [LOW] Port 80 (HTTP) — OPEN
+  [HIGH] Port 2083 (cPanel) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 2096 (Webmail-HTTPS) — OPEN
+  [LOW] Port 8080 (HTTP-Alt) — OPEN
+  [LOW] Port 8443 (HTTPS-Alt) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 9
+
+===== SCAN SUMMARY =====
+
+[mindefensa] defensa.cl (163.247.42.131)
+  Port    21 (FTP            ) — HIGH
+  Port    25 (SMTP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port  1723 (Unknown        ) — LOW
+
+[minseguridad] minsegpublica.cl (85.239.243.141)
+  Port    21 (FTP            ) — HIGH
+  Port    25 (SMTP           ) — LOW
+  Port    53 (DNS            ) — LOW
+  Port    80 (HTTP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port   465 (Unknown        ) — LOW
+  Port   587 (Unknown        ) — LOW
+  Port   993 (Unknown        ) — LOW
+  Port   995 (Unknown        ) — LOW
+  Port  1723 (Unknown        ) — LOW
+  Port  2083 (cPanel         ) — HIGH
+  Port  2096 (Webmail-HTTPS  ) — LOW
+
+[defensacivil] defensacivil.cl (186.64.114.165)
+  Port    21 (FTP            ) — HIGH
+  Port    25 (SMTP           ) — LOW
+  Port    80 (HTTP           ) — LOW
+  Port   110 (POP3           ) — LOW
+  Port   143 (IMAP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port   465 (Unknown        ) — LOW
+  Port   587 (Unknown        ) — LOW
+  Port   993 (Unknown        ) — LOW
+  Port   995 (Unknown        ) — LOW
+  Port  1723 (Unknown        ) — LOW
+  Port  2083 (cPanel         ) — HIGH
+  Port  2096 (Webmail-HTTPS  ) — LOW
+
+[ejercito] ejercito.cl (104.20.43.189)
+  Port    21 (FTP            ) — HIGH
+  Port    25 (SMTP           ) — LOW
+  Port    80 (HTTP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port  1723 (Unknown        ) — LOW
+  Port  2083 (cPanel         ) — HIGH
+  Port  2096 (Webmail-HTTPS  ) — LOW
+  Port  8080 (HTTP-Alt       ) — LOW
+  Port  8443 (HTTPS-Alt      ) — LOW
+
+[fuerzaaerea] fach.mil.cl (104.26.3.56)
+  Port    21 (FTP            ) — HIGH
+  Port    25 (SMTP           ) — LOW
+  Port    80 (HTTP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port  1723 (Unknown        ) — LOW
+  Port  2083 (cPanel         ) — HIGH
+  Port  2096 (Webmail-HTTPS  ) — LOW
+  Port  8080 (HTTP-Alt       ) — LOW
+  Port  8443 (HTTPS-Alt      ) — LOW
+
+[EXPORT] Results saved to reports/results.json
+[EXPORT] Results appended to reports/results.csv
+
+[ROUTER] Checking extractors for defensa.cl (163.247.42.131)
+  [CDN] defensa.cl is not behind Cloudflare — skipping bypass
+
+  [WPScan] Targeting https://www.defensa.cl
+  [WPScan] Running: wpscan --url https://www.defensa.cl --format json --no-update --disable-tls-checks --ignore-main-redirect --enumerate u,p,t --api-token nL5IQBV8aZTVXP4hXdEZWAUrhkSG0axd2foMGUc4SNs
+  [WPScan] WordPress version: 6.9.1
+  [WPScan] Users found: ['Manuel Figueroa Herrera', 'Giovanni Letelier Haros']
+  [WPScan] Plugin 'mystickymenu' has 6 vulnerability(ies)
+  [WPScan] Plugin 'pojo-accessibility' has 4 vulnerability(ies)
+  [WPScan] Plugin 'text-to-audio' has 1 vulnerability(ies)
+  [WPScan] Theme 'newsup' has 1 vulnerability(ies)
+  [WPScan] Interesting: [headers] https://www.defensa.cl/
+  [WPScan] Scan complete — 12 total vulnerabilities found
+  [ROUTER] Injected 2 WPScan user(s) into credential pool
+
+  [Nikto] Targeting www.defensa.cl:443
+  [Nikto] Running: nikto -host www.defensa.cl -port 443 -Format csv -nointeractive -timeout 10 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+
+[ROUTER] Checking extractors for minsegpublica.cl (85.239.243.141)
+  [CDN] minsegpublica.cl is not behind Cloudflare — skipping bypass
+
+  [WPScan] Targeting https://www.minsegpublica.cl
+  [WPScan] Running: wpscan --url https://www.minsegpublica.cl --format json --no-update --disable-tls-checks --ignore-main-redirect --enumerate u,p,t --api-token nL5IQBV8aZTVXP4hXdEZWAUrhkSG0axd2foMGUc4SNs
+  [WPScan] Scan aborted: Unable to identify the wp-content dir, please supply it with --wp-content-dir, use the --scope option or make sure the --url value given is the correct one
+
+  [Nikto] Targeting www.minsegpublica.cl:443
+  [Nikto] Running: nikto -host www.minsegpublica.cl -port 443 -Format csv -nointeractive -timeout 10 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+
+  [cPanel] Targeting minsegpublica.cl:2083
+  [cPanel] Could not reach login page
+
+[ROUTER] Checking extractors for defensacivil.cl (186.64.114.165)
+  [CDN] defensacivil.cl is not behind Cloudflare — skipping bypass
+
+  [WPScan] Targeting https://www.defensacivil.cl
+  [WPScan] Running: wpscan --url https://www.defensacivil.cl --format json --no-update --disable-tls-checks --ignore-main-redirect --enumerate u,p,t --api-token nL5IQBV8aZTVXP4hXdEZWAUrhkSG0axd2foMGUc4SNs
+  [WPScan] Scan aborted: The url supplied 'https://www.defensacivil.cl/' seems to be down (Failure when receiving data from the peer)
+
+  [Nikto] Targeting www.defensacivil.cl:443
+  [Nikto] Running: nikto -host www.defensacivil.cl -port 443 -Format csv -nointeractive -timeout 10 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+
+  [cPanel] Targeting defensacivil.cl:2083
+  [cPanel] Could not reach login page
+
+[ROUTER] Checking extractors for ejercito.cl (104.20.43.189)
+  [CDN] ejercito.cl (104.20.43.189) is behind Cloudflare — attempting bypass
+  [CDN] Subdomain mail.ejercito.cl resolves to non-Cloudflare IP: 200.29.72.34
+  [CDN] Origin IP found: 200.29.72.34
+
+[ROUTER] Re-scanning origin IP 200.29.72.34 for ejercito.cl
+
+[SCAN] ejercito.cl (200.29.72.34) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 1723 (Unknown) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 3
+
+[EXPORT] Results saved to reports/results.json
+
+  [WPScan] Targeting https://www.ejercito.cl
+  [WPScan] Running: wpscan --url https://www.ejercito.cl --format json --no-update --disable-tls-checks --ignore-main-redirect --enumerate u,p,t --api-token nL5IQBV8aZTVXP4hXdEZWAUrhkSG0axd2foMGUc4SNs
+  [WPScan] Scan aborted: The target is responding with a 403, this might be due to a WAF. Please re-try with --random-user-agent
+
+  [Nikto] Targeting www.ejercito.cl:443
+  [Nikto] Running: nikto -host www.ejercito.cl -port 443 -Format csv -nointeractive -timeout 10 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+
+  [cPanel] Targeting ejercito.cl:2083
+  [cPanel] Could not reach login page
+
+[ROUTER] Checking extractors for fach.mil.cl (104.26.3.56)
+  [CDN] fach.mil.cl (104.26.3.56) is behind Cloudflare — attempting bypass
+  [CDN] Subdomain mail.fach.mil.cl resolves to non-Cloudflare IP: 186.148.57.221
+  [CDN] Origin IP found: 186.148.57.221
+
+[ROUTER] Re-scanning origin IP 186.148.57.221 for fach.mil.cl
+
+[SCAN] fach.mil.cl (186.148.57.221) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 1723 (Unknown) — OPEN
+  [LOW] Port 143 (IMAP) — OPEN
+  [LOW] Port 465 (Unknown) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 587 (Unknown) — OPEN
+  [LOW] Port 993 (Unknown) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 8
+
+[EXPORT] Results saved to reports/results.json
+
+  [WPScan] Targeting https://www.fach.mil.cl
+  [WPScan] Running: wpscan --url https://www.fach.mil.cl --format json --no-update --disable-tls-checks --ignore-main-redirect --enumerate u,p,t --api-token nL5IQBV8aZTVXP4hXdEZWAUrhkSG0axd2foMGUc4SNs
+  [WPScan] Scan aborted: The remote website is up, but does not seem to be running WordPress.
+
+  [Nikto] Targeting www.fach.mil.cl:443
+  [Nikto] Running: nikto -host www.fach.mil.cl -port 443 -Format csv -nointeractive -timeout 10 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+
+  [cPanel] Targeting fach.mil.cl:2083
+  [cPanel] Request error: TimeoutError: The read operation timed out
+  [cPanel] Could not reach login page

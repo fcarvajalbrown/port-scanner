@@ -1,0 +1,39 @@
+DEBUG: main() started
+===== DNS RESOLUTION =====
+[DNS] rn.cl → 185.230.63.107
+
+[SCAN] rn.cl (185.230.63.107) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [LOW] Port 80 (HTTP) — OPEN
+  [CRITICAL] Port 445 (SMB) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 3
+
+===== SCAN SUMMARY =====
+
+[rn] rn.cl (185.230.63.107)
+  Port    80 (HTTP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port   445 (SMB            ) — CRITICAL
+
+[EXPORT] Results saved to reports/results.json
+[EXPORT] Results appended to reports/results.csv
+
+[ROUTER] Checking extractors for rn.cl (185.230.63.107)
+  [CDN] rn.cl is not behind Cloudflare — skipping bypass
+
+  [WPScan] Targeting https://www.rn.cl
+  [WPScan] Running: wpscan --url https://www.rn.cl --format json --no-update --disable-tls-checks --ignore-main-redirect --enumerate u,p,t --api-token nL5IQBV8aZTVXP4hXdEZWAUrhkSG0axd2foMGUc4SNs
+  [WPScan] Scan aborted: The remote website is up, but does not seem to be running WordPress.
+
+  [Nikto] Targeting www.rn.cl:443
+  [Nikto] Running: nikto -host www.rn.cl -port 443 -Format csv -nointeractive -timeout 10 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+  [CONFIG] Starting...
+
+  [CONFIG] Scraping config files on www.rn.cl
+  [CONFIG] No exposed config files found
+  [SKIP] Port 80 (HTTP) — no extractor available
+  [SKIP] Port 443 (HTTPS) — no extractor available
+  [SKIP] Port 445 (SMB) — no extractor available

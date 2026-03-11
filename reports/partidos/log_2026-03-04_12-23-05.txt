@@ -1,0 +1,57 @@
+DEBUG: main() started
+===== DNS RESOLUTION =====
+[DNS] pcchile.cl → 23.111.166.253
+
+[SCAN] pcchile.cl (23.111.166.253) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [LOW] Port 80 (HTTP) — OPEN
+  [LOW] Port 587 (Unknown) — OPEN
+  [LOW] Port 465 (Unknown) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 22 (SSH) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 143 (IMAP) — OPEN
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 993 (Unknown) — OPEN
+  [LOW] Port 110 (POP3) — OPEN
+  [LOW] Port 995 (Unknown) — OPEN
+  [HIGH] Port 2083 (cPanel) — OPEN
+  [LOW] Port 2096 (Webmail-HTTPS) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 13
+
+===== SCAN SUMMARY =====
+
+[PC] pcchile.cl (23.111.166.253)
+  Port    21 (FTP            ) — HIGH
+  Port    22 (SSH            ) — LOW
+  Port    25 (SMTP           ) — LOW
+  Port    80 (HTTP           ) — LOW
+  Port   110 (POP3           ) — LOW
+  Port   143 (IMAP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port   465 (Unknown        ) — LOW
+  Port   587 (Unknown        ) — LOW
+  Port   993 (Unknown        ) — LOW
+  Port   995 (Unknown        ) — LOW
+  Port  2083 (cPanel         ) — HIGH
+  Port  2096 (Webmail-HTTPS  ) — LOW
+
+[EXPORT] Results saved to reports/results.json
+[EXPORT] Results appended to reports/results.csv
+
+[ROUTER] Checking extractors for pcchile.cl (23.111.166.253)
+  [CDN] pcchile.cl is not behind Cloudflare — skipping bypass
+
+  [WPScan] Targeting https://www.pcchile.cl
+  [WPScan] Running: wpscan --url https://www.pcchile.cl --format json --no-update --disable-tls-checks --ignore-main-redirect --enumerate u,p,t --api-token nL5IQBV8aZTVXP4hXdEZWAUrhkSG0axd2foMGUc4SNs
+  [WPScan] Scan aborted: The url supplied 'https://www.pcchile.cl/' seems to be down (Timeout was reached)
+
+  [Nikto] Targeting www.pcchile.cl:443
+  [Nikto] Running: nikto -host www.pcchile.cl -port 443 -Format csv -nointeractive -timeout 10 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+
+  [cPanel] Targeting pcchile.cl:2083
+  [cPanel] Request error: TimeoutError: timed out
+  [cPanel] Could not reach login page
+  [CONFIG] Starting...

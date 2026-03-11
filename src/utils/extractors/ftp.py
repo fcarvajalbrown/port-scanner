@@ -1,25 +1,25 @@
 """FTP extractor — connects and reads server banner, tests anonymous login."""
 
+import os
 import socket
 import ftplib
 from concurrent.futures import ThreadPoolExecutor
 
+
 class FTPExtractor:
     """Attempts to fingerprint an open FTP port and test for anonymous access."""
 
-    def __init__(self, ip: str, port: int = 21, credentials: list | None = None, wordlist_path: str | None = None):
-        """Initialize with target IP, port, optional credential list and wordlist.
+    def __init__(self, ip: str, port: int = 21, credentials: list | None = None):
+        """Initialize with target IP, port, and optional credential list.
 
         Args:
             ip (str): Target IP address.
             port (int): FTP port, default 21.
             credentials (list): List of (user, password) tuples from router credential pool.
-            wordlist_path (str): Path to password wordlist for brute force.
         """
         self.ip = ip
         self.port = port
         self.credentials = credentials or []
-        self.wordlist_path = wordlist_path
         self._found = None  # set on first successful login
 
     def run(self) -> dict:
@@ -62,16 +62,15 @@ class FTPExtractor:
                 result['files'] = self._list_files(ftp)
                 return result
 
-        # 3. Wordlist brute force (threaded)
-        if self.wordlist_path:
-            found = self._brute_force()
-            if found:
-                user, password = found
-                print(f"  [FTP] CRITICAL — brute force succeeded: {user}:{password}")
-                result['credentials_found'] = found
-                ftp = self._try_login(user, password)
-                if ftp:
-                    result['files'] = self._list_files(ftp)
+        # 3. Wordlist brute force (threaded) — finds wordlists dynamically
+        found = self._brute_force()
+        if found:
+            user, password = found
+            print(f"  [FTP] CRITICAL — brute force succeeded: {user}:{password}")
+            result['credentials_found'] = found
+            ftp = self._try_login(user, password)
+            if ftp:
+                result['files'] = self._list_files(ftp)
 
         return result
 
@@ -145,28 +144,39 @@ class FTPExtractor:
         return files
 
     def _brute_force(self) -> tuple | None:
-        """Multithreaded brute force using wordlist against common usernames.
+        """Multithreaded brute force using wordlists found dynamically in the wordlists directory.
 
+        Searches for any file with 'user' in the name for usernames and 'pass' for passwords.
         Uses ThreadPoolExecutor with 10 workers. Stops on first success.
 
         Returns:
             tuple | None: (user, password) on success or None.
         """
-        usernames = ['root', 'admin', 'ftp', 'user', 'ftpuser', 'anonymous']
+        wordlist_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..', 'wordlists')
 
-        if not self.wordlist_path:
-            return None
+        usernames = ['root', 'admin', 'ftp', 'user', 'ftpuser', 'anonymous']
+        passwords = []
 
         try:
-            with open(self.wordlist_path, 'r', encoding='utf-8', errors='ignore') as f:
-                passwords = [line.strip() for line in f if line.strip()]
-        except Exception as e:
-            print(f"  [FTP] Could not read wordlist: {e}")
+            for filename in os.listdir(wordlist_dir):
+                if 'user' in filename.lower() and filename.endswith('.txt'):
+                    with open(os.path.join(wordlist_dir, filename), 'r', encoding='utf-8', errors='ignore') as f:
+                        usernames = [line.strip() for line in f if line.strip()]
+                elif 'pass' in filename.lower() and filename.endswith('.txt'):
+                    with open(os.path.join(wordlist_dir, filename), 'r', encoding='utf-8', errors='ignore') as f:
+                        passwords = [line.strip() for line in f if line.strip()]
+        except Exception:
+            pass
+
+        if not passwords:
+            print(f"  [FTP] No password wordlist found — skipping brute force")
             return None
 
         pairs = [(u, p) for u in usernames for p in passwords]
+        print(f"  [FTP] Brute forcing {len(pairs)} combinations...")
 
         def attempt(pair):
+            """Attempt a single credential pair, skipping if already found."""
             if self._found:
                 return None
             user, password = pair
