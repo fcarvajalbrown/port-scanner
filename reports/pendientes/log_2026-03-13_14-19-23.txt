@@ -1,0 +1,144 @@
+DEBUG: main() started
+===== DNS RESOLUTION =====
+[DNS] defensa.cl → 163.247.42.131
+[DNS] minsegpublica.cl → 85.239.243.141
+[DNS] pdichile.cl → 13.107.226.33
+[DNS] FAILED to resolve carabineros.cl: [Errno -5] No address associated with hostname
+
+[SCAN] defensa.cl (163.247.42.131) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [LOW] Port 443 (HTTPS) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 1
+
+[SCAN] minsegpublica.cl (85.239.243.141) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [LOW] Port 587 (Unknown) — OPEN
+  [LOW] Port 53 (DNS) — OPEN
+  [LOW] Port 995 (Unknown) — OPEN
+  [LOW] Port 80 (HTTP) — OPEN
+  [LOW] Port 465 (Unknown) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 993 (Unknown) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 2096 (Webmail-HTTPS) — OPEN
+  [HIGH] Port 2083 (cPanel) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 10
+
+[SCAN] pdichile.cl (13.107.226.33) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 80 (HTTP) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 2
+
+===== SCAN SUMMARY =====
+
+[ministerio de defensa] defensa.cl (163.247.42.131)
+  Port   443 (HTTPS          ) — LOW
+
+[ministerio de seguridad publica] minsegpublica.cl (85.239.243.141)
+  Port    25 (SMTP           ) — LOW
+  Port    53 (DNS            ) — LOW
+  Port    80 (HTTP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port   465 (Unknown        ) — LOW
+  Port   587 (Unknown        ) — LOW
+  Port   993 (Unknown        ) — LOW
+  Port   995 (Unknown        ) — LOW
+  Port  2083 (cPanel         ) — HIGH
+  Port  2096 (Webmail-HTTPS  ) — LOW
+
+[PDI] pdichile.cl (13.107.226.33)
+  Port    80 (HTTP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+
+[EXPORT] Results saved to reports/results.json
+[EXPORT] Results appended to reports/results.csv
+
+[ROUTER] Checking extractors for defensa.cl (163.247.42.131)
+  [CDN] defensa.cl is not behind Cloudflare — skipping bypass
+
+  [WPScan] Targeting https://www.defensa.cl
+  [WPScan] Running: wpscan --url https://www.defensa.cl --format json --no-update --disable-tls-checks --ignore-main-redirect --enumerate u,p,t --api-token nL5IQBV8aZTVXP4hXdEZWAUrhkSG0axd2foMGUc4SNs
+  [WPScan] Users found: ['Giovanni Letelier Haros', 'Manuel Figueroa Herrera']
+  [WPScan] Plugin 'mystickymenu' has 7 vulnerability(ies)
+  [WPScan] Plugin 'pojo-accessibility' has 4 vulnerability(ies)
+  [WPScan] Plugin 'text-to-audio' has 1 vulnerability(ies)
+  [WPScan] Theme 'newsup' has 1 vulnerability(ies)
+  [WPScan] Error: AttributeError: 'NoneType' object has no attribute 'get'
+
+  [Nikto] Targeting www.defensa.cl:443
+  [Nikto] Running: nikto -host www.defensa.cl -port 443 -Format csv -nointeractive -timeout 5 -maxtime 45 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+
+  [Gobuster] Targeting https://www.defensa.cl
+  [Gobuster] Running: gobuster dir -u https://163.247.42.131 -w /tmp/gobuster_17dza0cv.txt -H Host: www.defensa.cl -k -t 10 -q --no-error --timeout 5s
+  [Gobuster] [FOUND] /wp-includes/ (Status: )
+  [Gobuster] [FOUND] /wp-content/ (Status: )
+  [Gobuster] [CONFIG] /.htaccess (Status: )
+  [Gobuster] [CONFIG] /.htpasswd (Status: )
+  [Gobuster] Scan complete — 4 paths found (0 admin, 2 config, 0 backup)
+  [Gobuster] Feeding 2 path(s) into config scraper...
+  [CONFIG] Starting...
+
+  [CONFIG] Scraping config files on www.defensa.cl
+  [CONFIG] Timeout — stopping early
+  [CONFIG] No exposed config files found
+  [SKIP] Port 443 (HTTPS) — no extractor available
+
+[ROUTER] Checking extractors for minsegpublica.cl (85.239.243.141)
+  [CDN] minsegpublica.cl is not behind Cloudflare — skipping bypass
+
+  [WPScan] Targeting https://www.minsegpublica.cl
+  [WPScan] Running: wpscan --url https://www.minsegpublica.cl --format json --no-update --disable-tls-checks --ignore-main-redirect --enumerate u,p,t --api-token nL5IQBV8aZTVXP4hXdEZWAUrhkSG0axd2foMGUc4SNs
+  [WPScan] Scan aborted: Unable to identify the wp-content dir, please supply it with --wp-content-dir, use the --scope option or make sure the --url value given is the correct one
+
+  [Nikto] Targeting www.minsegpublica.cl:443
+  [Nikto] Running: nikto -host www.minsegpublica.cl -port 443 -Format csv -nointeractive -timeout 5 -maxtime 45 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+
+  [Gobuster] Targeting https://www.minsegpublica.cl
+  [Gobuster] Running: gobuster dir -u https://85.239.243.141 -w /tmp/gobuster_pj_uvlbh.txt -H Host: www.minsegpublica.cl -k -t 10 -q --no-error --timeout 5s
+  [Gobuster] No findings (exit code 1)
+
+  [cPanel] Targeting minsegpublica.cl:2083
+  [cPanel] Could not reach login page
+  [CONFIG] Starting...
+
+  [CONFIG] Scraping config files on www.minsegpublica.cl
+  [CONFIG] Timeout — stopping early
+  [CONFIG] No exposed config files found
+  [SKIP] Port 25 (SMTP) — no extractor available
+  [SKIP] Port 53 (DNS) — no extractor available
+  [SKIP] Port 80 (HTTP) — no extractor available
+  [SKIP] Port 443 (HTTPS) — no extractor available
+  [SKIP] Port 465 (Unknown) — no extractor available
+  [SKIP] Port 587 (Unknown) — no extractor available
+  [SKIP] Port 993 (Unknown) — no extractor available
+  [SKIP] Port 995 (Unknown) — no extractor available
+  [SKIP] Port 2083 (cPanel) — no extractor available
+  [SKIP] Port 2096 (Webmail-HTTPS) — no extractor available
+
+[ROUTER] Checking extractors for pdichile.cl (13.107.226.33)
+  [CDN] pdichile.cl is not behind Cloudflare — skipping bypass
+
+  [WPScan] Targeting https://www.pdichile.cl
+  [WPScan] Running: wpscan --url https://www.pdichile.cl --format json --no-update --disable-tls-checks --ignore-main-redirect --enumerate u,p,t --api-token nL5IQBV8aZTVXP4hXdEZWAUrhkSG0axd2foMGUc4SNs
+  [WPScan] Scan aborted: The target is responding with a 403, this might be due to a WAF. Please re-try with --random-user-agent
+
+  [Nikto] Targeting www.pdichile.cl:443
+  [Nikto] Running: nikto -host www.pdichile.cl -port 443 -Format csv -nointeractive -timeout 5 -maxtime 45 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+
+  [Gobuster] Targeting https://www.pdichile.cl
+  [Gobuster] Running: gobuster dir -u https://13.107.226.33 -w /tmp/gobuster_h0u4pnts.txt -H Host: www.pdichile.cl -k -t 10 -q --no-error --timeout 5s
+  [Gobuster] No findings (exit code 1)
+  [CONFIG] Starting...
+
+  [CONFIG] Scraping config files on www.pdichile.cl
+  [CONFIG] Timeout — stopping early
+  [CONFIG] No exposed config files found
+  [SKIP] Port 80 (HTTP) — no extractor available
+  [SKIP] Port 443 (HTTPS) — no extractor available

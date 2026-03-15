@@ -1,0 +1,66 @@
+DEBUG: main() started
+===== DNS RESOLUTION =====
+[DNS] minsegpublica.cl → 85.239.243.141
+
+[SCAN] minsegpublica.cl (85.239.243.141) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 1723 (Unknown) — OPEN
+  [HIGH] Port 2083 (cPanel) — OPEN
+  [LOW] Port 53 (DNS) — OPEN
+  [LOW] Port 465 (Unknown) — OPEN
+  [LOW] Port 993 (Unknown) — OPEN
+  [LOW] Port 80 (HTTP) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 587 (Unknown) — OPEN
+  [LOW] Port 995 (Unknown) — OPEN
+  [LOW] Port 2096 (Webmail-HTTPS) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 12
+[DEBUG] Scans complete, printing summary...
+
+===== SCAN SUMMARY =====
+
+[ministerio de seguridad publica] minsegpublica.cl (85.239.243.141)
+  Port    21 (FTP            ) — HIGH
+  Port    25 (SMTP           ) — LOW
+  Port    53 (DNS            ) — LOW
+  Port    80 (HTTP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port   465 (Unknown        ) — LOW
+  Port   587 (Unknown        ) — LOW
+  Port   993 (Unknown        ) — LOW
+  Port   995 (Unknown        ) — LOW
+  Port  1723 (Unknown        ) — LOW
+  Port  2083 (cPanel         ) — HIGH
+  Port  2096 (Webmail-HTTPS  ) — LOW
+[DEBUG] Summary done, exporting...
+
+[EXPORT] Results saved to reports/results.json
+[EXPORT] Results appended to reports/results.csv
+[DEBUG] Export done, starting router...
+
+[ROUTER] Checking extractors for minsegpublica.cl (85.239.243.141)
+  [CDN] minsegpublica.cl is not behind Cloudflare — skipping bypass
+
+  [WPScan] Targeting https://www.minsegpublica.cl
+  [WPScan] Running: wpscan --url https://www.minsegpublica.cl --format json --no-update --disable-tls-checks --ignore-main-redirect --enumerate u,p,t --api-token nL5IQBV8aZTVXP4hXdEZWAUrhkSG0axd2foMGUc4SNs
+  [WPScan] Scan aborted: Unable to identify the wp-content dir, please supply it with --wp-content-dir, use the --scope option or make sure the --url value given is the correct one
+
+  [Nikto] Targeting www.minsegpublica.cl:443
+  [Nikto] Running: nikto -host www.minsegpublica.cl -port 443 -Format csv -nointeractive -timeout 5 -maxtime 45 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+
+  [Gobuster] Targeting https://www.minsegpublica.cl
+  [Gobuster] Using SecLists wordlist: /usr/share/seclists/Discovery/Web-Content/common.txt
+  [Gobuster] Running: gobuster dir -u https://85.239.243.141 -w /usr/share/seclists/Discovery/Web-Content/common.txt -H Host: www.minsegpublica.cl -k -t 10 -q --no-error --timeout 5s
+  [Gobuster] No findings (exit code 1)
+
+  [cPanel] Targeting minsegpublica.cl:2083
+  [cPanel] Could not reach login page
+  [CONFIG] Starting...
+
+  [CONFIG] Scraping config files on www.minsegpublica.cl
+  [CONFIG] No exposed config files found
+  [CONFIG] Done.

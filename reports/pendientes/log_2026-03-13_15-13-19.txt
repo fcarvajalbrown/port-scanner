@@ -1,0 +1,29 @@
+DEBUG: main() started
+===== DNS RESOLUTION =====
+[DNS] defensa.cl → 163.247.42.131
+[DNS] minsegpublica.cl → 85.239.243.141
+
+[SCAN] defensa.cl (163.247.42.131) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 1723 (Unknown) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 4
+
+[SCAN] minsegpublica.cl (85.239.243.141) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 1723 (Unknown) — OPEN
+  [LOW] Port 80 (HTTP) — OPEN
+  [LOW] Port 993 (Unknown) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [HIGH] Port 2083 (cPanel) — OPEN
+  [LOW] Port 995 (Unknown) — OPEN
+  [LOW] Port 587 (Unknown) — OPEN
+  [LOW] Port 53 (DNS) — OPEN
+  [LOW] Port 465 (Unknown) — OPEN
+  [LOW] Port 2096 (Webmail-HTTPS) — OPEN
+[SCAN] Progress: 61/61 ports scanned...

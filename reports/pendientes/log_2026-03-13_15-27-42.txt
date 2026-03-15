@@ -1,0 +1,18 @@
+DEBUG: main() started
+===== DNS RESOLUTION =====
+[DNS] minsegpublica.cl → 85.239.243.141
+
+[SCAN] minsegpublica.cl (85.239.243.141) — FULL (1-65535)
+[DEBUG] Scanning 65535 ports with 25 workers...
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 53 (DNS) — OPEN
+  [LOW] Port 80 (HTTP) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 465 (Unknown) — OPEN
+[SCAN] Progress: 500/65535 ports scanned...
+  [LOW] Port 554 (RTSP) — OPEN
+  [LOW] Port 587 (Unknown) — OPEN
+  [LOW] Port 993 (Unknown) — OPEN
+  [LOW] Port 995 (Unknown) — OPEN
+[SCAN] Progress: 1000/65535 ports scanned...

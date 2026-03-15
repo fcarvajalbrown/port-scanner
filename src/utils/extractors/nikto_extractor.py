@@ -99,7 +99,8 @@ class NiktoExtractor:
             '-port', str(self.port),
             '-Format', 'csv',
             '-nointeractive',
-            '-timeout', '10',
+            '-timeout', '5',
+            '-maxtime', '45',
         ]
 
         if self.port == 443:
@@ -112,7 +113,7 @@ class NiktoExtractor:
                 cmd,
                 capture_output=True,
                 text=True,
-                timeout=180,  # Nikto is slower than WPScan on full scans
+                timeout=60,
             )
 
             stdout = proc.stdout.strip()

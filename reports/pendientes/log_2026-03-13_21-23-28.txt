@@ -1,0 +1,49 @@
+DEBUG: main() started
+===== DNS RESOLUTION =====
+[DNS] minsegpublica.cl → 85.239.243.141
+
+[SCAN] minsegpublica.cl (85.239.243.141) — TOP 100
+[DEBUG] Scanning 61 ports with 10 workers...
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 1723 (PPTP) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 3
+[DEBUG] Scans complete, printing summary...
+
+===== SCAN SUMMARY =====
+
+[ministerio de seguridad publica] minsegpublica.cl (85.239.243.141)
+  Port    21 (FTP            ) — HIGH
+  Port    25 (SMTP           ) — LOW
+  Port  1723 (PPTP           ) — LOW
+[DEBUG] Summary done, exporting...
+
+[EXPORT] Results saved to reports/results.json
+[EXPORT] Results appended to reports/results.csv
+[DEBUG] Export done, starting router...
+[DEBUG] Router created
+[DEBUG] Router.run() called, 1 targets
+[DEBUG] Processing ministerio de seguridad publica
+
+[ROUTER] Checking extractors for minsegpublica.cl (85.239.243.141)
+[DEBUG] open_ports: [{'port': 21, 'service': 'FTP', 'risk': 'HIGH'}, {'port': 25, 'service': 'SMTP', 'risk': 'LOW'}, {'port': 1723, 'service': 'PPTP', 'risk': 'LOW'}]
+[DEBUG] Step 1: CDN bypass
+  [CDN] minsegpublica.cl is not behind Cloudflare — skipping bypass
+[DEBUG] Step 2: Nikto
+[DEBUG] Step 3: Gobuster
+[DEBUG] Step 4: Config scraper
+  [CONFIG] Starting...
+
+  [CONFIG] Scraping config files on www.minsegpublica.cl
+  [TIMEOUT-WRAPPER] Timed out after 120s
+  [CONFIG] Done.
+[DEBUG] Step 4b: WebDAV
+[DEBUG] Step 4c: DNS AXFR
+[DEBUG] Step 5: cPanel/WHM
+[DEBUG] Step 6: Service extractors
+  [DISPATCH] port=21 service=FTP
+  [MATCH] Port 21 (FTP) — launching extractor
+  [FTP] Connecting to 85.239.243.141:21
+  [TIMEOUT-WRAPPER] Timed out after 60s
+  [FTP] Timed out after 60s — skipping

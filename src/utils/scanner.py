@@ -6,6 +6,7 @@ import os
 import socket
 import threading
 import time
+import traceback
 from datetime import datetime
 
 from src.utils.extractors.router import ExtractorRouter
@@ -54,6 +55,11 @@ PORT_LABELS = {
     8443: 'HTTPS-Alt',
     9200: 'Elasticsearch',
     27017: 'MongoDB',
+    465: 'SMTP-SSL',
+    587: 'SMTP-TLS',
+    993: 'IMAP-SSL',
+    995: 'POP3-SSL',
+    1723: 'PPTP',
 }
 
 RISK_LABELS = {
@@ -77,13 +83,15 @@ RISK_LABELS = {
 class PortScanner:
     """Resolves domains to IPs via DNS and concurrently scans ports, exporting results as JSON."""
 
-    def __init__(self, port_mode='top100'):
+    def __init__(self, port_mode='top100', target=None):
         """Initialize scanner with config and port mode.
 
         Args:
             port_mode (str): 'top100' or 'full' — determines which ports to scan.
+            target (str | None): Single domain to scan, overrides domains.json.
         """
         self.config = self._load_config()
+        self.target = target
         self.domains = self._load_domains()
         self.port_mode = port_mode
         self.timeout = float(self.config['Scanner']['timeout_seconds'])
@@ -100,7 +108,9 @@ class PortScanner:
         return config
 
     def _load_domains(self):
-        """Load domain list from config/domains.json."""
+        """Load domain list from config/domains.json, or use --target override if provided."""
+        if self.target:
+            return [{'id': 'cli_target', 'host': self.target}]
         domains_path = os.path.join(BASE_DIR, '..', '..', 'config', 'domains.json')
         with open(domains_path, 'r') as f:
             return json.load(f)['domains']
@@ -160,7 +170,7 @@ class PortScanner:
         total = len(ports)
         completed = 0
         print(f"[DEBUG] Scanning {total} ports with {self.max_threads} workers...")
-        with ThreadPoolExecutor(max_workers=self.max_threads) as executor:
+        with ThreadPoolExecutor(max_workers=self.max_threads if self.port_mode == 'top100' else 10) as executor:
             futures = {executor.submit(self._scan_port, ip, port, open_ports): port for port in ports}
             for future in as_completed(futures):
                 future.result()
@@ -185,31 +195,31 @@ class PortScanner:
         print(f"\n[EXPORT] Results saved to reports/results.json")
 
     def _export_csv(self):
-            """Append scan results to reports/results.csv without overwriting previous runs."""
-            import csv
+        """Append scan results to reports/results.csv without overwriting previous runs."""
+        import csv
 
-            csv_path = os.path.join(BASE_DIR, '..', '..', 'reports', 'results.csv')
-            os.makedirs(os.path.dirname(csv_path), exist_ok=True)
+        csv_path = os.path.join(BASE_DIR, '..', '..', 'reports', 'results.csv')
+        os.makedirs(os.path.dirname(csv_path), exist_ok=True)
 
-            file_exists = os.path.isfile(csv_path)
+        file_exists = os.path.isfile(csv_path)
 
-            with open(csv_path, 'a', newline='') as f:
-                writer = csv.writer(f)
-                if not file_exists:
-                    writer.writerow(['scan_time', 'domain_id', 'host', 'ip', 'port', 'service', 'risk'])
-                for domain_id, data in self.results.items():
-                    for entry in data['open_ports']:
-                        writer.writerow([
-                            data['scanned_at'],
-                            domain_id,
-                            data['host'],
-                            data['ip'],
-                            entry['port'],
-                            entry['service'],
-                            entry['risk'],
-                        ])
+        with open(csv_path, 'a', newline='') as f:
+            writer = csv.writer(f)
+            if not file_exists:
+                writer.writerow(['scan_time', 'domain_id', 'host', 'ip', 'port', 'service', 'risk'])
+            for domain_id, data in self.results.items():
+                for entry in data['open_ports']:
+                    writer.writerow([
+                        data['scanned_at'],
+                        domain_id,
+                        data['host'],
+                        data['ip'],
+                        entry['port'],
+                        entry['service'],
+                        entry['risk'],
+                    ])
 
-            print(f"[EXPORT] Results appended to reports/results.csv")
+        print(f"[EXPORT] Results appended to reports/results.csv")
 
     def _print_summary(self):
         """Print a final summary table of all open ports per target."""
@@ -232,12 +242,23 @@ class PortScanner:
 
         for i, (domain_id, host, ip) in enumerate(resolved):
             self._scan_target(domain_id, host, ip)
-            if i < len(resolved) - 1:  # don't delay after last target
+            if i < len(resolved) - 1:
                 time.sleep(self.scan_delay)
 
+        print("[DEBUG] Scans complete, printing summary...", flush=True)
         self._print_summary()
+        print("[DEBUG] Summary done, exporting...", flush=True)
         self._export_json()
         self._export_csv()
-
-        router = ExtractorRouter(self.results, scanner=self)
-        router.run()
+        print("[DEBUG] Export done, starting router...", flush=True)
+        try:
+            router = ExtractorRouter(self.results, scanner=self)
+            print("[DEBUG] Router created", flush=True)
+            router.run()
+        except SystemExit as e:
+            print(f"[ROUTER] SystemExit: {e}", flush=True)
+        except KeyboardInterrupt:
+            print(f"[ROUTER] KeyboardInterrupt", flush=True)
+        except BaseException as e:
+            print(f"[ROUTER] FATAL: {type(e).__name__}: {e}", flush=True)
+            traceback.print_exc()

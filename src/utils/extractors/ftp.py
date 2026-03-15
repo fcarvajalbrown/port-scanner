@@ -3,6 +3,7 @@
 import os
 import socket
 import ftplib
+import threading
 from concurrent.futures import ThreadPoolExecutor
 
 
@@ -20,7 +21,8 @@ class FTPExtractor:
         self.ip = ip
         self.port = port
         self.credentials = credentials or []
-        self._found = None  # set on first successful login
+        self._found = None
+        self._lock = threading.Lock()
 
     def run(self) -> dict:
         """Connect to FTP, read banner, test anonymous login, brute force credentials,
@@ -31,7 +33,6 @@ class FTPExtractor:
         """
         print(f"  [FTP] Connecting to {self.ip}:{self.port}")
 
-        # Banner grab via raw socket first — ftplib consumes it
         banner = self._grab_banner()
         if banner:
             print(f"  [FTP] Banner: {banner}")
@@ -62,7 +63,7 @@ class FTPExtractor:
                 result['files'] = self._list_files(ftp)
                 return result
 
-        # 3. Wordlist brute force (threaded) — finds wordlists dynamically
+        # 3. Wordlist brute force
         found = self._brute_force()
         if found:
             user, password = found
@@ -80,18 +81,19 @@ class FTPExtractor:
         Returns:
             str | None: Banner string or None on failure.
         """
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(3)
         try:
-            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.settimeout(3)
             sock.connect((self.ip, self.port))
             banner = sock.recv(1024).decode('utf-8', errors='ignore').strip()
-            sock.close()
             return banner
         except Exception:
             return None
+        finally:
+            sock.close()
 
     def _try_login(self, user: str, password: str) -> ftplib.FTP | None:
-        """Attempt a single FTP login and return the live FTP object on success.
+        """Attempt a single FTP login with hard timeout on all operations.
 
         Args:
             user (str): Username to try.
@@ -101,7 +103,7 @@ class FTPExtractor:
             ftplib.FTP | None: Live connected FTP instance or None on failure.
         """
         try:
-            ftp = ftplib.FTP()
+            ftp = ftplib.FTP(timeout=5)
             ftp.connect(self.ip, self.port, timeout=5)
             ftp.login(user, password)
             return ftp
@@ -132,10 +134,11 @@ class FTPExtractor:
                     print(f"  [FTP] Interesting file: {entry}")
                 try:
                     sub = ftp.nlst(entry)
-                    for f in sub:
-                        files.append(f)
-                        if any(kw in f.lower() for kw in interesting):
-                            print(f"  [FTP] Interesting file: {f}")
+                    if len(sub) > 1:
+                        for f in sub:
+                            files.append(f)
+                            if any(kw in f.lower() for kw in interesting):
+                                print(f"  [FTP] Interesting file: {f}")
                 except Exception:
                     pass
             ftp.quit()
@@ -146,13 +149,14 @@ class FTPExtractor:
     def _brute_force(self) -> tuple | None:
         """Multithreaded brute force using wordlists found dynamically in the wordlists directory.
 
-        Searches for any file with 'user' in the name for usernames and 'pass' for passwords.
         Uses ThreadPoolExecutor with 10 workers. Stops on first success.
 
         Returns:
             tuple | None: (user, password) on success or None.
         """
-        wordlist_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..', 'wordlists')
+        wordlist_dir = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)), '..', '..', '..', 'wordlists'
+        )
 
         usernames = ['root', 'admin', 'ftp', 'user', 'ftpuser', 'anonymous']
         passwords = []
@@ -176,14 +180,18 @@ class FTPExtractor:
         print(f"  [FTP] Brute forcing {len(pairs)} combinations...")
 
         def attempt(pair):
-            """Attempt a single credential pair, skipping if already found."""
-            if self._found:
-                return None
+            """Attempt a single credential pair with thread-safe early exit."""
+            with self._lock:
+                if self._found:
+                    return None
             user, password = pair
             ftp = self._try_login(user, password)
             if ftp:
                 ftp.quit()
-                return (user, password)
+                with self._lock:
+                    if not self._found:
+                        self._found = (user, password)
+                return self._found
             return None
 
         with ThreadPoolExecutor(max_workers=10) as executor:

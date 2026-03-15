@@ -293,3 +293,768 @@ scan_time,domain_id,host,ip,port,service,risk
 2026-03-11T01:31:47.198066Z,fuerzaaerea,fach.mil.cl,104.26.3.56,2096,Webmail-HTTPS,LOW
 2026-03-11T01:31:47.198066Z,fuerzaaerea,fach.mil.cl,104.26.3.56,8080,HTTP-Alt,LOW
 2026-03-11T01:31:47.198066Z,fuerzaaerea,fach.mil.cl,104.26.3.56,8443,HTTPS-Alt,LOW
+2026-03-11T19:30:32.472371Z,mindefensa,defensa.cl,163.247.42.131,443,HTTPS,LOW
+2026-03-11T19:30:38.794603Z,minseguridad,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-11T19:30:38.794603Z,minseguridad,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-11T19:30:38.794603Z,minseguridad,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-11T19:30:38.794603Z,minseguridad,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-11T19:30:38.794603Z,minseguridad,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-11T19:30:38.794603Z,minseguridad,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-11T19:30:38.794603Z,minseguridad,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-11T19:30:38.794603Z,minseguridad,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-11T19:30:38.794603Z,minseguridad,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-11T19:30:38.794603Z,minseguridad,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-11T19:30:44.837800Z,defensacivil,defensacivil.cl,186.64.114.165,21,FTP,HIGH
+2026-03-11T19:30:44.837800Z,defensacivil,defensacivil.cl,186.64.114.165,25,SMTP,LOW
+2026-03-11T19:30:44.837800Z,defensacivil,defensacivil.cl,186.64.114.165,80,HTTP,LOW
+2026-03-11T19:30:44.837800Z,defensacivil,defensacivil.cl,186.64.114.165,110,POP3,LOW
+2026-03-11T19:30:44.837800Z,defensacivil,defensacivil.cl,186.64.114.165,143,IMAP,LOW
+2026-03-11T19:30:44.837800Z,defensacivil,defensacivil.cl,186.64.114.165,443,HTTPS,LOW
+2026-03-11T19:30:44.837800Z,defensacivil,defensacivil.cl,186.64.114.165,465,Unknown,LOW
+2026-03-11T19:30:44.837800Z,defensacivil,defensacivil.cl,186.64.114.165,587,Unknown,LOW
+2026-03-11T19:30:44.837800Z,defensacivil,defensacivil.cl,186.64.114.165,993,Unknown,LOW
+2026-03-11T19:30:44.837800Z,defensacivil,defensacivil.cl,186.64.114.165,995,Unknown,LOW
+2026-03-11T19:30:44.837800Z,defensacivil,defensacivil.cl,186.64.114.165,2083,cPanel,HIGH
+2026-03-11T19:30:44.837800Z,defensacivil,defensacivil.cl,186.64.114.165,2096,Webmail-HTTPS,LOW
+2026-03-11T19:30:52.850497Z,ejercito,ejercito.cl,172.66.174.187,80,HTTP,LOW
+2026-03-11T19:30:52.850497Z,ejercito,ejercito.cl,172.66.174.187,443,HTTPS,LOW
+2026-03-11T19:30:52.850497Z,ejercito,ejercito.cl,172.66.174.187,2083,cPanel,HIGH
+2026-03-11T19:30:52.850497Z,ejercito,ejercito.cl,172.66.174.187,2096,Webmail-HTTPS,LOW
+2026-03-11T19:30:52.850497Z,ejercito,ejercito.cl,172.66.174.187,8080,HTTP-Alt,LOW
+2026-03-11T19:30:52.850497Z,ejercito,ejercito.cl,172.66.174.187,8443,HTTPS-Alt,LOW
+2026-03-11T19:31:00.863608Z,fuerzaaerea,fach.mil.cl,172.67.71.24,80,HTTP,LOW
+2026-03-11T19:31:00.863608Z,fuerzaaerea,fach.mil.cl,172.67.71.24,443,HTTPS,LOW
+2026-03-11T19:31:00.863608Z,fuerzaaerea,fach.mil.cl,172.67.71.24,2083,cPanel,HIGH
+2026-03-11T19:31:00.863608Z,fuerzaaerea,fach.mil.cl,172.67.71.24,2096,Webmail-HTTPS,LOW
+2026-03-11T19:31:00.863608Z,fuerzaaerea,fach.mil.cl,172.67.71.24,8080,HTTP-Alt,LOW
+2026-03-11T19:31:00.863608Z,fuerzaaerea,fach.mil.cl,172.67.71.24,8443,HTTPS-Alt,LOW
+2026-03-11T19:40:49.288334Z,mindefensa,defensa.cl,163.247.42.131,443,HTTPS,LOW
+2026-03-11T19:40:55.599853Z,minseguridad,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-11T19:40:55.599853Z,minseguridad,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-11T19:40:55.599853Z,minseguridad,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-11T19:40:55.599853Z,minseguridad,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-11T19:40:55.599853Z,minseguridad,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-11T19:40:55.599853Z,minseguridad,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-11T19:40:55.599853Z,minseguridad,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-11T19:40:55.599853Z,minseguridad,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-11T19:40:55.599853Z,minseguridad,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-11T19:40:55.599853Z,minseguridad,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-11T19:41:01.629361Z,defensacivil,defensacivil.cl,186.64.114.165,21,FTP,HIGH
+2026-03-11T19:41:01.629361Z,defensacivil,defensacivil.cl,186.64.114.165,25,SMTP,LOW
+2026-03-11T19:41:01.629361Z,defensacivil,defensacivil.cl,186.64.114.165,80,HTTP,LOW
+2026-03-11T19:41:01.629361Z,defensacivil,defensacivil.cl,186.64.114.165,110,POP3,LOW
+2026-03-11T19:41:01.629361Z,defensacivil,defensacivil.cl,186.64.114.165,143,IMAP,LOW
+2026-03-11T19:41:01.629361Z,defensacivil,defensacivil.cl,186.64.114.165,443,HTTPS,LOW
+2026-03-11T19:41:01.629361Z,defensacivil,defensacivil.cl,186.64.114.165,465,Unknown,LOW
+2026-03-11T19:41:01.629361Z,defensacivil,defensacivil.cl,186.64.114.165,587,Unknown,LOW
+2026-03-11T19:41:01.629361Z,defensacivil,defensacivil.cl,186.64.114.165,993,Unknown,LOW
+2026-03-11T19:41:01.629361Z,defensacivil,defensacivil.cl,186.64.114.165,995,Unknown,LOW
+2026-03-11T19:41:01.629361Z,defensacivil,defensacivil.cl,186.64.114.165,2083,cPanel,HIGH
+2026-03-11T19:41:01.629361Z,defensacivil,defensacivil.cl,186.64.114.165,2096,Webmail-HTTPS,LOW
+2026-03-11T19:41:09.643163Z,ejercito,ejercito.cl,104.20.43.189,80,HTTP,LOW
+2026-03-11T19:41:09.643163Z,ejercito,ejercito.cl,104.20.43.189,443,HTTPS,LOW
+2026-03-11T19:41:09.643163Z,ejercito,ejercito.cl,104.20.43.189,2083,cPanel,HIGH
+2026-03-11T19:41:09.643163Z,ejercito,ejercito.cl,104.20.43.189,2096,Webmail-HTTPS,LOW
+2026-03-11T19:41:09.643163Z,ejercito,ejercito.cl,104.20.43.189,8080,HTTP-Alt,LOW
+2026-03-11T19:41:09.643163Z,ejercito,ejercito.cl,104.20.43.189,8443,HTTPS-Alt,LOW
+2026-03-11T19:41:17.656260Z,fuerzaaerea,fach.mil.cl,104.26.3.56,80,HTTP,LOW
+2026-03-11T19:41:17.656260Z,fuerzaaerea,fach.mil.cl,104.26.3.56,443,HTTPS,LOW
+2026-03-11T19:41:17.656260Z,fuerzaaerea,fach.mil.cl,104.26.3.56,2083,cPanel,HIGH
+2026-03-11T19:41:17.656260Z,fuerzaaerea,fach.mil.cl,104.26.3.56,2096,Webmail-HTTPS,LOW
+2026-03-11T19:41:17.656260Z,fuerzaaerea,fach.mil.cl,104.26.3.56,8080,HTTP-Alt,LOW
+2026-03-11T19:41:17.656260Z,fuerzaaerea,fach.mil.cl,104.26.3.56,8443,HTTPS-Alt,LOW
+2026-03-11T19:54:34.263210Z,mindefensa,defensa.cl,163.247.42.131,443,HTTPS,LOW
+2026-03-11T19:54:40.576497Z,minseguridad,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-11T19:54:40.576497Z,minseguridad,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-11T19:54:40.576497Z,minseguridad,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-11T19:54:40.576497Z,minseguridad,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-11T19:54:40.576497Z,minseguridad,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-11T19:54:40.576497Z,minseguridad,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-11T19:54:40.576497Z,minseguridad,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-11T19:54:40.576497Z,minseguridad,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-11T19:54:40.576497Z,minseguridad,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-11T19:54:40.576497Z,minseguridad,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-11T19:54:46.606917Z,defensacivil,defensacivil.cl,186.64.114.165,21,FTP,HIGH
+2026-03-11T19:54:46.606917Z,defensacivil,defensacivil.cl,186.64.114.165,25,SMTP,LOW
+2026-03-11T19:54:46.606917Z,defensacivil,defensacivil.cl,186.64.114.165,80,HTTP,LOW
+2026-03-11T19:54:46.606917Z,defensacivil,defensacivil.cl,186.64.114.165,110,POP3,LOW
+2026-03-11T19:54:46.606917Z,defensacivil,defensacivil.cl,186.64.114.165,143,IMAP,LOW
+2026-03-11T19:54:46.606917Z,defensacivil,defensacivil.cl,186.64.114.165,443,HTTPS,LOW
+2026-03-11T19:54:46.606917Z,defensacivil,defensacivil.cl,186.64.114.165,465,Unknown,LOW
+2026-03-11T19:54:46.606917Z,defensacivil,defensacivil.cl,186.64.114.165,587,Unknown,LOW
+2026-03-11T19:54:46.606917Z,defensacivil,defensacivil.cl,186.64.114.165,993,Unknown,LOW
+2026-03-11T19:54:46.606917Z,defensacivil,defensacivil.cl,186.64.114.165,995,Unknown,LOW
+2026-03-11T19:54:46.606917Z,defensacivil,defensacivil.cl,186.64.114.165,2083,cPanel,HIGH
+2026-03-11T19:54:46.606917Z,defensacivil,defensacivil.cl,186.64.114.165,2096,Webmail-HTTPS,LOW
+2026-03-11T19:54:54.620250Z,ejercito,ejercito.cl,172.66.174.187,80,HTTP,LOW
+2026-03-11T19:54:54.620250Z,ejercito,ejercito.cl,172.66.174.187,443,HTTPS,LOW
+2026-03-11T19:54:54.620250Z,ejercito,ejercito.cl,172.66.174.187,2083,cPanel,HIGH
+2026-03-11T19:54:54.620250Z,ejercito,ejercito.cl,172.66.174.187,2096,Webmail-HTTPS,LOW
+2026-03-11T19:54:54.620250Z,ejercito,ejercito.cl,172.66.174.187,8080,HTTP-Alt,LOW
+2026-03-11T19:54:54.620250Z,ejercito,ejercito.cl,172.66.174.187,8443,HTTPS-Alt,LOW
+2026-03-11T19:55:02.633585Z,fuerzaaerea,fach.mil.cl,104.26.3.56,80,HTTP,LOW
+2026-03-11T19:55:02.633585Z,fuerzaaerea,fach.mil.cl,104.26.3.56,443,HTTPS,LOW
+2026-03-11T19:55:02.633585Z,fuerzaaerea,fach.mil.cl,104.26.3.56,2083,cPanel,HIGH
+2026-03-11T19:55:02.633585Z,fuerzaaerea,fach.mil.cl,104.26.3.56,2096,Webmail-HTTPS,LOW
+2026-03-11T19:55:02.633585Z,fuerzaaerea,fach.mil.cl,104.26.3.56,8080,HTTP-Alt,LOW
+2026-03-11T19:55:02.633585Z,fuerzaaerea,fach.mil.cl,104.26.3.56,8443,HTTPS-Alt,LOW
+2026-03-11T21:19:41.180831Z,mindefensa,defensa.cl,163.247.42.131,443,HTTPS,LOW
+2026-03-11T21:19:47.660126Z,minseguridad,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-11T21:19:47.660126Z,minseguridad,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-11T21:19:47.660126Z,minseguridad,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-11T21:19:47.660126Z,minseguridad,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-11T21:19:47.660126Z,minseguridad,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-11T21:19:47.660126Z,minseguridad,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-11T21:19:47.660126Z,minseguridad,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-11T21:19:47.660126Z,minseguridad,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-11T21:19:47.660126Z,minseguridad,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-11T21:19:47.660126Z,minseguridad,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-11T21:19:53.693018Z,defensacivil,defensacivil.cl,186.64.114.165,21,FTP,HIGH
+2026-03-11T21:19:53.693018Z,defensacivil,defensacivil.cl,186.64.114.165,25,SMTP,LOW
+2026-03-11T21:19:53.693018Z,defensacivil,defensacivil.cl,186.64.114.165,80,HTTP,LOW
+2026-03-11T21:19:53.693018Z,defensacivil,defensacivil.cl,186.64.114.165,110,POP3,LOW
+2026-03-11T21:19:53.693018Z,defensacivil,defensacivil.cl,186.64.114.165,143,IMAP,LOW
+2026-03-11T21:19:53.693018Z,defensacivil,defensacivil.cl,186.64.114.165,443,HTTPS,LOW
+2026-03-11T21:19:53.693018Z,defensacivil,defensacivil.cl,186.64.114.165,465,Unknown,LOW
+2026-03-11T21:19:53.693018Z,defensacivil,defensacivil.cl,186.64.114.165,587,Unknown,LOW
+2026-03-11T21:19:53.693018Z,defensacivil,defensacivil.cl,186.64.114.165,993,Unknown,LOW
+2026-03-11T21:19:53.693018Z,defensacivil,defensacivil.cl,186.64.114.165,995,Unknown,LOW
+2026-03-11T21:19:53.693018Z,defensacivil,defensacivil.cl,186.64.114.165,2083,cPanel,HIGH
+2026-03-11T21:19:53.693018Z,defensacivil,defensacivil.cl,186.64.114.165,2096,Webmail-HTTPS,LOW
+2026-03-11T21:20:01.708645Z,ejercito,ejercito.cl,172.66.174.187,80,HTTP,LOW
+2026-03-11T21:20:01.708645Z,ejercito,ejercito.cl,172.66.174.187,443,HTTPS,LOW
+2026-03-11T21:20:01.708645Z,ejercito,ejercito.cl,172.66.174.187,2083,cPanel,HIGH
+2026-03-11T21:20:01.708645Z,ejercito,ejercito.cl,172.66.174.187,2096,Webmail-HTTPS,LOW
+2026-03-11T21:20:01.708645Z,ejercito,ejercito.cl,172.66.174.187,8080,HTTP-Alt,LOW
+2026-03-11T21:20:01.708645Z,ejercito,ejercito.cl,172.66.174.187,8443,HTTPS-Alt,LOW
+2026-03-11T21:20:09.721076Z,fuerzaaerea,fach.mil.cl,172.67.71.24,80,HTTP,LOW
+2026-03-11T21:20:09.721076Z,fuerzaaerea,fach.mil.cl,172.67.71.24,443,HTTPS,LOW
+2026-03-11T21:20:09.721076Z,fuerzaaerea,fach.mil.cl,172.67.71.24,2083,cPanel,HIGH
+2026-03-11T21:20:09.721076Z,fuerzaaerea,fach.mil.cl,172.67.71.24,2096,Webmail-HTTPS,LOW
+2026-03-11T21:20:09.721076Z,fuerzaaerea,fach.mil.cl,172.67.71.24,8080,HTTP-Alt,LOW
+2026-03-11T21:20:09.721076Z,fuerzaaerea,fach.mil.cl,172.67.71.24,8443,HTTPS-Alt,LOW
+2026-03-11T21:22:44.368609Z,mindefensa,defensa.cl,163.247.42.131,443,HTTPS,LOW
+2026-03-11T21:22:50.853046Z,minseguridad,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-11T21:22:50.853046Z,minseguridad,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-11T21:22:50.853046Z,minseguridad,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-11T21:22:50.853046Z,minseguridad,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-11T21:22:50.853046Z,minseguridad,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-11T21:22:50.853046Z,minseguridad,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-11T21:22:50.853046Z,minseguridad,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-11T21:22:50.853046Z,minseguridad,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-11T21:22:50.853046Z,minseguridad,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-11T21:22:50.853046Z,minseguridad,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-11T21:22:57.909395Z,defensacivil,defensacivil.cl,186.64.114.165,21,FTP,HIGH
+2026-03-11T21:22:57.909395Z,defensacivil,defensacivil.cl,186.64.114.165,25,SMTP,LOW
+2026-03-11T21:22:57.909395Z,defensacivil,defensacivil.cl,186.64.114.165,80,HTTP,LOW
+2026-03-11T21:22:57.909395Z,defensacivil,defensacivil.cl,186.64.114.165,110,POP3,LOW
+2026-03-11T21:22:57.909395Z,defensacivil,defensacivil.cl,186.64.114.165,143,IMAP,LOW
+2026-03-11T21:22:57.909395Z,defensacivil,defensacivil.cl,186.64.114.165,443,HTTPS,LOW
+2026-03-11T21:22:57.909395Z,defensacivil,defensacivil.cl,186.64.114.165,465,Unknown,LOW
+2026-03-11T21:22:57.909395Z,defensacivil,defensacivil.cl,186.64.114.165,587,Unknown,LOW
+2026-03-11T21:22:57.909395Z,defensacivil,defensacivil.cl,186.64.114.165,993,Unknown,LOW
+2026-03-11T21:22:57.909395Z,defensacivil,defensacivil.cl,186.64.114.165,995,Unknown,LOW
+2026-03-11T21:22:57.909395Z,defensacivil,defensacivil.cl,186.64.114.165,2083,cPanel,HIGH
+2026-03-11T21:22:57.909395Z,defensacivil,defensacivil.cl,186.64.114.165,2096,Webmail-HTTPS,LOW
+2026-03-11T21:23:05.923292Z,ejercito,ejercito.cl,172.66.174.187,80,HTTP,LOW
+2026-03-11T21:23:05.923292Z,ejercito,ejercito.cl,172.66.174.187,443,HTTPS,LOW
+2026-03-11T21:23:05.923292Z,ejercito,ejercito.cl,172.66.174.187,2083,cPanel,HIGH
+2026-03-11T21:23:05.923292Z,ejercito,ejercito.cl,172.66.174.187,2096,Webmail-HTTPS,LOW
+2026-03-11T21:23:05.923292Z,ejercito,ejercito.cl,172.66.174.187,8080,HTTP-Alt,LOW
+2026-03-11T21:23:05.923292Z,ejercito,ejercito.cl,172.66.174.187,8443,HTTPS-Alt,LOW
+2026-03-11T21:23:13.936261Z,fuerzaaerea,fach.mil.cl,172.67.71.24,80,HTTP,LOW
+2026-03-11T21:23:13.936261Z,fuerzaaerea,fach.mil.cl,172.67.71.24,443,HTTPS,LOW
+2026-03-11T21:23:13.936261Z,fuerzaaerea,fach.mil.cl,172.67.71.24,2083,cPanel,HIGH
+2026-03-11T21:23:13.936261Z,fuerzaaerea,fach.mil.cl,172.67.71.24,2096,Webmail-HTTPS,LOW
+2026-03-11T21:23:13.936261Z,fuerzaaerea,fach.mil.cl,172.67.71.24,8080,HTTP-Alt,LOW
+2026-03-11T21:23:13.936261Z,fuerzaaerea,fach.mil.cl,172.67.71.24,8443,HTTPS-Alt,LOW
+2026-03-11T21:27:45.926396Z,mindefensa,defensa.cl,163.247.42.131,443,HTTPS,LOW
+2026-03-11T21:27:52.311549Z,minseguridad,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-11T21:27:52.311549Z,minseguridad,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-11T21:27:52.311549Z,minseguridad,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-11T21:27:52.311549Z,minseguridad,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-11T21:27:52.311549Z,minseguridad,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-11T21:27:52.311549Z,minseguridad,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-11T21:27:52.311549Z,minseguridad,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-11T21:27:52.311549Z,minseguridad,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-11T21:27:52.311549Z,minseguridad,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-11T21:27:52.311549Z,minseguridad,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-11T21:27:58.341202Z,defensacivil,defensacivil.cl,186.64.114.165,21,FTP,HIGH
+2026-03-11T21:27:58.341202Z,defensacivil,defensacivil.cl,186.64.114.165,25,SMTP,LOW
+2026-03-11T21:27:58.341202Z,defensacivil,defensacivil.cl,186.64.114.165,80,HTTP,LOW
+2026-03-11T21:27:58.341202Z,defensacivil,defensacivil.cl,186.64.114.165,110,POP3,LOW
+2026-03-11T21:27:58.341202Z,defensacivil,defensacivil.cl,186.64.114.165,143,IMAP,LOW
+2026-03-11T21:27:58.341202Z,defensacivil,defensacivil.cl,186.64.114.165,443,HTTPS,LOW
+2026-03-11T21:27:58.341202Z,defensacivil,defensacivil.cl,186.64.114.165,465,Unknown,LOW
+2026-03-11T21:27:58.341202Z,defensacivil,defensacivil.cl,186.64.114.165,587,Unknown,LOW
+2026-03-11T21:27:58.341202Z,defensacivil,defensacivil.cl,186.64.114.165,993,Unknown,LOW
+2026-03-11T21:27:58.341202Z,defensacivil,defensacivil.cl,186.64.114.165,995,Unknown,LOW
+2026-03-11T21:27:58.341202Z,defensacivil,defensacivil.cl,186.64.114.165,2083,cPanel,HIGH
+2026-03-11T21:27:58.341202Z,defensacivil,defensacivil.cl,186.64.114.165,2096,Webmail-HTTPS,LOW
+2026-03-11T21:28:06.353007Z,ejercito,ejercito.cl,104.20.43.189,80,HTTP,LOW
+2026-03-11T21:28:06.353007Z,ejercito,ejercito.cl,104.20.43.189,443,HTTPS,LOW
+2026-03-11T21:28:06.353007Z,ejercito,ejercito.cl,104.20.43.189,2083,cPanel,HIGH
+2026-03-11T21:28:06.353007Z,ejercito,ejercito.cl,104.20.43.189,2096,Webmail-HTTPS,LOW
+2026-03-11T21:28:06.353007Z,ejercito,ejercito.cl,104.20.43.189,8080,HTTP-Alt,LOW
+2026-03-11T21:28:06.353007Z,ejercito,ejercito.cl,104.20.43.189,8443,HTTPS-Alt,LOW
+2026-03-11T21:28:14.367210Z,fuerzaaerea,fach.mil.cl,104.26.3.56,80,HTTP,LOW
+2026-03-11T21:28:14.367210Z,fuerzaaerea,fach.mil.cl,104.26.3.56,443,HTTPS,LOW
+2026-03-11T21:28:14.367210Z,fuerzaaerea,fach.mil.cl,104.26.3.56,2083,cPanel,HIGH
+2026-03-11T21:28:14.367210Z,fuerzaaerea,fach.mil.cl,104.26.3.56,2096,Webmail-HTTPS,LOW
+2026-03-11T21:28:14.367210Z,fuerzaaerea,fach.mil.cl,104.26.3.56,8080,HTTP-Alt,LOW
+2026-03-11T21:28:14.367210Z,fuerzaaerea,fach.mil.cl,104.26.3.56,8443,HTTPS-Alt,LOW
+2026-03-11T21:37:41.835557Z,mindefensa,defensa.cl,163.247.42.131,443,HTTPS,LOW
+2026-03-11T21:37:48.270790Z,minseguridad,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-11T21:37:48.270790Z,minseguridad,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-11T21:37:48.270790Z,minseguridad,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-11T21:37:48.270790Z,minseguridad,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-11T21:37:48.270790Z,minseguridad,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-11T21:37:48.270790Z,minseguridad,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-11T21:37:48.270790Z,minseguridad,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-11T21:37:48.270790Z,minseguridad,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-11T21:37:48.270790Z,minseguridad,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-11T21:37:48.270790Z,minseguridad,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-11T21:37:54.387560Z,defensacivil,defensacivil.cl,186.64.114.165,21,FTP,HIGH
+2026-03-11T21:37:54.387560Z,defensacivil,defensacivil.cl,186.64.114.165,25,SMTP,LOW
+2026-03-11T21:37:54.387560Z,defensacivil,defensacivil.cl,186.64.114.165,80,HTTP,LOW
+2026-03-11T21:37:54.387560Z,defensacivil,defensacivil.cl,186.64.114.165,110,POP3,LOW
+2026-03-11T21:37:54.387560Z,defensacivil,defensacivil.cl,186.64.114.165,143,IMAP,LOW
+2026-03-11T21:37:54.387560Z,defensacivil,defensacivil.cl,186.64.114.165,443,HTTPS,LOW
+2026-03-11T21:37:54.387560Z,defensacivil,defensacivil.cl,186.64.114.165,465,Unknown,LOW
+2026-03-11T21:37:54.387560Z,defensacivil,defensacivil.cl,186.64.114.165,587,Unknown,LOW
+2026-03-11T21:37:54.387560Z,defensacivil,defensacivil.cl,186.64.114.165,993,Unknown,LOW
+2026-03-11T21:37:54.387560Z,defensacivil,defensacivil.cl,186.64.114.165,995,Unknown,LOW
+2026-03-11T21:37:54.387560Z,defensacivil,defensacivil.cl,186.64.114.165,2083,cPanel,HIGH
+2026-03-11T21:37:54.387560Z,defensacivil,defensacivil.cl,186.64.114.165,2096,Webmail-HTTPS,LOW
+2026-03-11T21:38:02.400421Z,ejercito,ejercito.cl,104.20.43.189,80,HTTP,LOW
+2026-03-11T21:38:02.400421Z,ejercito,ejercito.cl,104.20.43.189,443,HTTPS,LOW
+2026-03-11T21:38:02.400421Z,ejercito,ejercito.cl,104.20.43.189,2083,cPanel,HIGH
+2026-03-11T21:38:02.400421Z,ejercito,ejercito.cl,104.20.43.189,2096,Webmail-HTTPS,LOW
+2026-03-11T21:38:02.400421Z,ejercito,ejercito.cl,104.20.43.189,8080,HTTP-Alt,LOW
+2026-03-11T21:38:02.400421Z,ejercito,ejercito.cl,104.20.43.189,8443,HTTPS-Alt,LOW
+2026-03-11T21:38:10.411552Z,fuerzaaerea,fach.mil.cl,104.26.3.56,80,HTTP,LOW
+2026-03-11T21:38:10.411552Z,fuerzaaerea,fach.mil.cl,104.26.3.56,443,HTTPS,LOW
+2026-03-11T21:38:10.411552Z,fuerzaaerea,fach.mil.cl,104.26.3.56,2083,cPanel,HIGH
+2026-03-11T21:38:10.411552Z,fuerzaaerea,fach.mil.cl,104.26.3.56,2096,Webmail-HTTPS,LOW
+2026-03-11T21:38:10.411552Z,fuerzaaerea,fach.mil.cl,104.26.3.56,8080,HTTP-Alt,LOW
+2026-03-11T21:38:10.411552Z,fuerzaaerea,fach.mil.cl,104.26.3.56,8443,HTTPS-Alt,LOW
+2026-03-11T21:43:40.467554Z,mindefensa,defensa.cl,163.247.42.131,443,HTTPS,LOW
+2026-03-11T21:43:46.870736Z,minseguridad,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-11T21:43:46.870736Z,minseguridad,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-11T21:43:46.870736Z,minseguridad,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-11T21:43:46.870736Z,minseguridad,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-11T21:43:46.870736Z,minseguridad,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-11T21:43:46.870736Z,minseguridad,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-11T21:43:46.870736Z,minseguridad,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-11T21:43:46.870736Z,minseguridad,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-11T21:43:46.870736Z,minseguridad,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-11T21:43:46.870736Z,minseguridad,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-11T21:43:52.921754Z,defensacivil,defensacivil.cl,186.64.114.165,21,FTP,HIGH
+2026-03-11T21:43:52.921754Z,defensacivil,defensacivil.cl,186.64.114.165,25,SMTP,LOW
+2026-03-11T21:43:52.921754Z,defensacivil,defensacivil.cl,186.64.114.165,80,HTTP,LOW
+2026-03-11T21:43:52.921754Z,defensacivil,defensacivil.cl,186.64.114.165,110,POP3,LOW
+2026-03-11T21:43:52.921754Z,defensacivil,defensacivil.cl,186.64.114.165,143,IMAP,LOW
+2026-03-11T21:43:52.921754Z,defensacivil,defensacivil.cl,186.64.114.165,443,HTTPS,LOW
+2026-03-11T21:43:52.921754Z,defensacivil,defensacivil.cl,186.64.114.165,465,Unknown,LOW
+2026-03-11T21:43:52.921754Z,defensacivil,defensacivil.cl,186.64.114.165,587,Unknown,LOW
+2026-03-11T21:43:52.921754Z,defensacivil,defensacivil.cl,186.64.114.165,993,Unknown,LOW
+2026-03-11T21:43:52.921754Z,defensacivil,defensacivil.cl,186.64.114.165,995,Unknown,LOW
+2026-03-11T21:43:52.921754Z,defensacivil,defensacivil.cl,186.64.114.165,2083,cPanel,HIGH
+2026-03-11T21:43:52.921754Z,defensacivil,defensacivil.cl,186.64.114.165,2096,Webmail-HTTPS,LOW
+2026-03-11T21:44:00.936110Z,ejercito,ejercito.cl,172.66.174.187,80,HTTP,LOW
+2026-03-11T21:44:00.936110Z,ejercito,ejercito.cl,172.66.174.187,443,HTTPS,LOW
+2026-03-11T21:44:00.936110Z,ejercito,ejercito.cl,172.66.174.187,2083,cPanel,HIGH
+2026-03-11T21:44:00.936110Z,ejercito,ejercito.cl,172.66.174.187,2096,Webmail-HTTPS,LOW
+2026-03-11T21:44:00.936110Z,ejercito,ejercito.cl,172.66.174.187,8080,HTTP-Alt,LOW
+2026-03-11T21:44:00.936110Z,ejercito,ejercito.cl,172.66.174.187,8443,HTTPS-Alt,LOW
+2026-03-11T21:44:08.951790Z,fuerzaaerea,fach.mil.cl,172.67.71.24,80,HTTP,LOW
+2026-03-11T21:44:08.951790Z,fuerzaaerea,fach.mil.cl,172.67.71.24,443,HTTPS,LOW
+2026-03-11T21:44:08.951790Z,fuerzaaerea,fach.mil.cl,172.67.71.24,2083,cPanel,HIGH
+2026-03-11T21:44:08.951790Z,fuerzaaerea,fach.mil.cl,172.67.71.24,2096,Webmail-HTTPS,LOW
+2026-03-11T21:44:08.951790Z,fuerzaaerea,fach.mil.cl,172.67.71.24,8080,HTTP-Alt,LOW
+2026-03-11T21:44:08.951790Z,fuerzaaerea,fach.mil.cl,172.67.71.24,8443,HTTPS-Alt,LOW
+2026-03-11T21:50:27.960563Z,mindefensa,defensa.cl,163.247.42.131,443,HTTPS,LOW
+2026-03-11T21:50:34.416326Z,minseguridad,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-11T21:50:34.416326Z,minseguridad,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-11T21:50:34.416326Z,minseguridad,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-11T21:50:34.416326Z,minseguridad,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-11T21:50:34.416326Z,minseguridad,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-11T21:50:34.416326Z,minseguridad,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-11T21:50:34.416326Z,minseguridad,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-11T21:50:34.416326Z,minseguridad,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-11T21:50:34.416326Z,minseguridad,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-11T21:50:34.416326Z,minseguridad,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-11T21:50:40.561980Z,defensacivil,defensacivil.cl,186.64.114.165,21,FTP,HIGH
+2026-03-11T21:50:40.561980Z,defensacivil,defensacivil.cl,186.64.114.165,25,SMTP,LOW
+2026-03-11T21:50:40.561980Z,defensacivil,defensacivil.cl,186.64.114.165,80,HTTP,LOW
+2026-03-11T21:50:40.561980Z,defensacivil,defensacivil.cl,186.64.114.165,110,POP3,LOW
+2026-03-11T21:50:40.561980Z,defensacivil,defensacivil.cl,186.64.114.165,143,IMAP,LOW
+2026-03-11T21:50:40.561980Z,defensacivil,defensacivil.cl,186.64.114.165,443,HTTPS,LOW
+2026-03-11T21:50:40.561980Z,defensacivil,defensacivil.cl,186.64.114.165,465,Unknown,LOW
+2026-03-11T21:50:40.561980Z,defensacivil,defensacivil.cl,186.64.114.165,587,Unknown,LOW
+2026-03-11T21:50:40.561980Z,defensacivil,defensacivil.cl,186.64.114.165,993,Unknown,LOW
+2026-03-11T21:50:40.561980Z,defensacivil,defensacivil.cl,186.64.114.165,995,Unknown,LOW
+2026-03-11T21:50:40.561980Z,defensacivil,defensacivil.cl,186.64.114.165,2083,cPanel,HIGH
+2026-03-11T21:50:40.561980Z,defensacivil,defensacivil.cl,186.64.114.165,2096,Webmail-HTTPS,LOW
+2026-03-11T21:50:48.576262Z,ejercito,ejercito.cl,172.66.174.187,80,HTTP,LOW
+2026-03-11T21:50:48.576262Z,ejercito,ejercito.cl,172.66.174.187,443,HTTPS,LOW
+2026-03-11T21:50:48.576262Z,ejercito,ejercito.cl,172.66.174.187,2083,cPanel,HIGH
+2026-03-11T21:50:48.576262Z,ejercito,ejercito.cl,172.66.174.187,2096,Webmail-HTTPS,LOW
+2026-03-11T21:50:48.576262Z,ejercito,ejercito.cl,172.66.174.187,8080,HTTP-Alt,LOW
+2026-03-11T21:50:48.576262Z,ejercito,ejercito.cl,172.66.174.187,8443,HTTPS-Alt,LOW
+2026-03-11T21:50:56.590646Z,fuerzaaerea,fach.mil.cl,104.26.2.56,80,HTTP,LOW
+2026-03-11T21:50:56.590646Z,fuerzaaerea,fach.mil.cl,104.26.2.56,443,HTTPS,LOW
+2026-03-11T21:50:56.590646Z,fuerzaaerea,fach.mil.cl,104.26.2.56,2083,cPanel,HIGH
+2026-03-11T21:50:56.590646Z,fuerzaaerea,fach.mil.cl,104.26.2.56,2096,Webmail-HTTPS,LOW
+2026-03-11T21:50:56.590646Z,fuerzaaerea,fach.mil.cl,104.26.2.56,8080,HTTP-Alt,LOW
+2026-03-11T21:50:56.590646Z,fuerzaaerea,fach.mil.cl,104.26.2.56,8443,HTTPS-Alt,LOW
+2026-03-11T21:58:26.762684Z,mindefensa,defensa.cl,163.247.42.131,443,HTTPS,LOW
+2026-03-11T21:58:33.075248Z,minseguridad,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-11T21:58:33.075248Z,minseguridad,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-11T21:58:33.075248Z,minseguridad,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-11T21:58:33.075248Z,minseguridad,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-11T21:58:33.075248Z,minseguridad,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-11T21:58:33.075248Z,minseguridad,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-11T21:58:33.075248Z,minseguridad,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-11T21:58:33.075248Z,minseguridad,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-11T21:58:33.075248Z,minseguridad,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-11T21:58:33.075248Z,minseguridad,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-11T21:58:39.132220Z,defensacivil,defensacivil.cl,186.64.114.165,21,FTP,HIGH
+2026-03-11T21:58:39.132220Z,defensacivil,defensacivil.cl,186.64.114.165,25,SMTP,LOW
+2026-03-11T21:58:39.132220Z,defensacivil,defensacivil.cl,186.64.114.165,80,HTTP,LOW
+2026-03-11T21:58:39.132220Z,defensacivil,defensacivil.cl,186.64.114.165,110,POP3,LOW
+2026-03-11T21:58:39.132220Z,defensacivil,defensacivil.cl,186.64.114.165,143,IMAP,LOW
+2026-03-11T21:58:39.132220Z,defensacivil,defensacivil.cl,186.64.114.165,443,HTTPS,LOW
+2026-03-11T21:58:39.132220Z,defensacivil,defensacivil.cl,186.64.114.165,465,Unknown,LOW
+2026-03-11T21:58:39.132220Z,defensacivil,defensacivil.cl,186.64.114.165,587,Unknown,LOW
+2026-03-11T21:58:39.132220Z,defensacivil,defensacivil.cl,186.64.114.165,993,Unknown,LOW
+2026-03-11T21:58:39.132220Z,defensacivil,defensacivil.cl,186.64.114.165,995,Unknown,LOW
+2026-03-11T21:58:39.132220Z,defensacivil,defensacivil.cl,186.64.114.165,2083,cPanel,HIGH
+2026-03-11T21:58:39.132220Z,defensacivil,defensacivil.cl,186.64.114.165,2096,Webmail-HTTPS,LOW
+2026-03-11T21:58:47.146112Z,ejercito,ejercito.cl,104.20.43.189,80,HTTP,LOW
+2026-03-11T21:58:47.146112Z,ejercito,ejercito.cl,104.20.43.189,443,HTTPS,LOW
+2026-03-11T21:58:47.146112Z,ejercito,ejercito.cl,104.20.43.189,2083,cPanel,HIGH
+2026-03-11T21:58:47.146112Z,ejercito,ejercito.cl,104.20.43.189,2096,Webmail-HTTPS,LOW
+2026-03-11T21:58:47.146112Z,ejercito,ejercito.cl,104.20.43.189,8080,HTTP-Alt,LOW
+2026-03-11T21:58:47.146112Z,ejercito,ejercito.cl,104.20.43.189,8443,HTTPS-Alt,LOW
+2026-03-11T21:58:55.161358Z,fuerzaaerea,fach.mil.cl,104.26.2.56,80,HTTP,LOW
+2026-03-11T21:58:55.161358Z,fuerzaaerea,fach.mil.cl,104.26.2.56,443,HTTPS,LOW
+2026-03-11T21:58:55.161358Z,fuerzaaerea,fach.mil.cl,104.26.2.56,2083,cPanel,HIGH
+2026-03-11T21:58:55.161358Z,fuerzaaerea,fach.mil.cl,104.26.2.56,2096,Webmail-HTTPS,LOW
+2026-03-11T21:58:55.161358Z,fuerzaaerea,fach.mil.cl,104.26.2.56,8080,HTTP-Alt,LOW
+2026-03-11T21:58:55.161358Z,fuerzaaerea,fach.mil.cl,104.26.2.56,8443,HTTPS-Alt,LOW
+2026-03-12T00:06:41.513427Z,mindefensa,defensa.cl,163.247.42.131,443,HTTPS,LOW
+2026-03-12T00:06:47.827171Z,minseguridad,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-12T00:06:47.827171Z,minseguridad,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-12T00:06:47.827171Z,minseguridad,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-12T00:06:47.827171Z,minseguridad,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-12T00:06:47.827171Z,minseguridad,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-12T00:06:47.827171Z,minseguridad,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-12T00:06:47.827171Z,minseguridad,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-12T00:06:47.827171Z,minseguridad,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-12T00:06:47.827171Z,minseguridad,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-12T00:06:47.827171Z,minseguridad,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-12T00:06:53.869050Z,defensacivil,defensacivil.cl,186.64.114.165,21,FTP,HIGH
+2026-03-12T00:06:53.869050Z,defensacivil,defensacivil.cl,186.64.114.165,25,SMTP,LOW
+2026-03-12T00:06:53.869050Z,defensacivil,defensacivil.cl,186.64.114.165,80,HTTP,LOW
+2026-03-12T00:06:53.869050Z,defensacivil,defensacivil.cl,186.64.114.165,110,POP3,LOW
+2026-03-12T00:06:53.869050Z,defensacivil,defensacivil.cl,186.64.114.165,143,IMAP,LOW
+2026-03-12T00:06:53.869050Z,defensacivil,defensacivil.cl,186.64.114.165,443,HTTPS,LOW
+2026-03-12T00:06:53.869050Z,defensacivil,defensacivil.cl,186.64.114.165,465,Unknown,LOW
+2026-03-12T00:06:53.869050Z,defensacivil,defensacivil.cl,186.64.114.165,587,Unknown,LOW
+2026-03-12T00:06:53.869050Z,defensacivil,defensacivil.cl,186.64.114.165,993,Unknown,LOW
+2026-03-12T00:06:53.869050Z,defensacivil,defensacivil.cl,186.64.114.165,995,Unknown,LOW
+2026-03-12T00:06:53.869050Z,defensacivil,defensacivil.cl,186.64.114.165,2083,cPanel,HIGH
+2026-03-12T00:06:53.869050Z,defensacivil,defensacivil.cl,186.64.114.165,2096,Webmail-HTTPS,LOW
+2026-03-12T00:07:01.883246Z,ejercito,ejercito.cl,172.66.174.187,80,HTTP,LOW
+2026-03-12T00:07:01.883246Z,ejercito,ejercito.cl,172.66.174.187,443,HTTPS,LOW
+2026-03-12T00:07:01.883246Z,ejercito,ejercito.cl,172.66.174.187,2083,cPanel,HIGH
+2026-03-12T00:07:01.883246Z,ejercito,ejercito.cl,172.66.174.187,2096,Webmail-HTTPS,LOW
+2026-03-12T00:07:01.883246Z,ejercito,ejercito.cl,172.66.174.187,8080,HTTP-Alt,LOW
+2026-03-12T00:07:01.883246Z,ejercito,ejercito.cl,172.66.174.187,8443,HTTPS-Alt,LOW
+2026-03-12T00:07:09.897396Z,fuerzaaerea,fach.mil.cl,104.26.2.56,80,HTTP,LOW
+2026-03-12T00:07:09.897396Z,fuerzaaerea,fach.mil.cl,104.26.2.56,443,HTTPS,LOW
+2026-03-12T00:07:09.897396Z,fuerzaaerea,fach.mil.cl,104.26.2.56,2083,cPanel,HIGH
+2026-03-12T00:07:09.897396Z,fuerzaaerea,fach.mil.cl,104.26.2.56,2096,Webmail-HTTPS,LOW
+2026-03-12T00:07:09.897396Z,fuerzaaerea,fach.mil.cl,104.26.2.56,8080,HTTP-Alt,LOW
+2026-03-12T00:07:09.897396Z,fuerzaaerea,fach.mil.cl,104.26.2.56,8443,HTTPS-Alt,LOW
+2026-03-12T00:09:13.967752Z,mindefensa,defensa.cl,163.247.42.131,443,HTTPS,LOW
+2026-03-12T00:09:20.443760Z,minseguridad,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-12T00:09:20.443760Z,minseguridad,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-12T00:09:20.443760Z,minseguridad,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-12T00:09:20.443760Z,minseguridad,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-12T00:09:20.443760Z,minseguridad,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-12T00:09:20.443760Z,minseguridad,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-12T00:09:20.443760Z,minseguridad,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-12T00:09:20.443760Z,minseguridad,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-12T00:09:20.443760Z,minseguridad,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-12T00:09:20.443760Z,minseguridad,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-12T00:09:26.471661Z,defensacivil,defensacivil.cl,186.64.114.165,21,FTP,HIGH
+2026-03-12T00:09:26.471661Z,defensacivil,defensacivil.cl,186.64.114.165,25,SMTP,LOW
+2026-03-12T00:09:26.471661Z,defensacivil,defensacivil.cl,186.64.114.165,80,HTTP,LOW
+2026-03-12T00:09:26.471661Z,defensacivil,defensacivil.cl,186.64.114.165,110,POP3,LOW
+2026-03-12T00:09:26.471661Z,defensacivil,defensacivil.cl,186.64.114.165,143,IMAP,LOW
+2026-03-12T00:09:26.471661Z,defensacivil,defensacivil.cl,186.64.114.165,443,HTTPS,LOW
+2026-03-12T00:09:26.471661Z,defensacivil,defensacivil.cl,186.64.114.165,465,Unknown,LOW
+2026-03-12T00:09:26.471661Z,defensacivil,defensacivil.cl,186.64.114.165,587,Unknown,LOW
+2026-03-12T00:09:26.471661Z,defensacivil,defensacivil.cl,186.64.114.165,993,Unknown,LOW
+2026-03-12T00:09:26.471661Z,defensacivil,defensacivil.cl,186.64.114.165,995,Unknown,LOW
+2026-03-12T00:09:26.471661Z,defensacivil,defensacivil.cl,186.64.114.165,2083,cPanel,HIGH
+2026-03-12T00:09:26.471661Z,defensacivil,defensacivil.cl,186.64.114.165,2096,Webmail-HTTPS,LOW
+2026-03-12T00:09:34.487288Z,ejercito,ejercito.cl,172.66.174.187,80,HTTP,LOW
+2026-03-12T00:09:34.487288Z,ejercito,ejercito.cl,172.66.174.187,443,HTTPS,LOW
+2026-03-12T00:09:34.487288Z,ejercito,ejercito.cl,172.66.174.187,2083,cPanel,HIGH
+2026-03-12T00:09:34.487288Z,ejercito,ejercito.cl,172.66.174.187,2096,Webmail-HTTPS,LOW
+2026-03-12T00:09:34.487288Z,ejercito,ejercito.cl,172.66.174.187,8080,HTTP-Alt,LOW
+2026-03-12T00:09:34.487288Z,ejercito,ejercito.cl,172.66.174.187,8443,HTTPS-Alt,LOW
+2026-03-12T00:09:42.500922Z,fuerzaaerea,fach.mil.cl,172.67.71.24,80,HTTP,LOW
+2026-03-12T00:09:42.500922Z,fuerzaaerea,fach.mil.cl,172.67.71.24,443,HTTPS,LOW
+2026-03-12T00:09:42.500922Z,fuerzaaerea,fach.mil.cl,172.67.71.24,2083,cPanel,HIGH
+2026-03-12T00:09:42.500922Z,fuerzaaerea,fach.mil.cl,172.67.71.24,2096,Webmail-HTTPS,LOW
+2026-03-12T00:09:42.500922Z,fuerzaaerea,fach.mil.cl,172.67.71.24,8080,HTTP-Alt,LOW
+2026-03-12T00:09:42.500922Z,fuerzaaerea,fach.mil.cl,172.67.71.24,8443,HTTPS-Alt,LOW
+2026-03-13T13:06:55.259727Z,CIPER,ciperchile.cl,45.230.21.34,21,FTP,HIGH
+2026-03-13T13:06:55.259727Z,CIPER,ciperchile.cl,45.230.21.34,25,SMTP,LOW
+2026-03-13T13:06:55.259727Z,CIPER,ciperchile.cl,45.230.21.34,80,HTTP,LOW
+2026-03-13T13:06:55.259727Z,CIPER,ciperchile.cl,45.230.21.34,443,HTTPS,LOW
+2026-03-13T13:06:55.259727Z,CIPER,ciperchile.cl,45.230.21.34,1723,Unknown,LOW
+2026-03-13T14:15:54.548565Z,CIPER,ciperchile.cl,45.230.21.34,21,FTP,HIGH
+2026-03-13T14:15:54.548565Z,CIPER,ciperchile.cl,45.230.21.34,25,SMTP,LOW
+2026-03-13T14:15:54.548565Z,CIPER,ciperchile.cl,45.230.21.34,80,HTTP,LOW
+2026-03-13T14:15:54.548565Z,CIPER,ciperchile.cl,45.230.21.34,443,HTTPS,LOW
+2026-03-13T14:15:54.548565Z,CIPER,ciperchile.cl,45.230.21.34,1723,Unknown,LOW
+2026-03-13T17:19:31.357542Z,ministerio de defensa,defensa.cl,163.247.42.131,443,HTTPS,LOW
+2026-03-13T17:19:37.860548Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-13T17:19:37.860548Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-13T17:19:37.860548Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-13T17:19:37.860548Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-13T17:19:37.860548Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-13T17:19:37.860548Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-13T17:19:37.860548Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-13T17:19:37.860548Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-13T17:19:37.860548Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-13T17:19:37.860548Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-13T17:19:45.884614Z,PDI,pdichile.cl,13.107.226.33,80,HTTP,LOW
+2026-03-13T17:19:45.884614Z,PDI,pdichile.cl,13.107.226.33,443,HTTPS,LOW
+2026-03-13T17:25:10.113320Z,ministerio de defensa,defensa.cl,163.247.42.131,443,HTTPS,LOW
+2026-03-13T17:25:16.616735Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-13T17:25:16.616735Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-13T17:25:16.616735Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-13T17:25:16.616735Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-13T17:25:16.616735Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-13T17:25:16.616735Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-13T17:25:16.616735Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-13T17:25:16.616735Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-13T17:25:16.616735Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-13T17:25:16.616735Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-13T17:25:24.641290Z,PDI,pdichile.cl,13.107.253.33,80,HTTP,LOW
+2026-03-13T17:25:24.641290Z,PDI,pdichile.cl,13.107.253.33,443,HTTPS,LOW
+2026-03-13T18:02:48.951992Z,ministerio de defensa,defensa.cl,163.247.42.131,21,FTP,HIGH
+2026-03-13T18:02:48.951992Z,ministerio de defensa,defensa.cl,163.247.42.131,25,SMTP,LOW
+2026-03-13T18:02:48.951992Z,ministerio de defensa,defensa.cl,163.247.42.131,443,HTTPS,LOW
+2026-03-13T18:02:48.951992Z,ministerio de defensa,defensa.cl,163.247.42.131,1723,Unknown,LOW
+2026-03-13T18:02:55.241926Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-13T18:02:55.241926Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-13T18:02:55.241926Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-13T18:02:55.241926Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-13T18:02:55.241926Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-13T18:02:55.241926Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-13T18:02:55.241926Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-13T18:02:55.241926Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-13T18:02:55.241926Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-13T18:02:55.241926Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,Unknown,LOW
+2026-03-13T18:02:55.241926Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-13T18:02:55.241926Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-13T18:13:26.101418Z,ministerio de defensa,defensa.cl,163.247.42.131,21,FTP,HIGH
+2026-03-13T18:13:26.101418Z,ministerio de defensa,defensa.cl,163.247.42.131,25,SMTP,LOW
+2026-03-13T18:13:26.101418Z,ministerio de defensa,defensa.cl,163.247.42.131,443,HTTPS,LOW
+2026-03-13T18:13:26.101418Z,ministerio de defensa,defensa.cl,163.247.42.131,1723,Unknown,LOW
+2026-03-13T18:13:32.363590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-13T18:13:32.363590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-13T18:13:32.363590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-13T18:13:32.363590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-13T18:13:32.363590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-13T18:13:32.363590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-13T18:13:32.363590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-13T18:13:32.363590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-13T18:13:32.363590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-13T18:13:32.363590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,Unknown,LOW
+2026-03-13T18:13:32.363590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-13T18:13:32.363590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-13T18:14:58.434979Z,ministerio de defensa,defensa.cl,163.247.42.131,21,FTP,HIGH
+2026-03-13T18:14:58.434979Z,ministerio de defensa,defensa.cl,163.247.42.131,25,SMTP,LOW
+2026-03-13T18:14:58.434979Z,ministerio de defensa,defensa.cl,163.247.42.131,443,HTTPS,LOW
+2026-03-13T18:14:58.434979Z,ministerio de defensa,defensa.cl,163.247.42.131,1723,Unknown,LOW
+2026-03-13T18:15:04.631218Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-13T18:15:04.631218Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-13T18:15:04.631218Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-13T18:15:04.631218Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-13T18:15:04.631218Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-13T18:15:04.631218Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-13T18:15:04.631218Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-13T18:15:04.631218Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-13T18:15:04.631218Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-13T18:15:04.631218Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,Unknown,LOW
+2026-03-13T18:15:04.631218Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-13T18:15:04.631218Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-13T18:18:34.520307Z,ministerio de defensa,defensa.cl,163.247.42.131,21,FTP,HIGH
+2026-03-13T18:18:34.520307Z,ministerio de defensa,defensa.cl,163.247.42.131,25,SMTP,LOW
+2026-03-13T18:18:34.520307Z,ministerio de defensa,defensa.cl,163.247.42.131,443,HTTPS,LOW
+2026-03-13T18:18:34.520307Z,ministerio de defensa,defensa.cl,163.247.42.131,1723,Unknown,LOW
+2026-03-13T18:18:40.776283Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-13T18:18:40.776283Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-13T18:18:40.776283Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-13T18:18:40.776283Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-13T18:18:40.776283Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-13T18:18:40.776283Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-13T18:18:40.776283Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-13T18:18:40.776283Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-13T18:18:40.776283Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-13T18:18:40.776283Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,Unknown,LOW
+2026-03-13T18:18:40.776283Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-13T18:18:40.776283Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-13T18:20:25.527687Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-13T18:20:25.527687Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-13T18:20:25.527687Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-13T18:20:25.527687Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-13T18:20:25.527687Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-13T18:20:25.527687Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-13T18:20:25.527687Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-13T18:20:25.527687Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-13T18:20:25.527687Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-13T18:20:25.527687Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,Unknown,LOW
+2026-03-13T18:20:25.527687Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-13T18:20:25.527687Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-13T18:25:41.525599Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-13T18:25:41.525599Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-13T18:25:41.525599Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-13T18:25:41.525599Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-13T18:25:41.525599Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-13T18:25:41.525599Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-13T18:25:41.525599Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-13T18:25:41.525599Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-13T18:25:41.525599Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-13T18:25:41.525599Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,Unknown,LOW
+2026-03-13T18:25:41.525599Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-13T18:25:41.525599Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,554,RTSP,LOW
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1311,Unknown,LOW
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,Unknown,LOW
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2077,WebDAV,LOW
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2078,WebDAV-SSL,LOW
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2079,Unknown,LOW
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2080,Unknown,LOW
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2082,cPanel-HTTP,LOW
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2086,WHM-HTTP,LOW
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2087,WHM-HTTPS,LOW
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2095,Webmail-HTTP,LOW
+2026-03-13T22:14:50.410397Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-13T23:22:33.678686Z,cli_target,defensa.cl,163.247.42.131,21,FTP,HIGH
+2026-03-13T23:22:33.678686Z,cli_target,defensa.cl,163.247.42.131,25,SMTP,LOW
+2026-03-13T23:22:33.678686Z,cli_target,defensa.cl,163.247.42.131,443,HTTPS,LOW
+2026-03-13T23:22:33.678686Z,cli_target,defensa.cl,163.247.42.131,1723,Unknown,LOW
+2026-03-13T23:25:21.031808Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-13T23:25:21.031808Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-13T23:25:21.031808Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-13T23:25:21.031808Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-13T23:25:21.031808Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-13T23:25:21.031808Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-13T23:25:21.031808Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-13T23:25:21.031808Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-13T23:25:21.031808Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-13T23:25:21.031808Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,Unknown,LOW
+2026-03-13T23:25:21.031808Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-13T23:25:21.031808Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-13T23:30:56.391361Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-13T23:30:56.391361Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-13T23:30:56.391361Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-13T23:30:56.391361Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-13T23:30:56.391361Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-13T23:30:56.391361Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-13T23:30:56.391361Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-13T23:30:56.391361Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-13T23:30:56.391361Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-13T23:30:56.391361Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,Unknown,LOW
+2026-03-13T23:30:56.391361Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-13T23:30:56.391361Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-13T23:32:56.423617Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-13T23:32:56.423617Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-13T23:32:56.423617Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-13T23:32:56.423617Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-13T23:32:56.423617Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-13T23:32:56.423617Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-13T23:32:56.423617Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-13T23:32:56.423617Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-13T23:32:56.423617Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-13T23:32:56.423617Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,Unknown,LOW
+2026-03-13T23:32:56.423617Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-13T23:32:56.423617Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-13T23:38:36.207709Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-13T23:38:36.207709Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-13T23:38:36.207709Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-13T23:38:36.207709Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-13T23:38:36.207709Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-13T23:38:36.207709Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,Unknown,LOW
+2026-03-13T23:38:36.207709Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,Unknown,LOW
+2026-03-13T23:38:36.207709Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,Unknown,LOW
+2026-03-13T23:38:36.207709Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,Unknown,LOW
+2026-03-13T23:38:36.207709Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,Unknown,LOW
+2026-03-13T23:38:36.207709Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-13T23:38:36.207709Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-13T23:44:42.793864Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-13T23:44:42.793864Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-13T23:44:42.793864Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-13T23:44:42.793864Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-13T23:44:42.793864Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-13T23:44:42.793864Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,SMTP-SSL,LOW
+2026-03-13T23:44:42.793864Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,SMTP-TLS,LOW
+2026-03-13T23:44:42.793864Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,IMAP-SSL,LOW
+2026-03-13T23:44:42.793864Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,POP3-SSL,LOW
+2026-03-13T23:44:42.793864Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,PPTP,LOW
+2026-03-13T23:44:42.793864Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-13T23:44:42.793864Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-13T23:48:53.019762Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-13T23:48:53.019762Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-13T23:48:53.019762Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-13T23:48:53.019762Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-13T23:48:53.019762Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-13T23:48:53.019762Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,SMTP-SSL,LOW
+2026-03-13T23:48:53.019762Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,SMTP-TLS,LOW
+2026-03-13T23:48:53.019762Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,IMAP-SSL,LOW
+2026-03-13T23:48:53.019762Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,POP3-SSL,LOW
+2026-03-13T23:48:53.019762Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,PPTP,LOW
+2026-03-13T23:48:53.019762Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-13T23:48:53.019762Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-13T23:53:06.244381Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-13T23:53:06.244381Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-13T23:53:06.244381Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-13T23:53:06.244381Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-13T23:53:06.244381Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-13T23:53:06.244381Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,SMTP-SSL,LOW
+2026-03-13T23:53:06.244381Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,SMTP-TLS,LOW
+2026-03-13T23:53:06.244381Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,IMAP-SSL,LOW
+2026-03-13T23:53:06.244381Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,POP3-SSL,LOW
+2026-03-13T23:53:06.244381Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,PPTP,LOW
+2026-03-13T23:53:06.244381Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-13T23:53:06.244381Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-13T23:55:15.992890Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-13T23:55:15.992890Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-13T23:55:15.992890Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-13T23:55:15.992890Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-13T23:55:15.992890Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-13T23:55:15.992890Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,SMTP-SSL,LOW
+2026-03-13T23:55:15.992890Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,SMTP-TLS,LOW
+2026-03-13T23:55:15.992890Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,IMAP-SSL,LOW
+2026-03-13T23:55:15.992890Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,POP3-SSL,LOW
+2026-03-13T23:55:15.992890Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,PPTP,LOW
+2026-03-13T23:55:15.992890Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-13T23:55:15.992890Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-13T23:58:38.956007Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-13T23:58:38.956007Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-13T23:58:38.956007Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-13T23:58:38.956007Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-13T23:58:38.956007Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-13T23:58:38.956007Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,SMTP-SSL,LOW
+2026-03-13T23:58:38.956007Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,SMTP-TLS,LOW
+2026-03-13T23:58:38.956007Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,IMAP-SSL,LOW
+2026-03-13T23:58:38.956007Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,POP3-SSL,LOW
+2026-03-13T23:58:38.956007Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,PPTP,LOW
+2026-03-13T23:58:38.956007Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-13T23:58:38.956007Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-14T00:01:06.240734Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-14T00:01:06.240734Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-14T00:01:06.240734Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-14T00:01:06.240734Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-14T00:01:06.240734Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-14T00:01:06.240734Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,SMTP-SSL,LOW
+2026-03-14T00:01:06.240734Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,SMTP-TLS,LOW
+2026-03-14T00:01:06.240734Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,IMAP-SSL,LOW
+2026-03-14T00:01:06.240734Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,POP3-SSL,LOW
+2026-03-14T00:01:06.240734Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,PPTP,LOW
+2026-03-14T00:01:06.240734Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-14T00:01:06.240734Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-14T00:02:44.412632Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-14T00:02:44.412632Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-14T00:02:44.412632Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-14T00:02:44.412632Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-14T00:02:44.412632Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-14T00:02:44.412632Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,SMTP-SSL,LOW
+2026-03-14T00:02:44.412632Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,SMTP-TLS,LOW
+2026-03-14T00:02:44.412632Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,IMAP-SSL,LOW
+2026-03-14T00:02:44.412632Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,POP3-SSL,LOW
+2026-03-14T00:02:44.412632Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,PPTP,LOW
+2026-03-14T00:02:44.412632Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-14T00:02:44.412632Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-14T00:04:26.328205Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-14T00:04:26.328205Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-14T00:04:26.328205Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-14T00:04:26.328205Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-14T00:04:26.328205Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-14T00:04:26.328205Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,SMTP-SSL,LOW
+2026-03-14T00:04:26.328205Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,SMTP-TLS,LOW
+2026-03-14T00:04:26.328205Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,IMAP-SSL,LOW
+2026-03-14T00:04:26.328205Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,POP3-SSL,LOW
+2026-03-14T00:04:26.328205Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,PPTP,LOW
+2026-03-14T00:04:26.328205Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-14T00:04:26.328205Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-14T00:06:06.379230Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-14T00:06:06.379230Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-14T00:06:06.379230Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-14T00:06:06.379230Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-14T00:06:06.379230Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-14T00:06:06.379230Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,SMTP-SSL,LOW
+2026-03-14T00:06:06.379230Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,SMTP-TLS,LOW
+2026-03-14T00:06:06.379230Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,IMAP-SSL,LOW
+2026-03-14T00:06:06.379230Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,POP3-SSL,LOW
+2026-03-14T00:06:06.379230Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,PPTP,LOW
+2026-03-14T00:06:06.379230Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-14T00:06:06.379230Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-14T00:11:52.907590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-14T00:11:52.907590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-14T00:11:52.907590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-14T00:11:52.907590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-14T00:11:52.907590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-14T00:11:52.907590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,SMTP-SSL,LOW
+2026-03-14T00:11:52.907590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,SMTP-TLS,LOW
+2026-03-14T00:11:52.907590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,IMAP-SSL,LOW
+2026-03-14T00:11:52.907590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,POP3-SSL,LOW
+2026-03-14T00:11:52.907590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,PPTP,LOW
+2026-03-14T00:11:52.907590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-14T00:11:52.907590Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-14T00:18:06.140798Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-14T00:18:06.140798Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-14T00:18:06.140798Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,53,DNS,LOW
+2026-03-14T00:18:06.140798Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,80,HTTP,LOW
+2026-03-14T00:18:06.140798Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,443,HTTPS,LOW
+2026-03-14T00:18:06.140798Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,465,SMTP-SSL,LOW
+2026-03-14T00:18:06.140798Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,587,SMTP-TLS,LOW
+2026-03-14T00:18:06.140798Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,993,IMAP-SSL,LOW
+2026-03-14T00:18:06.140798Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,995,POP3-SSL,LOW
+2026-03-14T00:18:06.140798Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,PPTP,LOW
+2026-03-14T00:18:06.140798Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2083,cPanel,HIGH
+2026-03-14T00:18:06.140798Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,2096,Webmail-HTTPS,LOW
+2026-03-14T00:21:16.728012Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-14T00:21:16.728012Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-14T00:21:16.728012Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,PPTP,LOW
+2026-03-14T00:23:52.486467Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-14T00:23:52.486467Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-14T00:23:52.486467Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,PPTP,LOW
+2026-03-14T00:30:43.668641Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-14T00:30:43.668641Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-14T00:30:43.668641Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,PPTP,LOW
+2026-03-14T00:33:11.143103Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-14T00:33:11.143103Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-14T00:33:11.143103Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,PPTP,LOW
+2026-03-14T00:37:34.184071Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,21,FTP,HIGH
+2026-03-14T00:37:34.184071Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,25,SMTP,LOW
+2026-03-14T00:37:34.184071Z,ministerio de seguridad publica,minsegpublica.cl,85.239.243.141,1723,PPTP,LOW

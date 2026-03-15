@@ -1,0 +1,37 @@
+DEBUG: main() started
+===== DNS RESOLUTION =====
+[DNS] ciperchile.cl → 45.230.21.34
+
+[SCAN] ciperchile.cl (45.230.21.34) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 80 (HTTP) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 1723 (Unknown) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 5
+
+===== SCAN SUMMARY =====
+
+[CIPER] ciperchile.cl (45.230.21.34)
+  Port    21 (FTP            ) — HIGH
+  Port    25 (SMTP           ) — LOW
+  Port    80 (HTTP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port  1723 (Unknown        ) — LOW
+
+[EXPORT] Results saved to reports/results.json
+[EXPORT] Results appended to reports/results.csv
+
+[ROUTER] Checking extractors for ciperchile.cl (45.230.21.34)
+  [CDN] ciperchile.cl is not behind Cloudflare — skipping bypass
+
+  [WPScan] Targeting https://www.ciperchile.cl
+  [WPScan] Running: wpscan --url https://www.ciperchile.cl --format json --no-update --disable-tls-checks --ignore-main-redirect --enumerate u,p,t --api-token nL5IQBV8aZTVXP4hXdEZWAUrhkSG0axd2foMGUc4SNs
+  [WPScan] Scan aborted: The target is responding with a 403, this might be due to a WAF. Please re-try with --random-user-agent
+
+  [Nikto] Targeting www.ciperchile.cl:443
+  [Nikto] Running: nikto -host www.ciperchile.cl -port 443 -Format csv -nointeractive -timeout 5 -maxtime 45 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+  [CONFIG] Starting...

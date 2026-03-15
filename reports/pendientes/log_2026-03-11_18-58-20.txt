@@ -1,0 +1,141 @@
+DEBUG: main() started
+===== DNS RESOLUTION =====
+[DNS] defensa.cl → 163.247.42.131
+[DNS] minsegpublica.cl → 85.239.243.141
+[DNS] defensacivil.cl → 186.64.114.165
+[DNS] ejercito.cl → 104.20.43.189
+[DNS] fach.mil.cl → 104.26.2.56
+
+[SCAN] defensa.cl (163.247.42.131) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [LOW] Port 443 (HTTPS) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 1
+
+[SCAN] minsegpublica.cl (85.239.243.141) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [LOW] Port 53 (DNS) — OPEN
+  [LOW] Port 995 (Unknown) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 80 (HTTP) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 465 (Unknown) — OPEN
+  [LOW] Port 587 (Unknown) — OPEN
+  [LOW] Port 993 (Unknown) — OPEN
+  [HIGH] Port 2083 (cPanel) — OPEN
+  [LOW] Port 2096 (Webmail-HTTPS) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 10
+
+[SCAN] defensacivil.cl (186.64.114.165) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [LOW] Port 993 (Unknown) — OPEN
+  [LOW] Port 995 (Unknown) — OPEN
+  [LOW] Port 465 (Unknown) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 587 (Unknown) — OPEN
+  [LOW] Port 143 (IMAP) — OPEN
+  [LOW] Port 110 (POP3) — OPEN
+  [LOW] Port 25 (SMTP) — OPEN
+  [LOW] Port 80 (HTTP) — OPEN
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 2096 (Webmail-HTTPS) — OPEN
+  [HIGH] Port 2083 (cPanel) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 12
+
+[SCAN] ejercito.cl (104.20.43.189) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [LOW] Port 80 (HTTP) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 2096 (Webmail-HTTPS) — OPEN
+  [LOW] Port 8443 (HTTPS-Alt) — OPEN
+  [HIGH] Port 2083 (cPanel) — OPEN
+  [LOW] Port 8080 (HTTP-Alt) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 6
+
+[SCAN] fach.mil.cl (104.26.2.56) — TOP 100
+[DEBUG] Scanning 61 ports with 25 workers...
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 80 (HTTP) — OPEN
+  [HIGH] Port 2083 (cPanel) — OPEN
+  [LOW] Port 8443 (HTTPS-Alt) — OPEN
+  [LOW] Port 2096 (Webmail-HTTPS) — OPEN
+  [LOW] Port 8080 (HTTP-Alt) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 6
+
+===== SCAN SUMMARY =====
+
+[mindefensa] defensa.cl (163.247.42.131)
+  Port   443 (HTTPS          ) — LOW
+
+[minseguridad] minsegpublica.cl (85.239.243.141)
+  Port    25 (SMTP           ) — LOW
+  Port    53 (DNS            ) — LOW
+  Port    80 (HTTP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port   465 (Unknown        ) — LOW
+  Port   587 (Unknown        ) — LOW
+  Port   993 (Unknown        ) — LOW
+  Port   995 (Unknown        ) — LOW
+  Port  2083 (cPanel         ) — HIGH
+  Port  2096 (Webmail-HTTPS  ) — LOW
+
+[defensacivil] defensacivil.cl (186.64.114.165)
+  Port    21 (FTP            ) — HIGH
+  Port    25 (SMTP           ) — LOW
+  Port    80 (HTTP           ) — LOW
+  Port   110 (POP3           ) — LOW
+  Port   143 (IMAP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port   465 (Unknown        ) — LOW
+  Port   587 (Unknown        ) — LOW
+  Port   993 (Unknown        ) — LOW
+  Port   995 (Unknown        ) — LOW
+  Port  2083 (cPanel         ) — HIGH
+  Port  2096 (Webmail-HTTPS  ) — LOW
+
+[ejercito] ejercito.cl (104.20.43.189)
+  Port    80 (HTTP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port  2083 (cPanel         ) — HIGH
+  Port  2096 (Webmail-HTTPS  ) — LOW
+  Port  8080 (HTTP-Alt       ) — LOW
+  Port  8443 (HTTPS-Alt      ) — LOW
+
+[fuerzaaerea] fach.mil.cl (104.26.2.56)
+  Port    80 (HTTP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port  2083 (cPanel         ) — HIGH
+  Port  2096 (Webmail-HTTPS  ) — LOW
+  Port  8080 (HTTP-Alt       ) — LOW
+  Port  8443 (HTTPS-Alt      ) — LOW
+
+[EXPORT] Results saved to reports/results.json
+[EXPORT] Results appended to reports/results.csv
+
+[ROUTER] Checking extractors for defensa.cl (163.247.42.131)
+  [CDN] defensa.cl is not behind Cloudflare — skipping bypass
+
+  [Nikto] Targeting www.defensa.cl:443
+  [Nikto] Running: nikto -host www.defensa.cl -port 443 -Format csv -nointeractive -timeout 10 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+  [CONFIG] Starting...
+
+  [CONFIG] Scraping config files on www.defensa.cl
+  [CONFIG] Timeout — stopping early
+  [CONFIG] No exposed config files found
+  [SKIP] Port 443 (HTTPS) — no extractor available
+
+[ROUTER] Checking extractors for minsegpublica.cl (85.239.243.141)
+  [CDN] minsegpublica.cl is not behind Cloudflare — skipping bypass
+
+  [Nikto] Targeting www.minsegpublica.cl:443
+  [Nikto] Running: nikto -host www.minsegpublica.cl -port 443 -Format csv -nointeractive -timeout 10 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+
+  [cPanel] Targeting minsegpublica.cl:2083
+  [cPanel] Could not reach login page
+  [CONFIG] Starting...

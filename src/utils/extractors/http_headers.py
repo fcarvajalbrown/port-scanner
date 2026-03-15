@@ -87,6 +87,8 @@ class HTTPHeaderLeakDetector:
                 ctx.check_hostname = False
                 ctx.verify_mode = ssl.CERT_NONE
                 sock = ctx.wrap_socket(sock, server_hostname=host)
+                sock = ctx.wrap_socket(sock, server_hostname=host)
+                sock.settimeout(5)  # re-apply after TLS wrap
 
             request = f"GET / HTTP/1.1\r\nHost: {host}\r\nUser-Agent: Mozilla/5.0\r\nConnection: close\r\n\r\n"
             sock.send(request.encode())

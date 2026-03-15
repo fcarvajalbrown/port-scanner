@@ -1,24 +1,12 @@
 {
     "domains": [
         {
-            "id": "mindefensa",
-            "host": "defensa.cl"
-        },
-        {
-            "id": "minseguridad",
+            "id": "ministerio de seguridad publica",
             "host": "minsegpublica.cl"
         },
         {
-            "id": "defensacivil",
-            "host": "defensacivil.cl"
-        },
-        {
-            "id": "ejercito",
-            "host": "ejercito.cl"
-        },
-        {
-            "id": "fuerzaaerea",
-            "host": "fach.mil.cl"
+            "id": "ministerio de defensa",
+            "host": "defensa.cl"
         }
     ]
 }

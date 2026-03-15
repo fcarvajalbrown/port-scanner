@@ -1,0 +1,62 @@
+DEBUG: main() started
+===== DNS RESOLUTION =====
+[DNS] minsegpublica.cl → 85.239.243.141
+
+[SCAN] minsegpublica.cl (85.239.243.141) — TOP 100
+[DEBUG] Scanning 61 ports with 10 workers...
+  [LOW] Port 25 (SMTP) — OPEN
+  [HIGH] Port 21 (FTP) — OPEN
+  [LOW] Port 53 (DNS) — OPEN
+  [LOW] Port 80 (HTTP) — OPEN
+  [LOW] Port 993 (IMAP-SSL) — OPEN
+  [LOW] Port 587 (SMTP-TLS) — OPEN
+  [LOW] Port 443 (HTTPS) — OPEN
+  [LOW] Port 995 (POP3-SSL) — OPEN
+  [LOW] Port 465 (SMTP-SSL) — OPEN
+  [LOW] Port 1723 (PPTP) — OPEN
+  [HIGH] Port 2083 (cPanel) — OPEN
+  [LOW] Port 2096 (Webmail-HTTPS) — OPEN
+[SCAN] Progress: 61/61 ports scanned...
+[DEBUG] Done. Open ports: 12
+[DEBUG] Scans complete, printing summary...
+
+===== SCAN SUMMARY =====
+
+[ministerio de seguridad publica] minsegpublica.cl (85.239.243.141)
+  Port    21 (FTP            ) — HIGH
+  Port    25 (SMTP           ) — LOW
+  Port    53 (DNS            ) — LOW
+  Port    80 (HTTP           ) — LOW
+  Port   443 (HTTPS          ) — LOW
+  Port   465 (SMTP-SSL       ) — LOW
+  Port   587 (SMTP-TLS       ) — LOW
+  Port   993 (IMAP-SSL       ) — LOW
+  Port   995 (POP3-SSL       ) — LOW
+  Port  1723 (PPTP           ) — LOW
+  Port  2083 (cPanel         ) — HIGH
+  Port  2096 (Webmail-HTTPS  ) — LOW
+[DEBUG] Summary done, exporting...
+
+[EXPORT] Results saved to reports/results.json
+[EXPORT] Results appended to reports/results.csv
+[DEBUG] Export done, starting router...
+[DEBUG] Router created
+[DEBUG] Router.run() called, 1 targets
+[DEBUG] Processing ministerio de seguridad publica
+
+[ROUTER] Checking extractors for minsegpublica.cl (85.239.243.141)
+[DEBUG] open_ports: [{'port': 21, 'service': 'FTP', 'risk': 'HIGH'}, {'port': 25, 'service': 'SMTP', 'risk': 'LOW'}, {'port': 53, 'service': 'DNS', 'risk': 'LOW'}, {'port': 80, 'service': 'HTTP', 'risk': 'LOW'}, {'port': 443, 'service': 'HTTPS', 'risk': 'LOW'}, {'port': 465, 'service': 'SMTP-SSL', 'risk': 'LOW'}, {'port': 587, 'service': 'SMTP-TLS', 'risk': 'LOW'}, {'port': 993, 'service': 'IMAP-SSL', 'risk': 'LOW'}, {'port': 995, 'service': 'POP3-SSL', 'risk': 'LOW'}, {'port': 1723, 'service': 'PPTP', 'risk': 'LOW'}, {'port': 2083, 'service': 'cPanel', 'risk': 'HIGH'}, {'port': 2096, 'service': 'Webmail-HTTPS', 'risk': 'LOW'}]
+[DEBUG] Step 1: CDN bypass
+  [CDN] minsegpublica.cl is not behind Cloudflare — skipping bypass
+[DEBUG] Step 2: Nikto
+
+  [Nikto] Targeting www.minsegpublica.cl:443
+  [Nikto] Running: nikto -host www.minsegpublica.cl -port 443 -Format csv -nointeractive -timeout 5 -maxtime 45 -ssl
+  [Nikto] Scan complete — 0 findings (0 HIGH, 0 MEDIUM, 0 INFO)
+[DEBUG] Step 3: Gobuster
+
+  [Gobuster] Targeting http://www.minsegpublica.cl
+  [Gobuster] Using SecLists wordlist: /usr/share/seclists/Discovery/Web-Content/common.txt
+  [Gobuster] Running: gobuster dir -u http://85.239.243.141 -w /usr/share/seclists/Discovery/Web-Content/common.txt -H Host: www.minsegpublica.cl -k -t 10 -q --no-error --timeout 5s
+  [Gobuster] No findings (exit code 1)
+[DEBUG] Step 4: cPanel/WHM
