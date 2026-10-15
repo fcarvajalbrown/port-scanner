@@ -1,5 +1,7 @@
 # Port Scanner
 
+<img src="assets/logo.svg" alt="Port Scanner logo: a grid of closed ports with one open port lit" width="64" height="64">
+
 Infrastructure recon and exploitation framework for authorized penetration testing. It resolves
 domains via DNS, scans for open ports, and chains automated extractors (service fingerprinting,
 brute force, credential harvesting, and a CVE-2023-5360 RCE exploit) against anything it finds open.
