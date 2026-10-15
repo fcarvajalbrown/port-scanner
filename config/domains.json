@@ -1,12 +1,6 @@
 {
     "domains": [
-        {
-            "id": "ministerio de seguridad publica",
-            "host": "minsegpublica.cl"
-        },
-        {
-            "id": "ministerio de defensa",
-            "host": "defensa.cl"
-        }
+        { "id": "main", "host": "yourcompany.com" },
+        { "id": "api",  "host": "api.yourcompany.com" }
     ]
 }
