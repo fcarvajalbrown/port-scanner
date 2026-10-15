@@ -1,8 +1,8 @@
 # Port Scanner
 
-Infrastructure recon and exploitation framework for authorized penetration testing — resolves
+Infrastructure recon and exploitation framework for authorized penetration testing. It resolves
 domains via DNS, scans for open ports, and chains automated extractors (service fingerprinting,
-brute force, credential harvesting, and a CVE-2023-5360 RCE exploit) against anything found open.
+brute force, credential harvesting, and a CVE-2023-5360 RCE exploit) against anything it finds open.
 
 **For authorized security testing only.** Only point this at infrastructure you own or have
 written permission to test.
@@ -43,12 +43,12 @@ python -m src.main --full
 
 ## Output
 
-- **Terminal** — real-time DNS resolution, open port discovery with risk labels, extractor results
-- **`reports/results.json`** — structured JSON generated after every scan
+- **Terminal**: real-time DNS resolution, open port discovery with risk labels, extractor results
+- **`reports/results.json`**: structured JSON generated after every scan
 
 ## Config
 
-**`config/settings.ini`** — tune performance and gate exploitation:
+**`config/settings.ini`** tunes performance and gates exploitation:
 ```ini
 [Scanner]
 timeout_seconds = 4
@@ -67,19 +67,19 @@ run_exploit = false   # set true to enable brute force / RCE extractors below
 Once a scan finds open ports, `ExtractorRouter` (`src/utils/extractors/router.py`) runs a chain of
 extractors in priority order, feeding results from one stage into the next:
 
-1. **CDN bypass** — attempts to find an origin IP behind a CDN and re-scans it directly
-2. **Nikto** — web vulnerability scan on 80/443
-3. **WPScan** — WordPress plugin/user enumeration; feeds discovered usernames into the credential pool
-4. **Royal Elementor RCE** — if WPScan detects the `royal-elementor-addons` plugin, attempts
+1. **CDN bypass**: finds an origin IP behind a CDN and re-scans it directly
+2. **Nikto**: web vulnerability scan on 80/443
+3. **WPScan**: WordPress plugin/user enumeration; feeds discovered usernames into the credential pool
+4. **Royal Elementor RCE**: if WPScan detects the `royal-elementor-addons` plugin, attempts
    CVE-2023-5360 (unauthenticated file upload RCE) and extracts DB credentials from `wp-config.php`
-5. **Gobuster** — directory brute force on 80/443; feeds discovered config/backup files into the
+5. **Gobuster**: directory brute force on 80/443; feeds discovered config/backup files into the
    config scraper
-6. **HTTP config scraper** — fetches exposed config files and extracts credentials
-7. **WebDAV** — unauthenticated PROPFIND listing and PUT write test
-8. **DNS AXFR** — attempts a zone transfer on port 53
-9. **cPanel / WHM brute force** — credential brute force on 2083/2087 using the bundled wordlists
-10. **Service extractors** — MySQL, PostgreSQL, FTP, SSH: connects with any credentials found in
-    earlier stages, or reads the banner if none were found; flags anonymous FTP as CRITICAL
+6. **HTTP config scraper**: fetches exposed config files and extracts credentials
+7. **WebDAV**: unauthenticated PROPFIND listing and PUT write test
+8. **DNS AXFR**: attempts a zone transfer on port 53
+9. **cPanel / WHM brute force**: credential brute force on 2083/2087 using the bundled wordlists
+10. **Service extractors**: MySQL, PostgreSQL, FTP, SSH. Connects with any credentials found in
+    earlier stages, or reads the banner if none were found. Flags anonymous FTP as CRITICAL.
 
 Credentials found at any stage (WPScan users, scraped config passwords, RCE-leaked DB credentials)
 are injected into a shared pool and tried against later services (SSH, FTP, cPanel/WHM).
