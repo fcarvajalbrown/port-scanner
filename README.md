@@ -1,9 +1,6 @@
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/logo-dark.svg">
-  <img src="assets/logo-light.svg" alt="Port Scanner logo: a grid of closed ports with one open port lit" width="96" height="96">
-</picture>
+<img src="assets/logo.svg" alt="Port Scanner logo: a grid of closed ports with one open port lit" width="96" height="96">
 
 # Port Scanner
 
